@@ -33,6 +33,26 @@ public class Elephant extends Pachyderm {
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * override roam for elephants
+     * 1/3 of the time stomps around
+     * 1/3 of the time
+     */
+    @Override
+    public void roam() {
+        double rand = Math.random();
+        if (rand < 0.34) {
+            System.out.println(name + " the Elephant: stomps around its enclosure.");
+        } else if (rand < 0.67) {
+            System.out.println(name + " the Elephant: uses its trunk to take a bath.");
+        } else {
+            System.out.println(name + " the Elephant: sprays you with water from its trunk!");
+        }
+    }
+
+    /**
+>>>>>>> 978f1e7a0b25d9379000b49b1d1f9352636afaa3
      * override make noise for elephant noises
      */
     @Override
