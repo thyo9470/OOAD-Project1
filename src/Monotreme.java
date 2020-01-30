@@ -3,7 +3,7 @@ public class Monotreme extends Animal{
     private boolean spikes;
 
     Monotreme(){
-        super(true, "plants", "unknown", true, "Monty", 4);
+        super(true, "Carnivore", "unknown", true, "Monty", 4);
         this.spikes = false;
     }
 

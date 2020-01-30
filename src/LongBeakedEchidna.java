@@ -6,7 +6,7 @@ public class LongBeakedEchidna extends Monotreme {
     private SquishLevel squishiness;
 
     LongBeakedEchidna(){
-        super(true, "Bottom Feeders", "Freshwater Pond", true, "Perry", 4, false);
+        super(true, "Bugs", "Hilly Forests", true, "Larry", 4, true);
         this.squishiness = SquishLevel.PILLOW;
     }
 

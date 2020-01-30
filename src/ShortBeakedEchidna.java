@@ -3,7 +3,7 @@ public class ShortBeakedEchidna extends Monotreme {
     private double nervousness; // scale 0-1, 1 being the most nervous
 
     ShortBeakedEchidna(){
-        super(true, "Bottom Feeders", "Freshwater Pond", true, "Perry", 4, false);
+        super(true, "Bugs", "Semi-Arid Biome", true, "Steve", 4, true);
         this.nervousness = Math.random();
     }
 

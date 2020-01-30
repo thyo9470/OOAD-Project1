@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Animal {
 
     private boolean awake;
@@ -9,25 +11,12 @@ public class Animal {
 
 
     Animal(){
-        this.awake = true;
+        Random rd = new Random();
+        this.awake = rd.nextBoolean();
         this.diet = "unknown";
         this.habitat = "unknown";
-        this.hungry = true;
+        this.hungry = rd.nextBoolean();
         this.name = "Adam";
-        this.numLegs = 4;
-    }
-
-    /**
-     *  Constructor that takes only animal name
-     * @param name:String - The name of the animal
-     */
-    Animal(String name){
-        this.name = name;
-
-        this.awake = true;
-        this.diet = "unknown";
-        this.habitat = "unknown";
-        this.hungry = true;
         this.numLegs = 4;
     }
 
@@ -102,10 +91,10 @@ public class Animal {
      */
     public void wakeup(){
         if (!this.awake) {
-            System.out.println(name + " the Animal: Woke up.");
+            System.out.println(name + " the " + this.getClass().getName() + ": Woke up.");
             this.awake = true;
         } else {
-            System.out.println(name + " the Animal: Is already awake");
+            System.out.println(name + " the " + this.getClass().getName() + ": Is already awake");
         }
     }
 
@@ -113,7 +102,7 @@ public class Animal {
      *  Animal makes noise
      */
     public void makeNoise(){
-        System.out.println(name + " the Animal: *generic animal sound.");
+        System.out.println(name + " the " + this.getClass().getName() + ": *generic animal sound*.");
     }
 
     /**
@@ -122,10 +111,10 @@ public class Animal {
      */
     public void eat(){
         if(this.hungry) {
-            System.out.println(name + " the Animal: Began to eat.");
+            System.out.println(name + " the " + this.getClass().getName() + ": Began to eat.");
             this.hungry = false;
         } else {
-            System.out.println(name + " the Animal: Was not hungry.");
+            System.out.println(name + " the " + this.getClass().getName() + ": Was not hungry.");
         }
     }
 
@@ -135,7 +124,7 @@ public class Animal {
      *  Call to make the animal roam around its exhibit
      */
     public void roam(){
-        System.out.println(name + " the Animal: Began to roam.");
+        System.out.println(name + " the " + this.getClass().getName() + ": Began to roam.");
         this.hungry = true;
     }
 
@@ -144,10 +133,10 @@ public class Animal {
      */
     public void sleep(){
         if (this.awake) {
-            System.out.println(name + " the Animal: Fell fast asleep.");
+            System.out.println(name + " the " + this.getClass().getName() + ": Fell fast asleep.");
             this.awake = false;
         } else {
-            System.out.println(name + " the Animal: Is already asleep");
+            System.out.println(name + " the " + this.getClass().getName() + ": Is already asleep");
         }
     }
 

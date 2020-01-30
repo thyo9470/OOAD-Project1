@@ -39,11 +39,11 @@ public class Elephant extends Pachyderm {
     public void roam() {
         double rand = Math.random();
         if (rand < 0.34) {
-            System.out.println(name + "the Elephant: stomps around its enclosure.");
+            System.out.println(name + " the Elephant: stomps around its enclosure.");
         } else if (rand < 0.67) {
-            System.out.println(name + "the Elephant: uses its trunk to take a bath.");
+            System.out.println(name + " the Elephant: uses its trunk to take a bath.");
         } else {
-            System.out.println(name + "the Elephant: sprays you with water from its trunk!");
+            System.out.println(name + " the Elephant: sprays you with water from its trunk!");
         }
     }
 
@@ -51,5 +51,5 @@ public class Elephant extends Pachyderm {
      * override make noise for elephant noises
      */
     @Override
-    public void makeNoise() { System.out.println(name + "the Elephant: Phoo-waompph"); }
+    public void makeNoise() { System.out.println(name + " the Elephant: Phoo-waompph"); }
 }
