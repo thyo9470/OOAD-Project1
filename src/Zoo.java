@@ -23,9 +23,9 @@ public class Zoo {
         animals.add(new Rhino());
         animals.add(new Rhino());
 
-        // Marsupials
-        animals.add(new Koala());
-        animals.add(new Koala());
+        // Canines
+        animals.add(new Dog());
+        animals.add(new Wolf());
 
         // Feline
         animals.add(new Cat());
