@@ -34,6 +34,8 @@ public class Dog extends Canine {
 
     /**
      * Override roam for Dogs
+     * 50% of the time the dog rolls over for belly rubs
+     * 50% of the time the dog chases his tail
      */
     @Override
     public void roam() {
@@ -48,6 +50,8 @@ public class Dog extends Canine {
 
     /**
      * Override make noise for Dogs
+     * 80% of the time the dog whines
+     * 20% of the time the dog barks
      */
     @Override
     public void makeNoise() {

@@ -25,6 +25,8 @@ public class Zoo {
 
         // Canines
         animals.add(new Dog());
+        animals.add(new Dog());
+        animals.add(new Wolf());
         animals.add(new Wolf());
 
         // Feline

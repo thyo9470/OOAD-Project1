@@ -35,6 +35,8 @@ public class Wolf extends Canine {
 
     /**
      * Override roam for Wolves
+     * 70% of the time wold hides in his cave
+     * 30% of the time the wolf goes looking for meat to eat
      */
     @Override
     public void roam() {
@@ -49,6 +51,8 @@ public class Wolf extends Canine {
 
     /**
      * Override make noise for Wolves
+     * 20% of the time wolf howls
+     * 80% of the time dog aggressively growls
      */
     @Override
     public void makeNoise() {

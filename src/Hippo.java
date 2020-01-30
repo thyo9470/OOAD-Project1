@@ -40,6 +40,7 @@ public class Hippo extends Pachyderm {
 
     /**
      * Overwrite make noise for Hippos (5 different noisses)
+     * 20% of the time grunts, groans, growls, wheezes, or
      */
     @Override
     public void makeNoise() {

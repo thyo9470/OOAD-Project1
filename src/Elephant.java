@@ -34,6 +34,8 @@ public class Elephant extends Pachyderm {
 
     /**
      * override roam for elephants
+     * 1/3 of the time stomps around
+     * 1/3 of the time 
      */
     @Override
     public void roam() {
