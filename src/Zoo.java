@@ -27,13 +27,13 @@ public class Zoo {
         animals.add(new Koala());
         animals.add(new Koala());
 
-        // Monotreme
-        animals.add(new LongBeakedEchidna());
-        animals.add(new LongBeakedEchidna());
-        animals.add(new Platypus());
-        animals.add(new Platypus());
-        animals.add(new ShortBeakedEchidna());
-        animals.add(new ShortBeakedEchidna());
+        // Feline
+        animals.add(new Cat());
+        animals.add(new Cat());
+        animals.add(new Lion());
+        animals.add(new Lion());
+        animals.add(new Tiger());
+        animals.add(new Tiger());
     }
 
     /**
