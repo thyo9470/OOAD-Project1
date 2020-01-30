@@ -4,7 +4,7 @@ public class Animal {
     private String diet;
     private String habitat;
     private boolean hungry;
-    private String name;
+    protected String name;
     private int numLegs;
 
 
