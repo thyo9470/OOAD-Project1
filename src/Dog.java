@@ -1,7 +1,7 @@
 public class Dog extends Canine {
 
     Dog(){
-        super(true, "Omnivore", "Suburbs", true, "Butterscotch", 4, true);
+        super(false, "Omnivore", "Suburbs", true, "Danny", 4, true);
     }
 
     /**
@@ -30,22 +30,6 @@ public class Dog extends Canine {
      */
     Dog(boolean awake, String diet, String habitat, boolean hungry, String name, int numLegs, boolean domesticated){
         super(awake, diet, habitat, hungry, name, numLegs, domesticated);
-    }
-
-    /**
-     * Override roam for Dogs
-     * 50% of the time the dog rolls over for belly rubs
-     * 50% of the time the dog chases his tail
-     */
-    @Override
-    public void roam() {
-        double randomNumber = Math.random();
-        if(randomNumber < 0.5) {
-            System.out.println(name + " the Dog: rolls over for belly rubs.");
-        } else {
-            System.out.println(name + " the Dog: chases his tail.");
-        }
-
     }
 
     /**

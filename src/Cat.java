@@ -1,7 +1,7 @@
 public class Cat extends Feline {
 
     Cat(){
-        super(true, "Carnivore", "Human Home", true, "Calypso", 4);
+        super(false, "Carnivore", "suburbs", true, "Calypso", 4);
     }
 
     /**

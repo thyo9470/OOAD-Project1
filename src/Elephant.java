@@ -1,7 +1,7 @@
 public class Elephant extends Pachyderm {
 
     Elephant(){
-        super(true, "vegetation", "savannah", true, "Harold", 4, 2);
+        super(false, "vegetation", "savannah", true, "Emily", 4, 2);
     }
 
     /**
@@ -30,23 +30,6 @@ public class Elephant extends Pachyderm {
      */
     Elephant(boolean awake, String diet, String habitat, boolean hungry, String name, int numLegs, int numTusks){
         super(awake, diet, habitat, hungry, name, numLegs, numTusks);
-    }
-
-    /**
-     * override roam for elephants
-     * 1/3 of the time stomps around
-     * 1/3 of the time 
-     */
-    @Override
-    public void roam() {
-        double rand = Math.random();
-        if (rand < 0.34) {
-            System.out.println(name + " the Elephant: stomps around its enclosure.");
-        } else if (rand < 0.67) {
-            System.out.println(name + " the Elephant: uses its trunk to take a bath.");
-        } else {
-            System.out.println(name + " the Elephant: sprays you with water from its trunk!");
-        }
     }
 
     /**

@@ -3,7 +3,7 @@ public class Pachyderm extends Animal{
     private int numTusks;
 
     Pachyderm(){
-        super(true, "vegetation", "savannah", true, "Paul", 4);
+        super(false, "vegetation", "savannah", true, "Paul", 4);
         this.numTusks = 0;
     }
 
@@ -45,7 +45,16 @@ public class Pachyderm extends Animal{
 
     /**
      * Override roam for Pachyderms
+     * 75% chance to run around paddock
+     * 25% chance to stomp around enclosure
      */
     @Override
-    public void roam() { System.out.println(name + " the : Began to roam."); }
+    public void roam() {
+        double rand = Math.random();
+        if (rand < 0.75) {
+            System.out.println(name + " the " + this.getClass().getName() + ": Runs around its paddock.");
+        } else {
+            System.out.println(name + " the " + this.getClass().getName() + ": stomps around its enclosure.");
+        }
+    }
 }

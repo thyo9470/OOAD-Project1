@@ -2,7 +2,7 @@ public class Tiger extends Feline {
 
 
    Tiger(){
-      super(true, "Carnivore", "Forests", true, "Teddy", 4);
+      super(false, "Carnivore", "Forests", true, "Teddy", 4);
    }
 
    /**

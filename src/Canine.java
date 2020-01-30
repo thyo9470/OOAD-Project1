@@ -3,7 +3,7 @@ public class Canine extends Animal {
     private boolean domesticated;
 
     Canine(){
-        super(true, "Omnivore", "Forests", true, "Richard", 4);
+        super(false, "Omnivore", "Forests", true, "Cory", 4);
         this.domesticated = true;
     }
 
@@ -52,20 +52,33 @@ public class Canine extends Animal {
 
     /**
      * Override roam for Canines
+     * 25% chance to...
+     *  - roll over for a belly rub
+     *  - chase their tail
+     *  - hide in a cave
+     *  - look for meat to eat
      */
 
     @Override
     public void roam(){
-        System.out.println(name + " the Canine is roaming.");
+        double randomNumber = Math.random();
+        if(randomNumber < 0.25) {
+            System.out.println(name + " the" + this.getClass().getName() + ": rolls over for belly rubs.");
+        } else if (randomNumber < 0.5){
+            System.out.println(name + " the " + this.getClass().getName() + ": chases his tail.");
+        } else if(randomNumber < 0.75) {
+            System.out.println(name + " the " + this.getClass().getName() + ": hides in his cave.");
+        } else {
+            System.out.println(name + " the " + this.getClass().getName() + ": looks for some meat to eat.");
+        }
     }
 
     /**
      * Override makeNoise for Canines
      */
-
     @Override
     public void makeNoise(){
-        System.out.println(name + " the Canine growls.");
+        System.out.println(name + " the " + this.getClass().getName() + " growls.");
     }
 
 

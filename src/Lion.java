@@ -6,7 +6,7 @@ public class Lion extends Feline{
     final String[] lionSounds = {"meow", "roar", "grunt", "moan", "growl", "snarl", "purr", "hum", "puff", "woof"};
 
     Lion() {
-        super(true, "Carnivore", "Grassland", true, "Lenny", 4);
+        super(false, "Carnivore", "Grassland", true, "Lenny", 4);
     }
 
     /**

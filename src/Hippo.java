@@ -1,7 +1,7 @@
 public class Hippo extends Pachyderm {
 
     Hippo(){
-        super(true, "vegetation", "savannah", true, "Harold", 4, 0);
+        super(false, "vegetation", "savannah", true, "Harold", 4, 0);
     }
 
     /**
@@ -31,12 +31,6 @@ public class Hippo extends Pachyderm {
     Hippo(boolean awake, String diet, String habitat, boolean hungry, String name, int numLegs, int numTusks){
         super(awake, diet, habitat, hungry, name, numLegs, numTusks);
     }
-
-    /**
-     * Overwrite roam for Hippos
-     */
-    @Override
-    public void roam() { System.out.println(name + " the Hippo: Sinks into his pond."); }
 
     /**
      * Overwrite make noise for Hippos (5 different noisses)

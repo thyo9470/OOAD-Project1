@@ -1,7 +1,7 @@
 public class Rhino extends Pachyderm {
 
     Rhino(){
-        super(true, "vegetation", "savannah", true, "Harold", 4, 1);
+        super(false, "vegetation", "savannah", true, "Reginald", 4, 1);
     }
 
     /**
@@ -30,19 +30,6 @@ public class Rhino extends Pachyderm {
      */
     Rhino(boolean awake, String diet, String habitat, boolean hungry, String name, int numLegs, int numTusks){
         super(awake, diet, habitat, hungry, name, numLegs, numTusks);
-    }
-
-    /**
-     * override roam for rhinos
-     */
-    @Override
-    public void roam() {
-        double rand = Math.random();
-        if (rand < 0.2){
-            System.out.println(name + " the Rhino: Charges! How Scary.");
-        } else {
-            System.out.println(name + " the Rhino: Runs around his paddock.");
-        }
     }
 
     /**

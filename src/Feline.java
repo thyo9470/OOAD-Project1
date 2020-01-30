@@ -1,7 +1,7 @@
 public class Feline extends Animal{
 
     Feline(){
-        super(true, "Carnivore", "unknown", true, "Felix", 4);
+        super(false, "Carnivore", "unknown", true, "Felix", 4);
     }
 
     /**
@@ -28,7 +28,6 @@ public class Feline extends Animal{
             System.out.println(name + " the " + this.getClass().getName() + ": Began to stroll around the enclosure.");
         }else{
             System.out.println(name + " the "  + this.getClass().getName() + ": Looked at you and went to sleep.");
-            this.sleep();
         }
     }
 

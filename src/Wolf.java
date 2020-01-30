@@ -1,7 +1,7 @@
 public class Wolf extends Canine {
 
     Wolf(){
-        super(true, "Omnivore", "Suburbs", true, "MoonMoon", 4, false);
+        super(false, "Omnivore", "forests", true, "woonwoon", 4, false);
     }
 
     /**
@@ -31,22 +31,6 @@ public class Wolf extends Canine {
      */
     Wolf(boolean awake, String diet, String habitat, boolean hungry, String name, int numLegs, boolean domesticated){
         super(awake, diet, habitat, hungry, name, numLegs, domesticated);
-    }
-
-    /**
-     * Override roam for Wolves
-     * 70% of the time wold hides in his cave
-     * 30% of the time the wolf goes looking for meat to eat
-     */
-    @Override
-    public void roam() {
-        double randomNumber = Math.random();
-        if(randomNumber < 0.7) {
-            System.out.println(name + " the Wolf: hides in his cave.");
-        } else {
-            System.out.println(name + " the Wolf: looks for some meat to eat.");
-        }
-
     }
 
     /**
