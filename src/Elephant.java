@@ -1,7 +1,7 @@
 public class Elephant extends Pachyderm {
 
     Elephant(){
-        super(true, "vegetation", "savannah", true, "Harold", 4, 2);
+        super(true, "vegetation", "savannah", true, "Eggy", 4, 2);
     }
 
     /**
@@ -35,7 +35,7 @@ public class Elephant extends Pachyderm {
     /**
      * override roam for elephants
      * 1/3 of the time stomps around
-     * 1/3 of the time 
+     * 1/3 of the time
      */
     @Override
     public void roam() {

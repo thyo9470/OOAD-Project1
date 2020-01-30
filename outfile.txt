@@ -1,0 +1,95 @@
+"The early bird gets the worm."
+ -Zookeeper as he wakes the animals.
+Eggy the Elephant: Is already awake
+Eggy the Elephant: Is already awake
+Harold the Hippo: Is already awake
+Harold the Hippo: Is already awake
+Ronald the Rhino: Is already awake
+Ronald the Rhino: Is already awake
+Butterscotch the Dog: Is already awake
+Butterscotch the Dog: Is already awake
+MoonMoon the Wolf: Is already awake
+MoonMoon the Wolf: Is already awake
+Calypso the Cat: Is already awake
+Calypso the Cat: Is already awake
+Lenny the Lion: Is already awake
+Lenny the Lion: Is already awake
+Teddy the Tiger: Is already awake
+Teddy the Tiger: Is already awake
+
+"Lets see who's here today."
+ -Zookeeper as he does roll call.
+Eggy the Elephant: Phoo-waompph
+Eggy the Elephant: Phoo-waompph
+Harold the Hippo: *growls*
+Harold the Hippo: *chuffs*
+Ronald the Rhino: *screams and trumpets*
+Ronald the Rhino: *screams and trumpets*
+Butterscotch the Dog: whines.
+Butterscotch the Dog: barks
+MoonMoon the Wolf: aggressively growls.
+MoonMoon the Wolf: aggressively growls.
+Calypso the Cat: Looked but stayed silent
+Calypso the Cat: Looked but stayed silent
+Lenny the Lion: Made the following noises - moan puff woof growl puff
+Lenny the Lion: Made the following noises - grunt meow moan snarl woof
+Teddy the Tiger: Roared
+Teddy the Tiger: Roared
+
+"A full belly is a happy belly."
+ -Zookeeper as he feeds the animals.
+Eggy the Elephant: Began to eat.
+Eggy the Elephant: Began to eat.
+Harold the Hippo: Began to eat.
+Harold the Hippo: Began to eat.
+Ronald the Rhino: Began to eat.
+Ronald the Rhino: Began to eat.
+Butterscotch the Dog: Began to eat.
+Butterscotch the Dog: Began to eat.
+MoonMoon the Wolf: Began to eat.
+MoonMoon the Wolf: Began to eat.
+Calypso the Cat: Began to eat.
+Calypso the Cat: Began to eat.
+Lenny the Lion: Began to eat.
+Lenny the Lion: Began to eat.
+Teddy the Tiger: Began to eat.
+Teddy the Tiger: Began to eat.
+
+"Get up! Get on up! Get up! Get on Up!."
+ -Zookeeper sings to motivate the animals to exercise.
+Eggy the Elephant: stomps around its enclosure.
+Eggy the Elephant: uses its trunk to take a bath.
+Harold the Hippo: Sinks into its pond.
+Harold the Hippo: Sinks into its pond.
+Ronald the Rhino: Charges! How Scary.
+Ronald the Rhino: Runs around his paddock.
+Butterscotch the Dog: chases his tail.
+Butterscotch the Dog: chases his tail.
+MoonMoon the Wolf: looks for some meat to eat.
+MoonMoon the Wolf: hides in his cave.
+Calypso the Cat: Began to stroll around the enclosure.
+Calypso the Cat: Began to stroll around the enclosure.
+Lenny the Lion: Began to stroll around the enclosure.
+Lenny the Lion: Looked at you and went to sleep.
+Lenny the Lion: Fell fast asleep.
+Teddy the Tiger: Began to stroll around the enclosure.
+Teddy the Tiger: Began to stroll around the enclosure.
+
+"Time to head to sleepy town."
+ -Zookeeper yawns as gives each habitat a look over.
+Eggy the Elephant: Fell fast asleep.
+Eggy the Elephant: Fell fast asleep.
+Harold the Hippo: Fell fast asleep.
+Harold the Hippo: Fell fast asleep.
+Ronald the Rhino: Fell fast asleep.
+Ronald the Rhino: Fell fast asleep.
+Butterscotch the Dog: Fell fast asleep.
+Butterscotch the Dog: Fell fast asleep.
+MoonMoon the Wolf: Fell fast asleep.
+MoonMoon the Wolf: Fell fast asleep.
+Calypso the Cat: Fell fast asleep.
+Calypso the Cat: Fell fast asleep.
+Lenny the Lion: Fell fast asleep.
+Lenny the Lion: Is already asleep
+Teddy the Tiger: Fell fast asleep.
+Teddy the Tiger: Fell fast asleep.

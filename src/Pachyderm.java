@@ -47,5 +47,5 @@ public class Pachyderm extends Animal{
      * Override roam for Pachyderms
      */
     @Override
-    public void roam() { System.out.println(name + " the : Began to roam."); }
+    public void roam() { System.out.println(name + " the Pachyderm: Began to roam around its enclosure."); }
 }

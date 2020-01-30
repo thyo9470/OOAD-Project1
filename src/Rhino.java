@@ -1,7 +1,7 @@
 public class Rhino extends Pachyderm {
 
     Rhino(){
-        super(true, "vegetation", "savannah", true, "Harold", 4, 1);
+        super(true, "vegetation", "savannah", true, "Ronald", 4, 1);
     }
 
     /**
@@ -38,7 +38,7 @@ public class Rhino extends Pachyderm {
     @Override
     public void roam() {
         double rand = Math.random();
-        if (rand < 0.2){
+        if (rand < 0.5){
             System.out.println(name + " the Rhino: Charges! How Scary.");
         } else {
             System.out.println(name + " the Rhino: Runs around his paddock.");

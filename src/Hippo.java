@@ -36,7 +36,7 @@ public class Hippo extends Pachyderm {
      * Overwrite roam for Hippos
      */
     @Override
-    public void roam() { System.out.println(name + " the Hippo: Sinks into his pond."); }
+    public void roam() { System.out.println(name + " the Hippo: Sinks into its pond."); }
 
     /**
      * Overwrite make noise for Hippos (5 different noisses)
