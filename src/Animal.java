@@ -4,7 +4,7 @@ public class Animal {
     private String diet;
     private String habitat;
     private boolean hungry;
-    private String name;
+    protected String name;
     private int numLegs;
 
 
@@ -98,41 +98,57 @@ public class Animal {
     }
 
     /**
-     *  Call to wake the animal up
+     *  Wakes animal up animal
      */
     public void wakeup(){
-        System.out.println(name + " the Animal: Woke up.");
-        awake = true;
+        if (!this.awake) {
+            System.out.println(name + " the Animal: Woke up.");
+            this.awake = true;
+        } else {
+            System.out.println(name + " the Animal: Is already awake");
+        }
     }
 
     /**
-     *  Call to have the animal make noise
+     *  Animal makes noise
      */
     public void makeNoise(){
         System.out.println(name + " the Animal: *generic animal sound.");
     }
 
     /**
+     *  Makes animal eat
      *  Call to have the animal eat
      */
     public void eat(){
-        System.out.println(name + " the Animal: Began to eat.");
-        hungry = false;
+        if(this.hungry) {
+            System.out.println(name + " the Animal: Began to eat.");
+            this.hungry = false;
+        } else {
+            System.out.println(name + " the Animal: Was not hungry.");
+        }
     }
+
+    // add is hungry and is awake
 
     /**
      *  Call to make the animal roam around its exhibit
      */
     public void roam(){
         System.out.println(name + " the Animal: Began to roam.");
+        this.hungry = true;
     }
 
     /**
      *  Call to make the animal sleep
      */
     public void sleep(){
-        System.out.println(name + " the Animal: Fell fast asleep.");
-        awake = false;
+        if (this.awake) {
+            System.out.println(name + " the Animal: Fell fast asleep.");
+            this.awake = false;
+        } else {
+            System.out.println(name + " the Animal: Is already asleep");
+        }
     }
 
 

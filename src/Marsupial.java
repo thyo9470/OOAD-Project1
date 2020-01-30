@@ -6,6 +6,7 @@ public class Marsupial extends Animal {
     Marsupial(){
         super(true, "plants", "unknown", true, "Marcy", 4);
         this.pouch = true;
+        this.fromAustralia = true;
     }
 
     /**
