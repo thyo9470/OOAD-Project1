@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Animal {
+abstract public class Animal {
 
     private boolean awake;
     private String diet;
@@ -8,17 +8,6 @@ public class Animal {
     private boolean hungry;
     protected String name;
     private int numLegs;
-
-
-    Animal(){
-        Random rd = new Random();
-        this.awake = rd.nextBoolean();
-        this.diet = "unknown";
-        this.habitat = "unknown";
-        this.hungry = rd.nextBoolean();
-        this.name = "Adam";
-        this.numLegs = 4;
-    }
 
     /**
      * Constructor that you can set all class fields
