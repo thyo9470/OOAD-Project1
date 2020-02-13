@@ -1,10 +1,11 @@
 import random
 from Animal import Animal
+from BiteBehavior import BiteBehavior
 
 class Canine(Animal):
 
-  def __init__(self, name='Carl', awake=False, hungry=True, numLegs=4):
-    super(Canine, self).__init__(name, awake, hungry, numLegs)
+  def __init__(self, name='Carl', awake=False, hungry=True, num_legs=4, eat_behavior=BiteBehavior):
+    super(Canine, self).__init__(name, awake, hungry, num_legs, eat_behavior)
 
   def roam(self):
     animal_type = type(self).__name__

@@ -3,8 +3,8 @@ from Canine import Canine
 
 class Dog(Canine):
 
-  def __init__(self, name='Durk', awake=False, hungry=True, numLegs=4):
-    super(Canine, self).__init__(name, awake, hungry, numLegs)
+  def __init__(self, name='Durk', awake=False, hungry=True, num_legs=4):
+    super(Canine, self).__init__(name, awake, hungry, num_legs)
 
   def make_noise(self):
     animal_type = type(self).__name__
