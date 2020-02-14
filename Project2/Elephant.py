@@ -14,7 +14,7 @@ class Elephant(Pachyderm):
     super(Elephant, self).__init__(name, awake, hungry, num_legs)
 
   '''
-    Dog has a 80% chance to bark and 20% chance to whine
+    Elephant can either trumpet or have a 20% chance to phoo-waompph
   '''
   def make_noise(self):
     animal_type = type(self).__name__
