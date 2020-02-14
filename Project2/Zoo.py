@@ -6,6 +6,9 @@ from Feline import Feline
 from Cat import Cat
 from Tiger import Tiger
 from Lion import Lion
+from Elephant import Elephant
+from Hippo import Hippo
+from Rhino import Rhino
 
 class Zoo():
 
@@ -49,6 +52,14 @@ class Zoo():
     self.animals.append(Lion())
     self.animals.append(Lion('Lenny'))
   
+    # Pachyderm
+    self.animals.append(Elephant())
+    self.animals.append(Elephant('Esther'))
+    self.animals.append(Hippo())
+    self.animals.append(Hippo('Harriet'))
+    self.animals.append(Rhino())
+    self.animals.append(Rhino('Rose'))
+    
   '''
     Deletes all animals in zoo and sets animals list to empty   
   '''
