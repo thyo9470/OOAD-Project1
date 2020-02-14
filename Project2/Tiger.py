@@ -4,7 +4,7 @@ from Feline import Feline
 class Tiger(Feline):
 
   def __init__(self, name='Tony', awake=False, hungry=True, num_legs=4):
-    super(Canine, self).__init__(name, awake, hungry, num_legs)
+    super(Tiger, self).__init__(name, awake, hungry, num_legs)
 
   def make_noise(self):
     animal_type = type(self).__name__

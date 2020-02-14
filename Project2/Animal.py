@@ -5,7 +5,7 @@ class Animal():
   '''
   def __new__(cls, name='Alvin', awake=False, hungry=True, num_legs=4, eat_behavior=None, *args, **kwargs):
           if cls is Animal:
-              raise TypeError("Animal is an abstract class an cannot be instantiated")
+              raise TypeError("Animal is an abstract class and cannot be instantiated")
           return object.__new__(cls, *args, **kwargs)
 
   '''
@@ -23,13 +23,6 @@ class Animal():
     self.num_legs = num_legs
     self.eat_behavior = eat_behavior
 
-  '''
-    Deconstructor whic prints that the animal has died
-  '''
-  def __del__(self):
-    animal_type = type(self).__name__
-    print('{} the {} was deconstructed'.format(self.name, animal_type))
-  
   '''
     Makes animal wake up  
   '''

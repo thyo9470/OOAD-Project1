@@ -2,6 +2,10 @@ from Animal import Animal
 from Canine import Canine
 from Dog import Dog
 from Wolf import Wolf
+from Feline import Feline
+from Cat import Cat
+from Tiger import Tiger
+from Lion import Lion
 
 class Zoo():
 
@@ -36,6 +40,14 @@ class Zoo():
     self.animals.append(Dog('Dug'))
     self.animals.append(Wolf())
     self.animals.append(Wolf('Wifi'))
+
+    # Feline
+    self.animals.append(Cat())
+    self.animals.append(Cat('Catherine'))
+    self.animals.append(Tiger())
+    self.animals.append(Tiger('Terry'))
+    self.animals.append(Lion())
+    self.animals.append(Lion('Lenny'))
   
   '''
     Deletes all animals in zoo and sets animals list to empty   
