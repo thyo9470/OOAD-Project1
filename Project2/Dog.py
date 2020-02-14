@@ -9,7 +9,6 @@ class Dog(Canine):
     @param awake:Boolean, default:False
     @param hungry:Boolean, deault:True
     @param num_legs:Int, default:4
-    @param eat_behavior:EatBehavior, default:None
   '''
   def __init__(self, name='Durk', awake=False, hungry=True, num_legs=4):
     super(Dog, self).__init__(name, awake, hungry, num_legs)

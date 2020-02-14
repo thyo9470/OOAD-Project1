@@ -6,11 +6,11 @@ class Canine(Animal):
 
   '''
     Generic initializer for Canine 
-    @param name:String, default:'Alvin'
+    @param name:String, default:'Carl'
     @param awake:Boolean, default:False
     @param hungry:Boolean, deault:True
     @param num_legs:Int, default:4
-    @param eat_behavior:EatBehavior, default:None
+    @param eat_behavior:EatBehavior, default:BiteBehavior
   '''
   def __init__(self, name='Carl', awake=False, hungry=True, num_legs=4, eat_behavior=BiteBehavior):
     super(Canine, self).__init__(name, awake, hungry, num_legs, eat_behavior)
