@@ -1,18 +1,19 @@
+
 import random
 from Animal import Animal
-from GrazeBehavior import GrazeBehavior
+from BiteBehavior import BiteBehavior
 
 class Pachyderm(Animal):
-   
-   '''
-    Generic initializer for Pachyderm 
+
+  '''
+    Generic initializer for Pachyderm
     @param name:String, default:'Paul'
     @param awake:Boolean, default:False
     @param hungry:Boolean, deault:True
     @param num_legs:Int, default:4
-    @param eat_behavior:EatBehavior, default:GrazeBehavior
+    @param eat_behavior:EatBehavior, default:BiteBehavior
   '''
-  def __init__(self, name='Paul', awake=False, hungry=True, num_legs=4, eat_behavior=GrazeBehavior):
+  def __init__(self, name='Carl', awake=False, hungry=True, num_legs=4, eat_behavior=BiteBehavior):
     super(Pachyderm, self).__init__(name, awake, hungry, num_legs, eat_behavior)
 
   '''
