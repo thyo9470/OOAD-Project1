@@ -59,10 +59,10 @@ class Zookeeper(Subject):
   '''
   def wake_up_animals(self):
     print("\n\"The early bird gets the worm.\"\n -Zookeeper as he wakes the animals.");
-    for animal in self.zoo.get_animals():
-      animal.wake_up()
     self.state = KeeperState.wake_up
     super().notify_observers()
+    for animal in self.zoo.get_animals():
+      animal.wake_up()
 
   '''
     - Calls roll of animals in the zoo by having them make a noise
@@ -71,10 +71,10 @@ class Zookeeper(Subject):
   '''
   def roll_call(self):
     print("\n\"Lets see who's here today.\"\n -Zookeeper as he does roll call.")
-    for animal in self.zoo.get_animals():
-      animal.make_noise() 
     self.state = KeeperState.roll_call
     super().notify_observers()
+    for animal in self.zoo.get_animals():
+      animal.make_noise() 
   
   '''
     - Feeds and the animals in the zoo 
@@ -83,10 +83,10 @@ class Zookeeper(Subject):
   '''
   def feed_animals(self):
     print("\n\"A full belly is a happy belly.\"\n -Zookeeper as he feeds the animals.")
-    for animal in self.zoo.get_animals():
-      animal.eat()
     self.state = KeeperState.feed_animals
     super().notify_observers()
+    for animal in self.zoo.get_animals():
+      animal.eat()
 
   '''
     - Exercises the animals in the zoo 
@@ -95,10 +95,10 @@ class Zookeeper(Subject):
   '''
   def exercise_animals(self):
     print("\n\"Get up! Get on up! Get up! Get on Up!.\"\n -Zookeeper sings to motivate the animals to exercise.")
-    for animal in self.zoo.get_animals():
-      animal.roam()
     self.state = KeeperState.exercise_animals
     super().notify_observers()
+    for animal in self.zoo.get_animals():
+      animal.roam()
 
   '''
     - Puts all the animals in the zoo to sleep 
@@ -107,7 +107,7 @@ class Zookeeper(Subject):
   '''
   def put_animals_to_bed(self):
     print("\n\"Time to head to sleepy town.\"\n -Zookeeper yawns as gives each habitat a look over.")
-    for animal in self.zoo.get_animals():
-      animal.sleep()
     self.state = KeeperState.put_animals_to_bed
     super().notify_observers()
+    for animal in self.zoo.get_animals():
+      animal.sleep()
