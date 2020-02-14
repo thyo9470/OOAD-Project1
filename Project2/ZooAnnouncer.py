@@ -1,6 +1,9 @@
 from Zookeeper import Zookeeper, KeeperState
 from Observer import Observer
 
+'''
+  ZooAnnouncer acts as the observer for teh observer design pattern
+'''
 class ZooAnnouncer(Observer):
     
   '''
@@ -8,6 +11,9 @@ class ZooAnnouncer(Observer):
   '''
   def __init__(self):
     self.zookeeper = None
+  
+  def __del__(self):
+    print('The zoo announcer has left as well')
 
   '''
     Starts observing a given zookeeper 
@@ -30,6 +36,8 @@ class ZooAnnouncer(Observer):
   def update(self):
     keeper_state = self.zookeeper.get_state()
     self.announce(keeper_state)
+    if keeper_state == KeeperState.end:
+      del self
 
   '''
     Announces what a zookeeper is doing

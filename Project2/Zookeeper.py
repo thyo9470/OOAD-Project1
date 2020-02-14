@@ -13,6 +13,9 @@ class KeeperState(enum.Enum):
   put_animals_to_bed = 6 
   end = 7
 
+'''
+  Zookeeper acts as the subject for the observer design pattern
+'''
 class Zookeeper(Subject):
 
   '''
@@ -51,6 +54,7 @@ class Zookeeper(Subject):
     self.feed_animals()
     self.exercise_animals()
     self.put_animals_to_bed()
+    self.leave_zoo()
 
   '''
     - Wakes up all the animals in the zoo 
@@ -111,3 +115,8 @@ class Zookeeper(Subject):
     super().notify_observers()
     for animal in self.zoo.get_animals():
       animal.sleep()
+
+  def leave_zoo(self):
+    self.state = KeeperState.end
+    super().notify_observers()
+    

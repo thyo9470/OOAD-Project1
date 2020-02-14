@@ -48,7 +48,6 @@ class Animal():
       raise NotImplementedError('This animal needs an EatBehavior')
     else:
       animal_type = type(self).__name__
-      # TODO: I am not sure how to pass data to strategy pattern
       self.hungry = False
       self.eat_behavior.eat(self.name, animal_type)
 
