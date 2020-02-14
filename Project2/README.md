@@ -2,13 +2,16 @@
 
 
 <b>Zoo Zoo Hullabaloo 2: Return of the Electric Zoogaloo</b> <br>
-<i>Project 2 for Object Oriented Analysis and Design</i>
+<i>Project 2 for Object Oriented Analysis and Design</i> <br>
 
 Cassidy Carpenter <br>
 John Dibbards <br>
 Thomas Young <br>
 
 ## Notes
+
+Programming Language/Environemnt: **Python** <br>
+Run Command: `python Main.py`
 
 1. Since Python has a handful of limitations such as lacking variable access modifiers (public, private, and protect) and not having a specific way to create abstract classes and interfaces we had to simulate these as best as we could.
     1. Abstract Classes: For an abstract class we did a few things to simulate their purpose in Java. This included not letting them be instantiated, only their subclasses. Also some functions had implementations while some were only templates.
