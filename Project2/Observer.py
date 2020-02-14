@@ -1,7 +1,8 @@
 
-
+'''
+  Observer interface for observer design pattern
+'''
 class Observer():
-
   
   '''
     Makes Observer not able to be instatiated

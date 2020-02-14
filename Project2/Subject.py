@@ -1,5 +1,8 @@
 from Observer import Observer
 
+'''
+  Subject abstract class for observer design pattern
+'''
 class Subject():
 
   '''
@@ -20,19 +23,19 @@ class Subject():
     Registers an observer with an object to be notified on state change
     @param observer:Observer
   '''
-  def register_observer(observer):
+  def register_observer(self, observer):
     self.observers.append(observer)
 
   '''
     Removes observer from notify list 
     @param observer:Observer
   '''
-  def remove_observer(observer):
+  def remove_observer(self, observer):
     self.observers.remove(observer)
 
   '''
     Notifies all observers to update
   '''
-  def notify_observers():
+  def notify_observers(self):
     for observer in self.observers:
       observer.update()

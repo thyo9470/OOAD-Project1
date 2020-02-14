@@ -3,20 +3,38 @@ from Observer import Observer
 
 class ZooAnnouncer(Observer):
     
+  '''
+    Generic initializer for ZooAnnouncer
+  '''
   def __init__(self):
     self.zookeeper = None
 
-  def set_zookeeper(self, zookeeper):
+  '''
+    Starts observing a given zookeeper 
+    @param zookeeper:Zookeeper - the zookeeper
+  '''
+  def start_observing(self, zookeeper):
     self.zookeeper = zookeeper
     self.zookeeper.register_observer(self)
 
+  '''
+    Stops observing the zookeeper
+  '''
   def finish_observing(self):
     self.zookeeper.remove_observer(self)
     self.zookeeper = None
 
-  def update(self, keeper_state):
+  '''
+    Will be called when the an observed zookeeper changes state
+  '''
+  def update(self):
+    keeper_state = self.zookeeper.get_state()
     self.announce(keeper_state)
 
+  '''
+    Announces what a zookeeper is doing
+    @param keeper_state: KeeperState - Enum in Zookeeper.py
+  '''
   def announce(self, keeper_state):     
     announcement = 'Zoo Announcer: ' 
     if keeper_state == KeeperState.start:

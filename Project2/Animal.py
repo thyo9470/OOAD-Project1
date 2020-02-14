@@ -28,7 +28,7 @@ class Animal():
   '''
   def wake_up(self):
     animal_type = type(self).__name__
-    if not this.awake :
+    if not self.awake :
       print('{} the {} woke up'.format(self.name, animal_type))
     else:
       print('{} the {} is already awake'.format(self.name, animal_type))
@@ -49,7 +49,7 @@ class Animal():
     else:
       animal_type = type(self).__name__
       # TODO: I am not sure how to pass data to strategy pattern
-      this.hungry = False
+      self.hungry = False
       self.eat_behavior.eat(self.name, animal_type)
 
   '''
@@ -64,6 +64,6 @@ class Animal():
   '''
   def sleep(self):
     animal_type = type(self).__name__
-    this.awake = False
+    self.awake = False
     print('{} the {} fell asleep'.format(self.name, animal_type))
 
