@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 
+/**
+ *  Store acts as the Subject for Observer pattern
+ */
 abstract class Store extends Subject {
         private double revenue;
         private double dailyRevenue;
