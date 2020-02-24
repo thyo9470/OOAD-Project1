@@ -1,9 +1,15 @@
+package CarRentalSim.Cars.Creation;
+
+import CarRentalSim.Cars.Car;
+import CarRentalSim.Cars.Decorators.CarDecorator;
+import CarRentalSim.Cars.Types.Minivan;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Set;
 
 /**
- * Class -> CarStorage
+ * Class -> CarRentalSim.Cars.Creation.CarStorage
  *  Acts as concrete factor and concrete object pool
  */
 public class CarStorage implements CarPool, CarFactory {

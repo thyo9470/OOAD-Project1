@@ -1,9 +1,16 @@
+package CarRentalSim.Store;
+
+import CarRentalSim.Cars.Car;
+import CarRentalSim.Cars.Creation.CarStorage;
+import CarRentalSim.Customers.Customer;
+import CarRentalSim.Subject;
+
 import java.util.ArrayList;
 
 /**
- *  Store acts as the Subject for Observer pattern
+ *  CarRentalSim.Store.Store acts as the CarRentalSim.Subject for CarRentalSim.Observer pattern
  */
-abstract class Store extends Subject {
+public abstract class Store extends Subject {
         private double revenue;
         private double dailyRevenue;
         private ArrayList<RentalRecord> rentalRecords;
@@ -42,15 +49,15 @@ abstract class Store extends Subject {
         }
 
         public ArrayList<Car> carsAvailable(){
-                throw new UnsupportedOperationException("Implement CarStorage");
+                throw new UnsupportedOperationException("Implement CarRentalSim.Cars.Creation.CarStorage");
         }
 
         public void rentCar(Customer customer, int numCars, int numDays){
-               throw new UnsupportedOperationException("Implement Customer and CarStorage");
+               throw new UnsupportedOperationException("Implement CarRentalSim.Customers.Customer and CarRentalSim.Cars.Creation.CarStorage");
         }
 
         public void returnCar(Customer customer){
-               throw new UnsupportedOperationException("Implement CarStorage");
+               throw new UnsupportedOperationException("Implement CarRentalSim.Cars.Creation.CarStorage");
         }
 
         // TODO: add notify observers

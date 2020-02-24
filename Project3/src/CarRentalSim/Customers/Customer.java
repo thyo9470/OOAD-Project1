@@ -1,6 +1,11 @@
+package CarRentalSim.Customers;
+
+import CarRentalSim.Observer;
+import CarRentalSim.Store.Store;
+
 import java.util.Random;
 
-abstract class Customer implements Observer {
+public abstract class Customer implements Observer {
     private Store store;
     private final int NUMCARS;
     private final int NUMNIGHTS;

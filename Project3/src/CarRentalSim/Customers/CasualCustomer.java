@@ -1,3 +1,5 @@
+package CarRentalSim.Customers;
+
 public class CasualCustomer extends Customer {
 
     /**

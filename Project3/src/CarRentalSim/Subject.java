@@ -1,9 +1,11 @@
+package CarRentalSim;
+
 import java.util.ArrayList;
 
 /**
- * Interface for Observer Pattern -> Subject
+ * Interface for CarRentalSim.Observer Pattern -> CarRentalSim.Subject
  */
-abstract class  Subject {
+public abstract class  Subject {
     private ArrayList<Observer> observers;
 
     public void registerObserver(Observer observer){

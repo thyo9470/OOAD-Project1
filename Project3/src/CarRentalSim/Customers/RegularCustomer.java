@@ -1,4 +1,4 @@
-import java.util.Random;
+package CarRentalSim.Customers;
 
 public class RegularCustomer extends Customer {
 

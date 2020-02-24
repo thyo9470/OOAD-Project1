@@ -1,3 +1,8 @@
+package CarRentalSim.Store;
+
+import CarRentalSim.Cars.Car;
+import CarRentalSim.Customers.Customer;
+
 import java.util.ArrayList;
 
 public class RentalRecord {
@@ -38,7 +43,7 @@ public class RentalRecord {
     }
 
     /**
-     * @return ArrayList<Car>: cars in this rental
+     * @return ArrayList<CarRentalSim.Cars.Car>: cars in this rental
      */
     public ArrayList<Car> getCars(){
         return carsRented;

@@ -1,7 +1,9 @@
+package CarRentalSim.Cars;
+
 /**
- * Abstract Class -> Car
+ * Abstract Class -> CarRentalSim.Cars.Car
  */
-abstract class Car {
+public abstract class Car {
 
     private String description;
     private String licensePlate;

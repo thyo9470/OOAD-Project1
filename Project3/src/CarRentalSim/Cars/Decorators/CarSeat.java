@@ -1,8 +1,12 @@
-public class GPS extends CarDecorator{
+package CarRentalSim.Cars.Decorators;
+
+import CarRentalSim.Cars.Car;
+
+public class CarSeat extends CarDecorator {
 
     Car car;
 
-    public GPS(Car car){
+    public CarSeat(Car car){
         this.car = car;
     }
 
@@ -17,6 +21,6 @@ public class GPS extends CarDecorator{
     }
 
     public double getCost() {
-        throw new UnsupportedOperationException("Implement getCost");
+       throw new UnsupportedOperationException("Implement getCost");
     }
 }

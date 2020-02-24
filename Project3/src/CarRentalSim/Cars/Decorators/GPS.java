@@ -1,14 +1,18 @@
-public class SatelliteRadio extends CarDecorator{
+package CarRentalSim.Cars.Decorators;
+
+import CarRentalSim.Cars.Car;
+
+public class GPS extends CarDecorator{
 
     Car car;
 
-    public SatelliteRadio(Car car){
+    public GPS(Car car){
         this.car = car;
     }
 
     @Override
     public String getDescription() {
-        throw new UnsupportedOperationException("implement get description");
+        return this.car.getDescription() + " (GPS) ";
     }
 
     @Override

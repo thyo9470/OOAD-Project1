@@ -1,5 +1,9 @@
+package CarRentalSim;
+
+import CarRentalSim.Store.Store;
+
 /**
- * Class -> Logger
+ * Class -> CarRentalSim.Logger
  */
 
 public class Logger implements Observer {
@@ -24,7 +28,7 @@ public class Logger implements Observer {
     // TODO: implement simulator and check for which log to do: daily or final
     @Override
     public void update() {
-        throw new UnsupportedOperationException("Implement Simulator");
+        throw new UnsupportedOperationException("Implement CarRentalSim.Simulator");
     }
 
     private void dailyLog(){

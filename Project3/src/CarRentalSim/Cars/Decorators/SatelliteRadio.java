@@ -1,8 +1,13 @@
-public class CarSeat extends CarDecorator {
+package CarRentalSim.Cars.Decorators;
+
+import CarRentalSim.Cars.Car;
+import CarRentalSim.Cars.Decorators.CarDecorator;
+
+public class SatelliteRadio extends CarDecorator {
 
     Car car;
 
-    public CarSeat(Car car){
+    public SatelliteRadio(Car car){
         this.car = car;
     }
 
@@ -17,6 +22,6 @@ public class CarSeat extends CarDecorator {
     }
 
     public double getCost() {
-       throw new UnsupportedOperationException("Implement getCost");
+        throw new UnsupportedOperationException("Implement getCost");
     }
 }
