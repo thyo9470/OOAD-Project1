@@ -8,6 +8,7 @@ public abstract class Car {
     private String description;
     private String licensePlate;
     private double cost;
+    private double nightlyCost;
 
     public Car(){}
 
@@ -29,5 +30,9 @@ public abstract class Car {
 
     public double getCost() {
         return cost;
+    }
+
+    public double getNightlyCost() {
+        return nightlyCost;
     }
 }

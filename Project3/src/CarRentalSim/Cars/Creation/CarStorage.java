@@ -65,9 +65,10 @@ public class CarStorage implements CarPool, CarFactory {
 
     @Override
     public void populate() {
-
-        this.cars.add(this.createCar(Minivan.class, "1234"));
-        this.cars.add(this.createCar(Minivan.class, "6789"));
-
+        int licensePlate = 1000;
+        this.cars.add(this.createCar(Minivan.class, Integer.toString(++licensePlate)));
+        this.cars.add(this.createCar(Minivan.class, Integer.toString(++licensePlate)));
+        this.cars.add(this.createCar(Minivan.class, Integer.toString(++licensePlate)));
+        this.cars.add(this.createCar(Minivan.class, Integer.toString(++licensePlate)));
     }
 }

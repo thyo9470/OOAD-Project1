@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Interface for CarRentalSim.Observer Pattern -> CarRentalSim.Subject
  */
 public abstract class  Subject {
-    private ArrayList<Observer> observers;
+    private ArrayList<Observer> observers = new ArrayList<>();
 
     public void registerObserver(Observer observer){
         this.observers.add(observer);

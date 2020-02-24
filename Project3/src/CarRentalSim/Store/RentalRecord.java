@@ -2,6 +2,7 @@ package CarRentalSim.Store;
 
 import CarRentalSim.Cars.Car;
 import CarRentalSim.Customers.Customer;
+import CarRentalSim.Simulator;
 
 import java.util.ArrayList;
 
@@ -35,11 +36,10 @@ public class RentalRecord {
     }
 
     /**
-     * @param currentDate:int
      * @return int: number of days left in rental
      */
-    public int daysLeft(int currentDate) {
-        return duration - (currentDate - startDate);
+    public int getDaysLeft() {
+        return duration - (Simulator.getCurrentDay() - startDate);
     }
 
     /**
