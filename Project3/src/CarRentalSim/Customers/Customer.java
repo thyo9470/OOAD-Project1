@@ -14,7 +14,6 @@ import java.util.Random;
 public abstract class Customer implements Observer {
     // TODO: give a way to identify customers
     protected Store store;
-    protected static Random rand = new Random();
 
     public void startObserving(Store store){
         this.store = store;

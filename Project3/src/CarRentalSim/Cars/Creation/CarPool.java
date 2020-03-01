@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Interface to implement Object Pool Pattern
  */
 public interface CarPool {
-    void populate();
     Car requestCar(String licensePlate, ArrayList<Class<? extends CarDecorator>> extras);
     void returnCar(Car car);
+    void populate();
 }

@@ -12,10 +12,11 @@ public abstract class Car {
 
     public Car(){}
 
-    public Car(String description, String licensePlate, double cost){
+    public Car(String description, String licensePlate, double cost, double nightlyCost){
         this.description = description;
         this.licensePlate = licensePlate;
         this.cost = cost;
+        this.nightlyCost = nightlyCost;
     }
 
     public Car getBaseCar(){ return this; }

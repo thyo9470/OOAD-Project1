@@ -7,8 +7,6 @@ import CarRentalSim.Cars.Car;
  */
 public class SatelliteRadio extends CarDecorator {
 
-    Car car;
-
     public SatelliteRadio(Car car){
         this.car = car;
     }

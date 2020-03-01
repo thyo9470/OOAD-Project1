@@ -7,8 +7,6 @@ import CarRentalSim.Cars.Car;
  */
 public class CarSeat extends CarDecorator {
 
-    Car car;
-
     public CarSeat(Car car){
         this.car = car;
     }

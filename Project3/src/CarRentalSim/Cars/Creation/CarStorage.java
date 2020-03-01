@@ -23,7 +23,7 @@ public class CarStorage implements CarPool, CarFactory {
         return this.cars;
     }
 
-    /**
+    /*
      * Retrieves car from object pool, adds extras, returns request car
      *
      * @param licensePlate:String - the license plate of the desired car

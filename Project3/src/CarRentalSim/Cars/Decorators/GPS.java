@@ -7,8 +7,6 @@ import CarRentalSim.Cars.Car;
  */
 public class GPS extends CarDecorator{
 
-    Car car;
-
     public GPS(Car car){
         this.car = car;
     }
