@@ -8,20 +8,31 @@ import java.util.ArrayList;
 
 public class RentalRecord {
 
-    private Customer customer;
+    private boolean active;
     private double baseCost;
-    private double perDayCost;
-    private int duration;
-    private int startDate; // date is the day number
     private ArrayList<Car> carsRented;
+    private Customer customer;
+    private int duration;
+    private double perDayCost;
+    private int startDate; // date is the day number
 
     public RentalRecord(Customer customer, double baseCost, double perDayCost, int duration, int startDate, ArrayList<Car> carsRented){
-        this.customer = customer;
+        this.active = true;
         this.baseCost = baseCost;
-        this.perDayCost = perDayCost;
-        this.duration = duration;
-        this.startDate = startDate;
         this.carsRented = carsRented;
+        this.customer = customer;
+        this.duration = duration;
+        this.perDayCost = perDayCost;
+        this.startDate = startDate;
+    }
+
+    public boolean isActive(){
+        return this.active;
+    }
+
+    // assumption: once a car is returned it cannot be unreturned. A new record will be created for that.
+    public void setReturned() {
+        this.active = false;
     }
 
     public Customer getCustomer(){
@@ -33,6 +44,13 @@ public class RentalRecord {
      */
     public double getCost(){
         return baseCost + ( perDayCost * duration );
+    }
+
+    /**
+     * @return int: total duration of the rental
+     */
+    public int getDuration() {
+        return duration;
     }
 
     /**

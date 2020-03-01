@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class Customer implements Observer {
+    // TODO: give a way to identify customers
     private Store store;
     private final int NUMCARS;
     private final int NUMNIGHTS;
@@ -17,7 +18,8 @@ public abstract class Customer implements Observer {
 
     public Customer(int NUMCARS, int NUMNIGHTS) {
         this.NUMCARS = NUMCARS;
-        this.NUMNIGHTS = NUMNIGHTS; }
+        this.NUMNIGHTS = NUMNIGHTS;
+    }
 
     public void startObserving(Store store){
         this.store = store;
@@ -52,10 +54,12 @@ public abstract class Customer implements Observer {
     private void rent(){
         ArrayList<Car> carsAvailable = this.store.getCarsAvailable();
         Random rand = new Random();
+        // 50% chance to rent a car if there are enough available
         if(carsAvailable.size() > this.NUMCARS && rand.nextDouble() < 0.5) {
+            // Get the license plate for each car they want to rent
             ArrayList<String> licencePlates = new ArrayList<>();
-            for(int i = 0; i < this.NUMCARS; i++){
-                licencePlates.add(carsAvailable.get(i).getLicensePlate());
+            for (Car car: carsAvailable.subList(0,this.NUMCARS)) {
+              licencePlates.add(car.getLicensePlate());
             }
             this.store.rentCar(this, this.NUMNIGHTS, licencePlates);
         }

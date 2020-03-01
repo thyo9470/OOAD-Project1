@@ -61,6 +61,7 @@ public class Store extends Subject {
         double baseCost = 0;
         double nightlyCost = 0;
         for (String val:licensePlates) {
+            // TODO: add a way for customers to specify extras they want
             Set<Class<? extends CarDecorator>> extras = new HashSet<>();
             Car requestedCar = this.carStorage.requestCar(val, extras);
             baseCost += requestedCar.getCost();
@@ -69,6 +70,7 @@ public class Store extends Subject {
         }
         //TODO: make costs make sense
         RentalRecord newRentalRecord = new RentalRecord(customer, baseCost, nightlyCost, duration, Simulator.getCurrentDay(), cars);
+        this.dailyRevenue += newRentalRecord.getCost();
         this.rentalRecords.add(newRentalRecord);
     }
 
@@ -78,7 +80,8 @@ public class Store extends Subject {
                 for (Car car: rentalRecord.getCars()) {
                    this.carStorage.returnCar(car);
                 }
-                this.rentalRecords.remove(rentalRecord);
+                rentalRecord.setReturned();
+                break;
             }
         }
     }
@@ -91,5 +94,7 @@ public class Store extends Subject {
     public void close(){
        this.open = false;
        super.notifyObservers();
+       this.revenue += this.dailyRevenue;
+       this.dailyRevenue = 0;
     }
 }

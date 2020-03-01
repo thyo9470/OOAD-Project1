@@ -27,24 +27,27 @@ public class CarStorage implements CarPool, CarFactory {
 
     @Override
     public Car requestCar(String licensePlate, Set<Class<? extends CarDecorator>> extras) {
-        Car returnCar = null;
+
+        // Retrieve car from storage
+        Car requestedCar = null;
         for (Car car: this.cars) {
             if (car.getLicensePlate() == licensePlate) {
-                returnCar = car;
+                requestedCar = car;
                 break;
             }
         }
-        this.cars.remove(returnCar);
+        this.cars.remove(requestedCar);
 
+        // Add requested extras
         for (Class<? extends CarDecorator> extra:extras) {
             try {
-                returnCar = extra.getConstructor(Car.class).newInstance(returnCar);
+                requestedCar = extra.getConstructor(Car.class).newInstance(requestedCar);
             } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
                 e.printStackTrace();
             }
         }
 
-        return returnCar;
+        return requestedCar;
     }
 
     @Override
@@ -66,9 +69,8 @@ public class CarStorage implements CarPool, CarFactory {
     @Override
     public void populate() {
         int licensePlate = 1000;
-        this.cars.add(this.createCar(Minivan.class, Integer.toString(++licensePlate)));
-        this.cars.add(this.createCar(Minivan.class, Integer.toString(++licensePlate)));
-        this.cars.add(this.createCar(Minivan.class, Integer.toString(++licensePlate)));
-        this.cars.add(this.createCar(Minivan.class, Integer.toString(++licensePlate)));
+        for(int i = 0; i < 24; i++){
+            this.cars.add(this.createCar(Minivan.class, Integer.toString(++licensePlate)));
+        }
     }
 }

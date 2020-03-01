@@ -43,21 +43,23 @@ public class Simulator {
 
         // Customers
         for(int i = 0; i < 4; i++){
-            Customer newCustomer = new CasualCustomer();
-            newCustomer.startObserving(store);
+            Customer newCasualCustomer = new CasualCustomer();
+            newCasualCustomer.startObserving(store);
+
+            Customer newRegularCustomer = new RegularCustomer();
+            newRegularCustomer.startObserving(store);
+
+            Customer newBusinessCustomer = new BusinessCustomer();
+            newBusinessCustomer.startObserving(store);
         }
         for(int i = 0; i < 4; i++){
-            Customer newCustomer = new RegularCustomer();
-            newCustomer.startObserving(store);
         }
         for(int i = 0; i < 4; i++){
-            Customer newCustomer = new BusinessCustomer();
-            newCustomer.startObserving(store);
         }
 
         // Logger
         Logger logger = new Logger(this);
-        //logger.startObserving(store); TODO: subscribe
+        logger.startObserving(store);
 
         // CarStorage
         CarStorage carStorage = new CarStorage();
@@ -66,7 +68,11 @@ public class Simulator {
     }
 
     private void simulate(){
-        this.store.open();
+        for(int i = 0; i < this.FINALDAY; i++) {
+            this.store.open();
+            this.store.close();
+            this.currentDay++;
+        }
     }
 
 }
