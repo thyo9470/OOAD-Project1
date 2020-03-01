@@ -2,6 +2,9 @@ package CarRentalSim.Cars.Decorators;
 
 import CarRentalSim.Cars.Car;
 
+/**
+ * Decorator for car to add a Car Seat
+ */
 public class CarSeat extends CarDecorator {
 
     Car car;
@@ -15,6 +18,10 @@ public class CarSeat extends CarDecorator {
         return car.getDescription() + "(Car Seat)";
     }
 
+    /**
+     *  Retrieves the base car that has no extras added on
+     * @return reference to the base car without any extras
+     */
     @Override
     public Car getBaseCar() {
         return car.getBaseCar();
@@ -27,7 +34,7 @@ public class CarSeat extends CarDecorator {
     }
 
     @Override
-    public double getNightlyCost(){
+    public double getNightlyCost() {
         // TODO: set nightly cost
         return car.getNightlyCost() + 1;
     }

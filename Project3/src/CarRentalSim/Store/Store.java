@@ -8,11 +8,10 @@ import CarRentalSim.Simulator;
 import CarRentalSim.Subject;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Set;
 
 /**
- *  CarRentalSim.Store.Store acts as the CarRentalSim.Subject for CarRentalSim.Observer pattern
+ *  Store acts as the Subject for Observer Pattern
  */
 public class Store extends Subject {
     private double revenue;
@@ -22,17 +21,25 @@ public class Store extends Subject {
     private boolean open;
 
     public void setCarStorage(CarStorage carStorage){
-                                                           this.carStorage = carStorage;
-                                                                                        }
+        this.carStorage = carStorage;
+    }
 
+    /**
+     * Total revenue a store has made
+     * @return revenue + dailyRevenue
+     */
     public double getRevenue(){
-                                     return this.revenue;
-                                                         }
+        return this.revenue + this.dailyRevenue;
+    }
 
     public double getDailyRevenue() {
-                                          return dailyRevenue;
-                                                              }
+        return this.dailyRevenue;
+    }
 
+    /**
+     * @param customer:Customer
+     * @return ArrayList<RentalRecord>: The rental records of a given customer
+     */
     public ArrayList<RentalRecord> getCustomerRentals(Customer customer){
         // get rental records for the given customer
         ArrayList<RentalRecord> customerRecords = new ArrayList<RentalRecord>();
@@ -44,6 +51,9 @@ public class Store extends Subject {
         return customerRecords;
     }
 
+    /**
+     * @return ArrayList<RentalRecord>: All rental records of the store
+     */
     public ArrayList<RentalRecord> getAllRentals() {
         return rentalRecords;
     }
@@ -52,11 +62,23 @@ public class Store extends Subject {
         return open;
     }
 
+    /**
+     * @return ArrayList<Car>: All cars available for renting
+     */
     public ArrayList<Car> getCarsAvailable(){
         return this.carStorage.getCarsLeft();
     }
 
-    public void rentCar(Customer customer, int duration, ArrayList<String> licensePlates, Set<Class<? extends CarDecorator>> extras){
+    /**
+     * Rents a set of cars with given extras for a customer
+     *  - Prepares car with specifications given
+     *  - Creates new rental record
+     * @param customer:Customer
+     * @param duration:int - How long the customer wants to rent the cars for
+     * @param licensePlates:ArrayList<String> - List of the license plates of the cars the customer wants to rent
+     * @param extras:ArrayList<Class<? extends CarDecorator>> - A list of CarDecorator class objects to specify what extra features a customer wants for a rental
+     */
+    public void rentCar(Customer customer, int duration, ArrayList<String> licensePlates, ArrayList<Class<? extends CarDecorator>> extras){
         ArrayList<Car> cars = new ArrayList<>();
         double baseCost = 0;
         double nightlyCost = 0;
@@ -72,9 +94,15 @@ public class Store extends Subject {
         this.rentalRecords.add(newRentalRecord);
     }
 
+    /**
+     * Returns the cars a given customer has that are due
+     * assumption: The store will deal with returns so all a customer needs to do is give their information and the store will handle the return
+     *
+     * @param customer:Customer
+     */
     public void returnCar(Customer customer){
         for (RentalRecord rentalRecord: this.rentalRecords) {
-            if(rentalRecord.getCustomer() == customer){
+            if(rentalRecord.getDaysLeft() == 0 && rentalRecord.getCustomer() == customer){
                 for (Car car: rentalRecord.getCars()) {
                    this.carStorage.returnCar(car);
                 }
@@ -89,6 +117,9 @@ public class Store extends Subject {
         super.notifyObservers();
     }
 
+    /**
+     * Closes the store and moves the daily revenue into the total revenue
+     */
     public void close(){
        this.open = false;
        super.notifyObservers();

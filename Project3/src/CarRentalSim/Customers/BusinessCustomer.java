@@ -2,22 +2,22 @@ package CarRentalSim.Customers;
 
 import CarRentalSim.Cars.Car;
 import CarRentalSim.Cars.Decorators.CarDecorator;
-import CarRentalSim.Cars.Decorators.CarSeat;
 import CarRentalSim.Cars.Decorators.GPS;
 import CarRentalSim.Cars.Decorators.SatelliteRadio;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Random;
-import java.util.Set;
 
+/**
+ * For business customers efficiency comes before fun
+ */
 public class BusinessCustomer extends Customer {
 
     /**
      *  Rents 3 cars for 7 nights
-     *   - 10% chance to add satellite radio ( most business people believe music is a waste of time )
-     *   - 70% chance to add a GPS ( they must work as efficiently as possible )
-     *   - 0% chance to add a car seat ( kinda weird to bring a child on a business trip )
+     *   - 10% Chance to add satellite radio ( most business people believe music is a waste of time )
+     *   - 70% Chance to add a GPS ( they must work as efficiently as possible )
+     *   -  0% Chance to add a car seat ( kinda weird to bring a child on a business trip )
      */
     @Override
     protected void rent() {
@@ -37,7 +37,7 @@ public class BusinessCustomer extends Customer {
             }
 
             // Select the extra features customer wants
-            Set<Class<? extends CarDecorator>> extras = new HashSet<>();
+            ArrayList<Class<? extends CarDecorator>> extras = new ArrayList<>();
 
             if(rand.nextDouble() < 0.1){
                 extras.add(SatelliteRadio.class);

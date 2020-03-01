@@ -9,31 +9,52 @@ import CarRentalSim.Store.Store;
 
 /**
  * CarRentalSim.Simulator Class
- *
  */
 public class Simulator {
 
     private Store store;
     private static int currentDay;
-    private int FINALDAY = 36;
+    private int FINALDAY = 35;
 
+    /**
+     * Sets up and starts simulation
+     * @param args
+     */
     public static void main(String[] args) {
 
         Simulator simulator = new Simulator();
         simulator.setup();
         simulator.simulate();
-        System.out.println("Works so far");
 
     }
 
+    /**
+     * assumption: People/things inherently know what day and don't need to ask for the day. This is why this method is static
+     * @return (int) currentDay - The current day in the simulation
+     */
     public static int getCurrentDay(){
         return currentDay;
     }
 
+    /**
+     * Used to find out when the simulation ends
+     * assumption: This function is not static because people/things don't inherently know when the world is going to end ( our simulation's end )
+     * @return (int) FINALDAY - The last day of the simulation
+     */
     public int getFinalDay() {
         return FINALDAY;
     }
 
+    /**
+     * Creates all objects that are part of the simulation:
+     *  - 1 store
+     *  - 12 customers
+     *    - 4 casual customers
+     *    - 4 regular customers
+     *    - 4 business customers
+     *  - 1 logger
+     *  - 1 car storage
+     */
     private void setup(){
         Simulator.currentDay = 1;
 
@@ -53,10 +74,6 @@ public class Simulator {
             Customer newBusinessCustomer = new BusinessCustomer();
             newBusinessCustomer.startObserving(store);
         }
-        for(int i = 0; i < 4; i++){
-        }
-        for(int i = 0; i < 4; i++){
-        }
 
         // Logger
         Logger logger = new Logger(this);
@@ -68,11 +85,16 @@ public class Simulator {
 
     }
 
+    /**
+     * Runs the simulation for a set number of days ( this.FINALDAY )
+     *  - opening the store
+     *  - closing the store
+     *  - incrementing the current day
+     */
     private void simulate(){
-        for(int i = 0; i < this.FINALDAY; i++) {
+        for(this.currentDay = 0; this.currentDay <= this.FINALDAY; this.currentDay++) {
             this.store.open();
             this.store.close();
-            this.currentDay++;
         }
     }
 

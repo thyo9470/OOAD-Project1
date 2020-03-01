@@ -7,17 +7,19 @@ import CarRentalSim.Cars.Decorators.GPS;
 import CarRentalSim.Cars.Decorators.SatelliteRadio;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Random;
-import java.util.Set;
 
+/**
+ * Regular customers generally are those who don't own a car themselves, but might need one from time-to-time
+ */
 public class RegularCustomer extends Customer {
 
    /**
     * Rents 1-3 cars for 3-5 nights
-    *  - 50% chance to add satellite radio
-    *  - 50% chance to add GPS
-    *  - 50% chance to add a car seat
+    *  - 50% Chance to add satellite radio
+    *  - 50% Chance to add GPS
+    *  - 50% Chance to add a car seat
+    *    - Will rent 1 - 4 car seats
     */
    @Override
    protected void rent() {
@@ -37,7 +39,7 @@ public class RegularCustomer extends Customer {
          }
 
          // Select the extra features customer wants
-         Set<Class<? extends CarDecorator>> extras = new HashSet<>();
+         ArrayList<Class<? extends CarDecorator>> extras = new ArrayList<>();
 
          if(rand.nextDouble() < 0.5){
             extras.add(SatelliteRadio.class);
@@ -48,7 +50,10 @@ public class RegularCustomer extends Customer {
          }
 
          if(rand.nextDouble() < 0.5){
-            extras.add(CarSeat.class);
+            int numSeats = rand.nextInt(3) + 1;
+            for (int i = 0; i < numSeats; i++) {
+               extras.add(CarSeat.class);
+            }
          }
 
          this.store.rentCar(this, numNights, licencePlates, extras);

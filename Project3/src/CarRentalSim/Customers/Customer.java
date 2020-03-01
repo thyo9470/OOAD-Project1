@@ -1,14 +1,16 @@
 package CarRentalSim.Customers;
 
-import CarRentalSim.Cars.Car;
 import CarRentalSim.Observer;
 import CarRentalSim.Store.RentalRecord;
 import CarRentalSim.Store.Store;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
+
+/**
+ * Customer acts as an Observer for Observer Pattern
+ */
 public abstract class Customer implements Observer {
     // TODO: give a way to identify customers
     protected Store store;
@@ -24,6 +26,11 @@ public abstract class Customer implements Observer {
         this.store = null;
     }
 
+    /**
+     * When store opens, customer will:
+     *  - Check if it needs to make any returns
+     *  - Possibly rent 1+ cars
+     */
     @Override
     public void update(){
         if(this.store.isOpen()){
@@ -32,6 +39,10 @@ public abstract class Customer implements Observer {
         }
     }
 
+    /**
+     * Customer checks if any of their rentals are due
+     *  - If yes, they will return them
+     */
     private void checkRentals(){
         ArrayList<RentalRecord> rentals = this.store.getCustomerRentals(this);
         for (RentalRecord rentalRecord: rentals) {
@@ -41,21 +52,5 @@ public abstract class Customer implements Observer {
         }
     }
 
-    // TODO: make NUMCARS not constent across rentals
-    // TODO: add extras for customers
-    // TODO: maybe make unique version of this function for each of the customer types?
     abstract protected void rent();
-    /*protected void rent(){
-        ArrayList<Car> carsAvailable = this.store.getCarsAvailable();
-        Random rand = new Random();
-        // 50% chance to rent a car if there are enough available
-        if(carsAvailable.size() > this.NUMCARS && rand.nextDouble() < 0.5) {
-            // Get the license plate for each car they want to rent
-            ArrayList<String> licencePlates = new ArrayList<>();
-            for (Car car: carsAvailable.subList(0,this.NUMCARS)) {
-              licencePlates.add(car.getLicensePlate());
-            }
-            this.store.rentCar(this, this.NUMNIGHTS, licencePlates);
-        }
-    }*/
 }

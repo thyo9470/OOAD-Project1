@@ -3,7 +3,7 @@ package CarRentalSim;
 import java.util.ArrayList;
 
 /**
- * Interface for CarRentalSim.Observer Pattern -> CarRentalSim.Subject
+ * Abstract class for Observer Pattern's Subject
  */
 public abstract class  Subject {
     private ArrayList<Observer> observers = new ArrayList<>();

@@ -1,8 +1,10 @@
 package CarRentalSim.Cars.Decorators;
 
 import CarRentalSim.Cars.Car;
-import CarRentalSim.Cars.Decorators.CarDecorator;
 
+/**
+ * Decorator for car to add a Car Seat
+ */
 public class SatelliteRadio extends CarDecorator {
 
     Car car;
@@ -16,6 +18,10 @@ public class SatelliteRadio extends CarDecorator {
         return car.getDescription() + "(Satellite Radio)";
     }
 
+    /**
+     *  Retrieves the base car that has no extras added on
+     * @return reference to the base car without any extras
+     */
     @Override
     public Car getBaseCar() {
         return car.getBaseCar();

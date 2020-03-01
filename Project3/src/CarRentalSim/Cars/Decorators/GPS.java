@@ -2,6 +2,9 @@ package CarRentalSim.Cars.Decorators;
 
 import CarRentalSim.Cars.Car;
 
+/**
+ * Decorator for car to add a GPS
+ */
 public class GPS extends CarDecorator{
 
     Car car;
@@ -15,6 +18,10 @@ public class GPS extends CarDecorator{
         return this.car.getDescription() + " (GPS) ";
     }
 
+    /**
+     *  Retrieves the base car that has no extras added on
+     * @return reference to the base car without any extras
+     */
     @Override
     public Car getBaseCar() {
         return car.getBaseCar();

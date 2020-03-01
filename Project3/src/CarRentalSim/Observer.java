@@ -1,7 +1,7 @@
 package CarRentalSim;
 
 /**
- * Interface -> CarRentalSim.Observer
+ * Interface for Observer Pattern's Observer
  */
 
 public interface Observer {

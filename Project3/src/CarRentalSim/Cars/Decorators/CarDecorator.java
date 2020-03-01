@@ -3,10 +3,13 @@ package CarRentalSim.Cars.Decorators;
 import CarRentalSim.Cars.Car;
 
 /**
- * Decorator Class -> CarRentalSim.Cars.Decorators.CarDecorator
+ * Abstract class for Decorator Pattern
+ *
+ * Meant for adding more features to car rentals
  */
 public abstract class CarDecorator extends Car {
 
+   @Override
    public abstract String getDescription();
 
    @Override

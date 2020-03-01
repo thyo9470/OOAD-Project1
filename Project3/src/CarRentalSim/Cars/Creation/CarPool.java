@@ -3,13 +3,13 @@ package CarRentalSim.Cars.Creation;
 import CarRentalSim.Cars.Car;
 import CarRentalSim.Cars.Decorators.CarDecorator;
 
-import java.util.Set;
+import java.util.ArrayList;
 
 /**
- * Interface to implement factory pattern -> CarRentalSim.Cars.Creation.CarPool
+ * Interface to implement Object Pool Pattern
  */
 public interface CarPool {
     void populate();
-    Car requestCar(String licensePlate, Set<Class<? extends CarDecorator>> extras);
+    Car requestCar(String licensePlate, ArrayList<Class<? extends CarDecorator>> extras);
     void returnCar(Car car);
 }

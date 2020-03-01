@@ -3,7 +3,7 @@ package CarRentalSim.Cars.Creation;
 import CarRentalSim.Cars.Car;
 
 /**
- * Interface to implement factory pattern -> CarRentalSim.Cars.Creation.CarFactory
+ * Interface to implement Factory Pattern
  */
 public interface CarFactory {
 
