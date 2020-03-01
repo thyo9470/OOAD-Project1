@@ -11,15 +11,8 @@ import java.util.Random;
 
 public abstract class Customer implements Observer {
     // TODO: give a way to identify customers
-    private Store store;
-    private final int NUMCARS;
-    private final int NUMNIGHTS;
+    protected Store store;
     protected static Random rand = new Random();
-
-    public Customer(int NUMCARS, int NUMNIGHTS) {
-        this.NUMCARS = NUMCARS;
-        this.NUMNIGHTS = NUMNIGHTS;
-    }
 
     public void startObserving(Store store){
         this.store = store;
@@ -51,7 +44,8 @@ public abstract class Customer implements Observer {
     // TODO: make NUMCARS not constent across rentals
     // TODO: add extras for customers
     // TODO: maybe make unique version of this function for each of the customer types?
-    private void rent(){
+    abstract protected void rent();
+    /*protected void rent(){
         ArrayList<Car> carsAvailable = this.store.getCarsAvailable();
         Random rand = new Random();
         // 50% chance to rent a car if there are enough available
@@ -63,5 +57,5 @@ public abstract class Customer implements Observer {
             }
             this.store.rentCar(this, this.NUMNIGHTS, licencePlates);
         }
-    }
+    }*/
 }

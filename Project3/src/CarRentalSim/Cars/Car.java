@@ -18,7 +18,7 @@ public abstract class Car {
         this.cost = cost;
     }
 
-    public Car getBaseCase(){ return this; }
+    public Car getBaseCar(){ return this; }
 
     public String getDescription() {
         return description;

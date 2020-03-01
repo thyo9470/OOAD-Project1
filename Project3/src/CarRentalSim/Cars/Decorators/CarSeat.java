@@ -12,15 +12,23 @@ public class CarSeat extends CarDecorator {
 
     @Override
     public String getDescription() {
-        throw new UnsupportedOperationException("implement get description");
+        return car.getDescription() + "(Car Seat)";
     }
 
     @Override
     public Car getBaseCar() {
-        return car.getBaseCase();
+        return car.getBaseCar();
     }
 
+    @Override
     public double getCost() {
-       throw new UnsupportedOperationException("Implement getCost");
+        // TODO: set cost
+        return car.getCost() + 10;
+    }
+
+    @Override
+    public double getNightlyCost(){
+        // TODO: set nightly cost
+        return car.getNightlyCost() + 1;
     }
 }

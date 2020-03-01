@@ -42,7 +42,8 @@ public class Simulator {
         this.store = store;
 
         // Customers
-        for(int i = 0; i < 4; i++){
+        // TODO: Change this back to 4 iterations and not 1
+        for(int i = 0; i < 1; i++){
             Customer newCasualCustomer = new CasualCustomer();
             newCasualCustomer.startObserving(store);
 

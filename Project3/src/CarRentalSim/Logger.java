@@ -99,8 +99,8 @@ public class Logger implements Observer {
         System.out.println("Cars rented:");
         System.out.println("");
         for(Car car : rentalRecord.getCars()){
-            System.out.println(String.format("License Place: %s", car.getLicensePlate()));
-            // TODO: Print extras added to the car
+            System.out.println(car.getDescription());
+            System.out.println(String.format("License Plate: %s", car.getLicensePlate()));
             System.out.println("");
         }
         System.out.println(String.format("Duration: %d", rentalRecord.getDuration()));

@@ -52,7 +52,7 @@ public class CarStorage implements CarPool, CarFactory {
 
     @Override
     public void returnCar(Car car) {
-        Car baseCar = car.getBaseCase();
+        Car baseCar = car.getBaseCar();
         this.cars.add(baseCar);
     }
 

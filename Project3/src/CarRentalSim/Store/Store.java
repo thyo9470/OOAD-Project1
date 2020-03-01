@@ -56,13 +56,11 @@ public class Store extends Subject {
         return this.carStorage.getCarsLeft();
     }
 
-    public void rentCar(Customer customer, int duration, ArrayList<String> licensePlates){
+    public void rentCar(Customer customer, int duration, ArrayList<String> licensePlates, Set<Class<? extends CarDecorator>> extras){
         ArrayList<Car> cars = new ArrayList<>();
         double baseCost = 0;
         double nightlyCost = 0;
         for (String val:licensePlates) {
-            // TODO: add a way for customers to specify extras they want
-            Set<Class<? extends CarDecorator>> extras = new HashSet<>();
             Car requestedCar = this.carStorage.requestCar(val, extras);
             baseCost += requestedCar.getCost();
             nightlyCost += requestedCar.getNightlyCost();
