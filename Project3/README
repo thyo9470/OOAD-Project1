@@ -1,0 +1,23 @@
+# Rent-A-Ride the car rental company (Project 3)
+
+Cassidy Carpenter
+
+John Stibbards
+
+Thomas Young
+
+
+##Language and Environment
+Used Java in IntelliJ IDE for development
+
+##Design and Assumptions
+Cars: created using a concrete factory and decorator to add extras, license plates are integers beginning at 1000 and there are 5 of each type of vehicle minus luxury
+
+Customers: Observers of the rental store. Business customers assumed likely to add gps, casual customers assumed very likely to add radio, likely to add a car seat and unlikely to add gps, and regular customers assumed equally likely to add any of the 3.
+
+Store: Subject for the observer pattern. Store is assumed to deal with all returns, such that all a customer needs to do is provide their information. Also assumed that cars that are returned cannot be "un returned" and a new car is created for this purpose instead.
+
+Logger: acts as an observer for the observer pattern and documents and displays the activities of the store
+
+Simulator: Assumptions: People and things inherently know what day it is and do not need to be told and People and things do not inherently know when the last day of the sim is therefore a non static final day function is used, 
+
