@@ -7,6 +7,9 @@ import CarRentalSim.Cars.Car;
  */
 public class CarSeat extends CarDecorator {
 
+    final private int COST = 10;
+    final private int NIGHTLYCOST = 3;
+
     public CarSeat(Car car){
         this.car = car;
     }
@@ -27,13 +30,11 @@ public class CarSeat extends CarDecorator {
 
     @Override
     public double getCost() {
-        // TODO: set cost
-        return car.getCost() + 10;
+        return car.getCost() + this.COST;
     }
 
     @Override
     public double getNightlyCost() {
-        // TODO: set nightly cost
-        return car.getNightlyCost() + 1;
+        return car.getNightlyCost() + this.NIGHTLYCOST;
     }
 }

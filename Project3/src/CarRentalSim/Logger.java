@@ -18,11 +18,6 @@ import java.util.HashMap;
 public class Logger implements Observer {
 
     private Store store;
-    private Simulator simulator;
-
-    public Logger(Simulator simulator){
-        this.simulator = simulator;
-    }
 
     public void startObserving(Store store){
         this.store = store;
@@ -44,16 +39,11 @@ public class Logger implements Observer {
     public void update() {
         if (!this.store.isOpen()) {
             this.dailyLog();
-            if(Simulator.getCurrentDay() >= this.simulator.getFinalDay()) {
-                this.finalLog();
-            }
         }
     }
 
     /**
      * Prints the daily activity of the observed store
-     *
-     * TODO: Make sure this is printing all the info we need
      */
     private void dailyLog(){
 
@@ -74,7 +64,6 @@ public class Logger implements Observer {
         ArrayList<Car> carsLeft = this.store.getCarsAvailable();
         double dailyRevenue = this.store.getDailyRevenue();
 
-        // Print data TODO: Do we need to save this info to a file?
         System.out.println(String.format("Day: %d", dayNumber));
 
         System.out.println("=================================================================");
@@ -83,9 +72,9 @@ public class Logger implements Observer {
         System.out.println(String.format("There are %d completed car rentals", completedRentals.size()));
         for (RentalRecord rentalRecord: completedRentals) {
             Customer customer = rentalRecord.getCustomer();
-            System.out.println(String.format("Rental Record: %d", System.identityHashCode(rentalRecord)));
-            // TODO: Create a way to uniquely identify customers. Maybe give them names?
+            System.out.println(String.format("Customer ID: %d", System.identityHashCode(rentalRecord)));
             System.out.println(String.format("Customer Type: %s", customer.getClass().getSimpleName()));
+            System.out.println(String.format("Rental Record ID: %d", System.identityHashCode(rentalRecord)));
             System.out.println("Cars rented:");
             System.out.println("");
             for(Car car : rentalRecord.getCars()){
@@ -104,9 +93,9 @@ public class Logger implements Observer {
         System.out.println(String.format("There are %d active car rentals", activeRentals.size()));
         for (RentalRecord rentalRecord: activeRentals) {
             Customer customer = rentalRecord.getCustomer();
-            System.out.println(String.format("Rental Record: %d", System.identityHashCode(rentalRecord)));
-            // TODO: Create a way to uniquely identify customers. Maybe give them names?
+            System.out.println(String.format("Customer ID: %d", System.identityHashCode(rentalRecord)));
             System.out.println(String.format("Customer Type: %s", customer.getClass().getSimpleName()));
+            System.out.println(String.format("Rental Record ID: %d", System.identityHashCode(rentalRecord)));
             System.out.println("Cars rented:");
             System.out.println("");
             for(Car car : rentalRecord.getCars()){
@@ -136,10 +125,8 @@ public class Logger implements Observer {
      *  - Total number of rentals
      *  - Distribution of rentals across customer types
      *  - The store's total revenue
-     *
-     * TODO: Make sure this is printing all the info we need
      */
-    private void finalLog(){
+    public void finalLog(){
         int dayNumber = Simulator.getCurrentDay();
         ArrayList<RentalRecord> rentalRecords = this.store.getAllRentals();
         HashMap<String, Integer> customerTypeCounts = new HashMap<>();
@@ -147,7 +134,7 @@ public class Logger implements Observer {
 
         System.out.println(String.format("Day: %d ( the final day )", dayNumber));
 
-        System.out.println("-----------------------------------------------------------------");
+        System.out.println("=================================================================");
 
         for(RentalRecord rentalRecord : rentalRecords){
             Customer customer = rentalRecord.getCustomer();
@@ -163,7 +150,7 @@ public class Logger implements Observer {
         System.out.println(String.format("%d rentals were made in total with the following customer type distribution:", rentalRecords.size()));
         customerTypeCounts.forEach((k, v) -> {System.out.println(String.format("%s: %d", k, v));});
 
-        System.out.println(String.format("Total Store Revenue %f", totalStoreRevenue));
+        System.out.println(String.format("Total Store Revenue %.2f", totalStoreRevenue));
 
         System.out.println("=================================================================");
     }

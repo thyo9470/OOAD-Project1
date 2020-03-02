@@ -12,7 +12,6 @@ import java.util.Random;
  * Customer acts as an Observer for Observer Pattern
  */
 public abstract class Customer implements Observer {
-    // TODO: give a way to identify customers
     protected Store store;
 
     public void startObserving(Store store){

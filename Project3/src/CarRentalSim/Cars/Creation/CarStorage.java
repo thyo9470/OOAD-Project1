@@ -91,7 +91,6 @@ public class CarStorage implements CarPool, CarFactory {
      *  - 4 Luxury
      *
      *  License plates are just integers starting at 1000
-     *  TODO: Do we want to make this more complicated?
      */
     @Override
     public void populate() {

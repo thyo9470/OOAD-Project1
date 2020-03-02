@@ -88,7 +88,6 @@ public class Store extends Subject {
             nightlyCost += requestedCar.getNightlyCost();
             cars.add(requestedCar);
         }
-        //TODO: make costs make sense
         RentalRecord newRentalRecord = new RentalRecord(customer, baseCost, nightlyCost, duration, Simulator.getCurrentDay(), cars);
         this.dailyRevenue += newRentalRecord.getCost();
         this.rentalRecords.add(newRentalRecord);

@@ -11,8 +11,8 @@ import CarRentalSim.Store.Store;
  * CarRentalSim.Simulator Class
  */
 public class Simulator {
-
     private Store store;
+    private Logger logger;
     private static int currentDay;
     private int FINALDAY = 35;
 
@@ -21,11 +21,9 @@ public class Simulator {
      * @param args
      */
     public static void main(String[] args) {
-
         Simulator simulator = new Simulator();
         simulator.setup();
         simulator.simulate();
-
     }
 
     /**
@@ -34,15 +32,6 @@ public class Simulator {
      */
     public static int getCurrentDay(){
         return currentDay;
-    }
-
-    /**
-     * Used to find out when the simulation ends
-     * assumption: This function is not static because people/things don't inherently know when the world is going to end ( our simulation's end )
-     * @return (int) FINALDAY - The last day of the simulation
-     */
-    public int getFinalDay() {
-        return FINALDAY;
     }
 
     /**
@@ -63,8 +52,7 @@ public class Simulator {
         this.store = store;
 
         // Customers
-        // TODO: Change this back to 4 iterations and not 1
-        for(int i = 0; i < 1; i++){
+        for(int i = 0; i < 4; i++){
             Customer newCasualCustomer = new CasualCustomer();
             newCasualCustomer.startObserving(store);
 
@@ -76,7 +64,8 @@ public class Simulator {
         }
 
         // Logger
-        Logger logger = new Logger(this);
+        Logger logger = new Logger();
+        this.logger = logger;
         logger.startObserving(store);
 
         // CarStorage
@@ -96,6 +85,7 @@ public class Simulator {
             this.store.open();
             this.store.close();
         }
+        this.logger.finalLog();
     }
 
 }
