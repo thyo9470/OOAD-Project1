@@ -1,6 +1,9 @@
 package Entities;
 
 import Items.Item;
+import Items.Skill;
+
+import java.util.ArrayList;
 
 public abstract class Entity {
 
@@ -55,7 +58,15 @@ public abstract class Entity {
         return swappingItem;
     }
 
-    public abstract void battle() {
+    public abstract void battle(Entity opponent);
 
+    public void promptSwap(Item newItem){
+        // swap stuff
     }
+
+    public ArrayList<Skill> getSkills() {
+        // get skills from items
+        return null;
+    }
+
 }
