@@ -1,3 +1,4 @@
+
 # Rent-A-Ride the car rental company (Project 3)
 
 Cassidy Carpenter
@@ -6,14 +7,14 @@ John Stibbards
 
 Thomas Young
 
-##Running Instructions
+## Running Instructions
 The main function is found in Simulator.java.
 Open the project and run it from there.
 
-##Language and Environment
+## Language and Environment
 Used Java in IntelliJ IDE for development
 
-##Design and Assumptions
+## Design and Assumptions
 **Car**
   - All cars are created using the factory design pattern at the start of the program
     - We create 24 cars are the start. 5 of each types excluding luxury cars where there are only 4 of
@@ -68,5 +69,3 @@ Used Java in IntelliJ IDE for development
     - GPS
     - Satalite Radio
   - As the name suggests, this is implemented using the decorator pattern
-
-
