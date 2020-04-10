@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Floor {
 
-    private FloorFactory floorFactory;
+    /*private FloorFactory floorFactory;
     private ArrayList<ArrayList<Room>> roomMap;
     private Player player;
 
@@ -32,6 +32,6 @@ public class Floor {
 
     public void makeMove(Room room) {
         // make player move to shtuff
-    }
+    }*/
 
 }

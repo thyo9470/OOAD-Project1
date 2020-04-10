@@ -2,12 +2,8 @@ package Items;
 
 public class OffHand extends Item {
 
-    private void equipItem() {
-
-    }
-
-    private void removeItem() {
-
+    public OffHand(String description, Skill skill) {
+        super(description, skill);
     }
 
 }
