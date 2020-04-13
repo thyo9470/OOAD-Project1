@@ -1,5 +1,7 @@
 package Factories;
 
+import Rooms.Room;
+
 public class RoomFactory {
 
     //References to specific room type factories
@@ -10,6 +12,11 @@ public class RoomFactory {
 
     public RoomFactory(RoomFactory factory){
         this.factory = factory;
+    }
+
+    public Room createRoom(Room roomType){
+
+        return roomType;
     }
 
 }
