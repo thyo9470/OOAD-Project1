@@ -1,6 +1,6 @@
 package Rooms;
 
-public class TrapRoom {
+public class TrapRoom extends Room{
 
     //Dont know how we should define puzzle yet.
     //private puzzle Puzzle;

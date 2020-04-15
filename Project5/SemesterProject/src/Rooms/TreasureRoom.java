@@ -1,6 +1,6 @@
 package Rooms;
 
-public class TreasureRoom {
+public class TreasureRoom extends Room{
 
     /**
      * private variable item

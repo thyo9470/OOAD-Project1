@@ -1,6 +1,6 @@
 package Rooms;
 
-public class EnemyRoom {
+public class EnemyRoom extends Room{
 
     private Entities.Enemy enemy;
 
