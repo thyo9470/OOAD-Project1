@@ -14,7 +14,9 @@ public class Player extends Entity{
     protected Skill makeMove() {
 
         ArrayList<Skill> skills = getSkills();
-        return skills.get(0);
+        Skill selectedSkill = skills.get(0);
+        System.out.println(this.getClass().getSimpleName() + " used: " + selectedSkill.getDescription());
+        return selectedSkill;
     }
 
 }

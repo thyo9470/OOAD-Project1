@@ -2,11 +2,11 @@ package Interactions;
 
 import Graphics.GraphicsHandler;
 
-abstract public class Intractable implements Observable {
+abstract public class Interactable implements Observable {
 
     protected GraphicsHandler graphicsHandler;
     protected Boolean changeState;
-    protected Intractable nextIntractable;
+    protected Interactable nextIntractable;
 
     public Boolean isChangeState() {
         return this.changeState;
@@ -17,7 +17,7 @@ abstract public class Intractable implements Observable {
         return this.changeState;
     }
 
-    public Intractable getNextIntractable() {
+    public Interactable getNextIntractable() {
         return nextIntractable;
     }
 

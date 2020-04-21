@@ -1,5 +1,6 @@
 package Entities;
 
+import Interactions.Observer;
 import Items.Skill;
 
 import java.util.ArrayList;
@@ -26,4 +27,7 @@ public class Enemy extends Entity{
         System.out.println(this.getClass().getSimpleName() + " used: " + selectedSkill.getDescription());
         return selectedSkill;
     }
+
+
+
 }

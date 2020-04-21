@@ -1,6 +1,9 @@
 package Rooms;
 
-public class Puzzle extends TrapRoom {
+import Interactions.Interactable;
+import Interactions.Observer;
+
+public class Puzzle extends Interactable {
 
 
     private String PuzzleQuestion;
@@ -31,4 +34,18 @@ public class Puzzle extends TrapRoom {
         //checks the answer of the question right vs wrong
     }
 
+    @Override
+    public void registerObserver(Observer observer){
+
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+
+    }
+
+    @Override
+    public void notifyObservers() {
+
+    }
 }

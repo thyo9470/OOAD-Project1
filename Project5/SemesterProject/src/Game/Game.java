@@ -1,6 +1,9 @@
 package Game;
 
-public class Game {
+import Interactions.Interactable;
+import Interactions.Observer;
+
+public class Game extends Interactable {
     static private int lastLevel;
     static private int currentLevel;
 
@@ -22,5 +25,20 @@ public class Game {
 
     private void startGame() {
         // start game
+    }
+
+    @Override
+    public void registerObserver(Observer observer) {
+
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+
+    }
+
+    @Override
+    public void notifyObservers() {
+
     }
 }

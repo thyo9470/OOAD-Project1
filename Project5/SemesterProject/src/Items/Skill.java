@@ -2,6 +2,7 @@ package Items;
 
 import Entities.Entity;
 
+// TODO: Make into Strategy Pattern
 public class Skill {
 
     private String description;

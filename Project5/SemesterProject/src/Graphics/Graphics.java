@@ -1,21 +1,23 @@
 package Graphics;
 
-import Interactions.Intractable;
+import Interactions.Interactable;
+
+import javax.swing.*;
 
 abstract public class Graphics {
 
-    private Intractable intractable;
+    protected Interactable interactable;
     private Graphics successor;
 
-    public Intractable getIntractable() {
-        return intractable;
+    public Interactable getInteractable() {
+        return interactable;
     }
 
-    public void setIntractable(Intractable intractable) {
-        this.intractable = intractable;
-    }
+    abstract public void setInteractable(Interactable interactable);
 
-    public void handle(Intractable intractable) {
+    public void handle(Interactable interactable) {
 
     }
+
+    abstract public void createDisplay(JFrame frame);
 }

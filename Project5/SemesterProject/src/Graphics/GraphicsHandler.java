@@ -1,12 +1,12 @@
 package Graphics;
 
 import Game.Game;
-import Interactions.Intractable;
+import Interactions.Interactable;
 import Interactions.Observer;
 
 public class GraphicsHandler implements Observer {
 
-    private Intractable intractable;
+    private Interactable interactable;
     private Graphics initialGraphics;
 
     // TODO: Create game object

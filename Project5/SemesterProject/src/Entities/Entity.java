@@ -1,10 +1,12 @@
 package Entities;
 
+import Interactions.Observer;
 import Items.*;
+import Interactions.Interactable;
 
 import java.util.ArrayList;
 
-public abstract class Entity {
+public abstract class Entity extends Interactable{
 
     private int health;
     private int mana;
@@ -17,6 +19,10 @@ public abstract class Entity {
         this.description = description;
         this.health = 100;
         this.mana = 100;
+    }
+
+    public void setEnemy(Entity enemy) {
+        this.enemy = enemy;
     }
 
     /**
@@ -88,7 +94,7 @@ public abstract class Entity {
      * Defense defined by items being held
      * @return
      */
-    private int getDefense() {
+    public int getDefense() {
         int defense = 0;
 
         for (Item item:this.items) {
@@ -209,6 +215,22 @@ public abstract class Entity {
         }
 
         return skills;
+    }
+
+    // TODO: implement observable stuff
+    @Override
+    public void registerObserver(Observer observer) {
+
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+
+    }
+
+    @Override
+    public void notifyObservers() {
+
     }
 
 }
