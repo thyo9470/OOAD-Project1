@@ -12,7 +12,7 @@ public class TreasureRoom extends Room{
      * @param item
      */
     public void setItem(Items.Item item){
-
+        this.item = item;
     }
 
     /**
