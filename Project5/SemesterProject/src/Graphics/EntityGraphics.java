@@ -3,9 +3,11 @@ package Graphics;
 import Entities.Entity;
 import Entities.Player;
 import Interactions.Interactable;
+import Items.Item;
 import Items.Skills.Skill;
 
 import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +15,10 @@ import java.util.ArrayList;
 
 public class EntityGraphics extends Graphics {
 
-    final private int BUTTON_HEIGHT = 100;
+    final private int SKILL_BUTTON_HEIGHT = 100;
+    final private int ITEM_BUTTON_HEIGHT = 200;
+    final private int ITEM_BUTTON_WIDTH = 200;
+    final private int ITEM_BUTTON_SPACING = 50;
 
     @Override
     protected void setInteractable(Interactable interactable) {
@@ -33,22 +38,99 @@ public class EntityGraphics extends Graphics {
     @Override
     protected void createDisplay(JFrame frame) {
 
-        Entity player = ((Entity) interactable);
+        Entity player = ((Entity) this.interactable);
         Entity enemy = player.getEnemy();
-
-        // Skills panel
-        JPanel skillPanel = this.createSkillsPanel(player);
-
-        // Entity Info Panel
-        JPanel entityInfoPanel = this.createEntityInfoPanel(player, enemy);
 
         // Show player and enemy panel
         JPanel displayPanel = new JPanel();
 
-        frame.getContentPane().add(BorderLayout.NORTH, entityInfoPanel);
-        frame.getContentPane().add(BorderLayout.SOUTH, skillPanel);
+        if (player.isSwappingItem()) {
+            // Item  Panel
+            JPanel itemPanel = this.createSwapItemPanel(player);
+
+            frame.getContentPane().add(itemPanel);
+        } else {
+            // Skills panel
+            JPanel skillPanel = this.createSkillsPanel(player);
+
+            // Entity Info Panel
+            JPanel entityInfoPanel = this.createEntityInfoPanel(player, enemy);
+
+            frame.getContentPane().add(BorderLayout.NORTH, entityInfoPanel);
+            frame.getContentPane().add(BorderLayout.SOUTH, skillPanel);
+        }
 
         frame.setVisible(true);
+
+    }
+
+    /**
+     * Constructs the panel that will ask the player if they want to keep
+     * their currently equipped item or swap it for the new item
+     *
+     * @param entity
+     * @return
+     */
+    private JPanel createSwapItemPanel(Entity entity) {
+
+        Item newItem = entity.getSwappingItem();
+        Item oldItem = entity.getMatchingItem(newItem);
+
+        JPanel itemPanel = new JPanel();
+        itemPanel.setLayout(new BoxLayout(itemPanel, BoxLayout.Y_AXIS));
+        JPanel buttonPanel = new JPanel(new GridBagLayout());
+
+        JLabel swapText = new JLabel("Select which item you want to keep");
+        swapText.setFont (swapText.getFont ().deriveFont (32.0f));
+
+        JButton oldItemButton = new JButton("OLD ITEM IMAGE HERE");
+        oldItemButton.setPreferredSize(new Dimension(ITEM_BUTTON_WIDTH, ITEM_BUTTON_HEIGHT));
+
+        UIManager.put("ToolTip.background", Color.WHITE);
+        UIManager.put("ToolTip.font", new FontUIResource("SansSerif", Font.BOLD, 12));
+        oldItemButton.setToolTipText(oldItem.toString());
+
+        oldItemButton.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                if(entity.getClass().equals(Player.class)) {
+                    ((Player)entity).setItemToUse(oldItem);
+                }
+            }
+        });
+
+        JButton newItemButton = new JButton("NEW ITEM IMAGE HERE");
+        newItemButton.setPreferredSize(new Dimension(ITEM_BUTTON_WIDTH, ITEM_BUTTON_HEIGHT));
+
+        newItemButton.setToolTipText(newItem.toString());
+
+        newItemButton.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                if(entity.getClass().equals(Player.class)) {
+                    ((Player)entity).setItemToUse(newItem);
+                }
+            }
+        });
+
+        GridBagConstraints c = new GridBagConstraints();
+        c.insets = new Insets(0, ITEM_BUTTON_SPACING, 0, ITEM_BUTTON_SPACING);
+
+        buttonPanel.add(oldItemButton,c);
+        buttonPanel.add(newItemButton,c);
+
+        swapText.setAlignmentX(Component.CENTER_ALIGNMENT);
+        buttonPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        itemPanel.add(Box.createRigidArea(new Dimension(100, 150)));
+        itemPanel.add(swapText);
+        itemPanel.add(buttonPanel);
+
+
+
+        return itemPanel;
 
     }
 
@@ -61,7 +143,6 @@ public class EntityGraphics extends Graphics {
     private JPanel createSkillsPanel(Entity entity) {
 
         JPanel skillPanel = new JPanel(new GridLayout(1, 4, 1, 1));
-        System.out.println(entity);
 
         ArrayList<Skill> skills = entity.getSkills();
 
@@ -75,10 +156,12 @@ public class EntityGraphics extends Graphics {
             JButton skillButton = new JButton(skillButtonText);
 
             // TODO: improve tool tips
+            UIManager.put("ToolTip.background", Color.WHITE);
+            UIManager.put("ToolTip.font", new FontUIResource("SansSerif", Font.BOLD, 12));
             skillButton.setToolTipText(skill.toString());
 
             int buttonWidth = skillButton.getWidth();
-            skillButton.setPreferredSize(new Dimension(buttonWidth, this.BUTTON_HEIGHT));
+            skillButton.setPreferredSize(new Dimension(buttonWidth, this.SKILL_BUTTON_HEIGHT));
 
             skillButton.addActionListener(new ActionListener()
             {

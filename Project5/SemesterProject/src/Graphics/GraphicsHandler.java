@@ -15,6 +15,7 @@ import Items.Skills.Skill;
 import Items.Skills.SkillAbility;
 
 import javax.swing.*;
+import java.awt.desktop.SystemSleepEvent;
 
 public class GraphicsHandler implements Observer {
 
@@ -33,20 +34,24 @@ public class GraphicsHandler implements Observer {
         // create Player
         Interactable player = new Player("player");
         Skill hatSkill = new Skill("Sit on head");
-        RecoverManaAbility recoverManaAbility = new RecoverManaAbility("Recover mana", 20, 0, 0);
+        RecoverManaAbility recoverManaAbility = new RecoverManaAbility("Recover 20 mana", 20, 0, 0);
+        hatSkill.addAbility(recoverManaAbility);
         Item hat = new Helmet("hat", hatSkill);
         ((Entity)player).equipItem(hat);
 
         // equip main hand item
         Skill swordSkill = new Skill("stab");
-        DamageAbility damageAbility = new DamageAbility("Ouch", 10, 20, 0);
+        DamageAbility damageAbility = new DamageAbility("10 base damage", 10, 20, 0);
         swordSkill.addAbility(damageAbility);
         Item sword = new MainHand("Sword", swordSkill);
         ((Entity)player).equipItem(sword);
 
 
         Interactable enemy = new Enemy("enemy");
-        //((Entity)player).setEnemy((Entity)enemy);
+        Skill knifeSkill = new Skill("stab");
+        knifeSkill.addAbility(damageAbility);
+        Item knife = new MainHand("knife", knifeSkill);
+        ((Enemy)enemy).setRewardItem(knife);
 
 
         GraphicsHandler graphicsHandler = new GraphicsHandler();

@@ -11,7 +11,7 @@ public abstract class Entity extends Interactable {
     private int health;
     private int mana;
     private ArrayList<Item> items = new ArrayList<>();
-    private boolean swappingItem = false;
+    protected Item swappingItem;
     protected Entity enemy;
     protected String description;
 
@@ -37,6 +37,18 @@ public abstract class Entity extends Interactable {
         return items;
     }
 
+    public Item getMatchingItem(Item item) {
+
+        for (Item equippedItem: this.items) {
+            if(equippedItem.getClass().equals(item.getClass())) {
+                return equippedItem;
+            }
+        }
+
+        return null;
+
+    }
+
     /**
      * Checks if an item of the same type is already equipped
      *  - if yes: replace with new item
@@ -59,14 +71,14 @@ public abstract class Entity extends Interactable {
     }
 
     /**
-     * Ask a user if they want to swap the item equipped for the given item
-     * NOTE: This will require the graphics element for confirmation
+     * Gives the enitity a choice to what item they want to keep, old or new
      *
-     * @param newItem
+     * @param newItem: Item
      */
-    public void promptSwap(Item newItem){
-        swappingItem = true;
-        // swap stuff, this will require the graphics to be implemented
+    abstract public void promptSwap(Item newItem);
+
+    public Item getSwappingItem() {
+        return swappingItem;
     }
 
     /**
@@ -75,7 +87,11 @@ public abstract class Entity extends Interactable {
      * @return
      */
     public boolean isSwappingItem() {
-        return swappingItem;
+        if(this.swappingItem == null) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     /**
@@ -183,18 +199,7 @@ public abstract class Entity extends Interactable {
      *
      * @param opponent - who the entity is fighting
      */
-    public void battle(Entity opponent) {
-        this.enemy = opponent;
-
-        Skill testSkill = this.makeMove();
-        testSkill.activate(this, opponent);
-
-        if(opponent.getHealth() <= 0) {
-            System.out.println(this.getClass().getSimpleName() + " Wins!"); // TODO: change this to go back to the floor
-        } else {
-            opponent.battle(this);
-        }
-    }
+    abstract public void battle(Entity opponent);
 
     /**
      * Each child class of Entity will determine how to select moves for battle

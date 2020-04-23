@@ -19,6 +19,10 @@ public class Skill {
         this.skillAbilities.add(ability);
     }
 
+    public ArrayList<SkillAbility> getSkillAbilities() {
+        return skillAbilities;
+    }
+
     public void removeAbility(SkillAbility ability){
         this.skillAbilities.remove(ability);
     }
@@ -27,13 +31,18 @@ public class Skill {
         return description;
     }
 
-    // TODO: Create full description with HTML for ToolTips
     @Override
     public String toString() {
 
-       String fullDescription = "";
+        String fullDescription = "<b>" + this.description + "</b><br>";
 
-       return fullDescription;
+        for (SkillAbility ability:this.skillAbilities) {
+            fullDescription += "<br>" + ability.getClass().getSimpleName() + ": " + ability.getDescription();
+        }
+
+        fullDescription = "<html>" + fullDescription + "</html>";
+
+        return fullDescription;
 
     }
 

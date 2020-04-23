@@ -1,13 +1,14 @@
 package Entities;
 
+import Items.Item;
 import Items.Skills.Skill;
 
 import java.util.ArrayList;
 
 public class Player extends Entity{
 
-    private int skillIndex = -1;
     private Skill skillToUse = null;
+    private Item itemToUse = null;
 
     public Player(String description){
         super(description);
@@ -46,15 +47,44 @@ public class Player extends Entity{
 
         this.notifyObserver();
         Skill selectedSkill = this.makeMove();
-        if((this.getMana() - selectedSkill.getManaCost()) > 0 && (this.getHealth() - selectedSkill.getHealthCost()) > 0) {
-            selectedSkill.activate(this, opponent);
-
-            if (opponent.getHealth() <= 0) {
-                System.out.println(this.getClass().getSimpleName() + " Wins!"); // TODO: change this to go back to the floor
-            } else {
-                opponent.battle(this);
-            }
+        while((this.getMana() - selectedSkill.getManaCost()) < 0 || (this.getHealth() - selectedSkill.getHealthCost()) <= 0) {
+            selectedSkill = this.makeMove();
         }
+        selectedSkill.activate(this, opponent);
+
+        if (opponent.getHealth() <= 0) {
+            if (opponent.getClass().equals(Enemy.class)) {
+                Item reward = ((Enemy)opponent).getRewardItem();
+                this.promptSwap(reward);
+            }
+        } else {
+            opponent.battle(this);
+        }
+    }
+
+    /**
+     * Ask a user if they want to swap the item equipped for the given item
+     * NOTE: This will require the graphics element for confirmation
+     *
+     * @param newItem
+     */
+    public void promptSwap(Item newItem){
+        this.swappingItem = newItem;
+        this.notifyObserver();
+        System.out.println(this);
+        if(newItem != null) {
+            while(this.itemToUse == null) {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            this.equipItem(this.itemToUse);
+            this.itemToUse = null;
+        }
+        System.out.println(this);
+        // TODO: go back to floor
     }
 
     /**
@@ -64,5 +94,9 @@ public class Player extends Entity{
      */
     public void setSkillToUse(Skill skillToUse) {
         this.skillToUse = skillToUse;
+    }
+
+    public void setItemToUse(Item itemToUse) {
+        this.itemToUse = itemToUse;
     }
 }
