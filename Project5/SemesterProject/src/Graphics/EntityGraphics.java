@@ -1,36 +1,22 @@
 package Graphics;
 
-import Entities.Enemy;
 import Entities.Entity;
 import Entities.Player;
 import Interactions.Interactable;
-import Rooms.Floor;
+import Items.Skills.Skill;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class EntityGraphics extends Graphics {
 
-    // TODO: delete this after testing
-    public static void main(String[] args) {
-
-        Interactable player = new Player("player");
-        Interactable enemy = new Enemy("enemy");
-        ((Entity)player).setEnemy((Entity)enemy);
-
-        EntityGraphics entityGraphics = new EntityGraphics();
-        entityGraphics.setInteractable(player);
-
-        JFrame frame = new JFrame("Game Frame");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1000, 800);
-
-        entityGraphics.createDisplay(frame);
-
-    }
+    final private int BUTTON_HEIGHT = 100;
 
     @Override
-    public void setInteractable(Interactable interactable) {
+    protected void setInteractable(Interactable interactable) {
         if (Entity.class.isAssignableFrom(interactable.getClass())) {
             this.interactable = interactable;
         } else {
@@ -38,8 +24,14 @@ public class EntityGraphics extends Graphics {
         }
     }
 
+    /**
+     * given an empty JFrame it will construct any scence that are for entities: battles and swap item
+     *  TODO: add swap item GUI
+     *
+     * @param frame: JFrame
+     */
     @Override
-    public void createDisplay(JFrame frame) {
+    protected void createDisplay(JFrame frame) {
 
         Entity player = ((Entity) interactable);
         Entity enemy = player.getEnemy();
@@ -60,42 +52,66 @@ public class EntityGraphics extends Graphics {
 
     }
 
-    // TODO: populate with entity's skills
+    /**
+     * constructs the panel for the JFrame that contains all the skill buttons in battle
+     *
+     * @param entity: Entity
+     * @return JPanel with skill buttons
+     */
     private JPanel createSkillsPanel(Entity entity) {
 
         JPanel skillPanel = new JPanel(new GridLayout(1, 4, 1, 1));
+        System.out.println(entity);
 
-        JButton skill1 = new JButton("Skill 1");
-        JButton skill2 = new JButton("Skill 2");
-        JButton skill3 = new JButton("Skill 3");
-        JButton skill4 = new JButton("Skill 4");
+        ArrayList<Skill> skills = entity.getSkills();
 
-        skillPanel.add(skill1);
-        skillPanel.add(skill2);
-        skillPanel.add(skill3);
-        skillPanel.add(skill4);
+        for (Skill skill:skills) {
+
+            String skillButtonText = skill.getDescription();
+            skillButtonText += "<br>Mana Cost: " + skill.getManaCost();
+            skillButtonText += "<br>Health Cost: " + skill.getHealthCost();
+            skillButtonText = "<html>" + skillButtonText + "</html>";
+
+            JButton skillButton = new JButton(skillButtonText);
+
+            // TODO: improve tool tips
+            skillButton.setToolTipText(skill.toString());
+
+            int buttonWidth = skillButton.getWidth();
+            skillButton.setPreferredSize(new Dimension(buttonWidth, this.BUTTON_HEIGHT));
+
+            skillButton.addActionListener(new ActionListener()
+            {
+                public void actionPerformed(ActionEvent e)
+                {
+                    if(entity.getClass().equals(Player.class)) {
+                        ((Player)entity).setSkillToUse(skill);
+                    }
+                }
+            });
+            skillPanel.add(skillButton);
+        }
 
         return skillPanel;
 
     }
 
+    /**
+     * Constructs the entity info panel at the top of the battle that shows the player and enemy info ( aka health and mana )
+     *
+     * @param player
+     * @param enemy
+     * @return
+     */
     private JPanel createEntityInfoPanel(Entity player, Entity enemy) {
 
         JPanel entityInfoPanel = new JPanel(new GridLayout(1,2,1,1));
 
         // Player Info Panel
-        /*JPanel playerInfoPanel = new JPanel();
-        playerInfoPanel.setBackground(Color.lightGray);
-        JLabel playerLabel = new JLabel("Player:");
-        playerInfoPanel.add(playerLabel);*/
         JPanel playerInfoPanel = this.createEntityInfo(player);
         entityInfoPanel.add(playerInfoPanel);
 
         // Enemy Info Panel
-        /*JPanel enemyInfoPanel = new JPanel();
-        enemyInfoPanel.setBackground(Color.lightGray);
-        JLabel enemyLabel = new JLabel("Enemy:");
-        enemyInfoPanel.add(enemyLabel);*/
         JPanel enemyInfoPanel = this.createEntityInfo(enemy);
         entityInfoPanel.add(enemyInfoPanel);
 
@@ -103,6 +119,13 @@ public class EntityGraphics extends Graphics {
 
     }
 
+    /**
+     * constructs individual entity info panels for createEntityInfoPanel
+     * The entity info is any information needed about a specific entity ie health and mana
+     *
+     * @param entity
+     * @return
+     */
     private JPanel createEntityInfo(Entity entity) {
 
         JPanel entityInfo = new JPanel();
@@ -136,3 +159,4 @@ public class EntityGraphics extends Graphics {
 
     }
 }
+

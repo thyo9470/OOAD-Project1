@@ -27,4 +27,14 @@ abstract public class Interactable implements Observable {
             this.graphicsHandler = (GraphicsHandler)observer;
         }
     }
+
+    @Override
+    public void removeObserver(Observer observer) {
+        this.graphicsHandler = null;
+    }
+
+    @Override
+    public void notifyObserver() {
+        graphicsHandler.update();
+    }
 }

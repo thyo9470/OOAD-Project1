@@ -1,28 +1,30 @@
 package Entities;
 
-import Interactions.Observer;
 import Items.*;
 import Interactions.Interactable;
+import Items.Skills.Skill;
 
 import java.util.ArrayList;
 
-public abstract class Entity extends Interactable{
+public abstract class Entity extends Interactable {
 
     private int health;
     private int mana;
     private ArrayList<Item> items = new ArrayList<>();
     private boolean swappingItem = false;
-    private Entity enemy;
+    protected Entity enemy;
     protected String description;
 
     public Entity(String description){
         this.description = description;
         this.health = 100;
         this.mana = 100;
-    }
 
-    public void setEnemy(Entity enemy) {
-        this.enemy = enemy;
+        // Everything spawns with at least undies
+        Skill nothing = new Skill("Shiver");
+        Item undies = new Armor("Undies", nothing);
+
+        this.equipItem(undies);
     }
 
     /**
@@ -144,6 +146,7 @@ public abstract class Entity extends Interactable{
      * @return
      */
     @Override
+    // TODO: Use this for floor display and format to be in HTML
     public String toString() {
         String fullDescription = description;
         fullDescription += " || Health: " + this.getHealth();
@@ -171,6 +174,7 @@ public abstract class Entity extends Interactable{
      * @param amount - how much mana to drain from entity
      */
     public void drainMana(int amount){
+        System.out.println("Draining mana: " + Integer.toString(amount));
         this.mana -= amount;
     }
 
@@ -181,8 +185,6 @@ public abstract class Entity extends Interactable{
      */
     public void battle(Entity opponent) {
         this.enemy = opponent;
-
-        System.out.println(this); // TODO: delete when done debugging
 
         Skill testSkill = this.makeMove();
         testSkill.activate(this, opponent);
@@ -216,21 +218,4 @@ public abstract class Entity extends Interactable{
 
         return skills;
     }
-
-    // TODO: implement observable stuff
-    @Override
-    public void registerObserver(Observer observer) {
-
-    }
-
-    @Override
-    public void removeObserver(Observer observer) {
-
-    }
-
-    @Override
-    public void notifyObservers() {
-
-    }
-
 }

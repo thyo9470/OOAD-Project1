@@ -1,7 +1,6 @@
 package Entities;
 
-import Interactions.Observer;
-import Items.Skill;
+import Items.Skills.Skill;
 
 import java.util.ArrayList;
 import java.util.Random;

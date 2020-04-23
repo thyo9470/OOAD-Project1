@@ -27,7 +27,7 @@ public class FloorGraphics extends Graphics {
     }
 
     @Override
-    public void setInteractable(Interactable interactable) {
+    protected void setInteractable(Interactable interactable) {
         if (interactable.getClass().equals(Floor.class)) {
             this.interactable = interactable;
         } else {
@@ -35,13 +35,16 @@ public class FloorGraphics extends Graphics {
         }
     }
 
+    /**
+     * given an empty JFrame, this displays everything for the exploration part of the game
+     *
+     * @param frame: JFrame
+     */
     @Override
     public void createDisplay(JFrame frame) {
 
         // TODO: get Floor object to work
-        //Entity entity = ((Floor) interactable).getPlayer();
-        Entity entity = new Player("Test");
-
+        Entity entity = ((Floor) interactable).getPlayer();
 
         JPanel leftPanel = this.createLeftPanel(entity);
 
@@ -55,6 +58,12 @@ public class FloorGraphics extends Graphics {
         frame.setVisible(true);
     }
 
+    /**
+     * Constructs the left panel of the exploration GUI which dispalys player stats and items
+     *
+     * @param entity: Entity
+     * @return JPanel
+     */
     private JPanel createLeftPanel(Entity entity) {
 
         // Info panel
@@ -70,6 +79,12 @@ public class FloorGraphics extends Graphics {
         return leftPanel;
     }
 
+    /**
+     * Constructs panel for left panel containing all the player information
+     *
+     * @param entity: Entity
+     * @return JPanel
+     */
     private JPanel createEntityInfoPanel(Entity entity) {
 
         // Entity Info
@@ -90,6 +105,7 @@ public class FloorGraphics extends Graphics {
 
         entityInfoPanel.add(Box.createRigidArea(new Dimension(100, 50)));
 
+        // TODO: change this to just use player toString that will in the future produce HTML representation of itself
         JLabel healthLabel = new JLabel("Health: " + Integer.toString(health));
         healthLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         entityInfoPanel.add(healthLabel);
@@ -110,6 +126,12 @@ public class FloorGraphics extends Graphics {
 
     }
 
+    /**
+     * Creates equipment panel for left panel of exploration phase
+     *
+     * @param entity: Entity
+     * @return JPanel
+     */
     private JPanel createEntityEquipmentPanel(Entity entity) {
 
         // Entity Equipment
@@ -127,6 +149,12 @@ public class FloorGraphics extends Graphics {
 
     }
 
+    /**
+     * Creates the map of the dungeon floor
+     * TODO: determine if this needs to be passed the tile map
+     *
+     * @return JPanel
+     */
     private JPanel createTileMapPanel() {
 
         int rows = 10;

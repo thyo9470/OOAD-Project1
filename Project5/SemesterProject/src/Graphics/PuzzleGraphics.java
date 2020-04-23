@@ -2,7 +2,6 @@ package Graphics;
 
 import Interactions.Interactable;
 import Rooms.Puzzle;
-import Rooms.PuzzleQuestion;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,7 +24,7 @@ public class PuzzleGraphics extends Graphics {
     }
 
     @Override
-    public void setInteractable(Interactable interactable) {
+    protected void setInteractable(Interactable interactable) {
         if(interactable.getClass().equals(Puzzle.class)) {
             this.interactable = interactable;
         } else {
@@ -33,6 +32,11 @@ public class PuzzleGraphics extends Graphics {
         }
     }
 
+    /**
+     * Given an epmty JFrame, this constructs the scene for answering questions
+     *
+     * @param frame: Jframe
+     */
     @Override
     public void createDisplay(JFrame frame) {
 

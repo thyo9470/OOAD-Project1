@@ -38,7 +38,7 @@ public class Game extends Interactable {
     }
 
     @Override
-    public void notifyObservers() {
+    public void notifyObserver() {
 
     }
 }

@@ -1,12 +1,13 @@
 package Rooms;
 
 import Entities.Player;
+import Interactions.Interactable;
 
 import java.util.ArrayList;
 
-public class Floor {
+public class Floor extends Interactable {
 
-    /*private FloorFactory floorFactory;
+    // private FloorFactory floorFactory; TODO: make floor factory
     private ArrayList<ArrayList<Room>> roomMap;
     private Player player;
 
@@ -32,6 +33,6 @@ public class Floor {
 
     public void makeMove(Room room) {
         // make player move to shtuff
-    }*/
+    }
 
 }

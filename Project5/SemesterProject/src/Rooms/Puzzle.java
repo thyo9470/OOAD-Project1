@@ -45,7 +45,7 @@ public class Puzzle extends Interactable {
     }
 
     @Override
-    public void notifyObservers() {
+    public void notifyObserver() {
 
     }
 }

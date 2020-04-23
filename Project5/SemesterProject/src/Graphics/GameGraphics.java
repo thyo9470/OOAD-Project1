@@ -8,23 +8,8 @@ import java.awt.*;
 
 public class GameGraphics extends Graphics {
 
-    public static void main(String[] args) {
-
-        Interactable game = new Game();
-
-        GameGraphics gameGraphics = new GameGraphics();
-        gameGraphics.setInteractable(game);
-
-        JFrame frame = new JFrame("Game Frame");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1000, 800);
-
-        gameGraphics.createDisplay(frame);
-
-    }
-
     @Override
-    public void setInteractable(Interactable interactable) {
+    protected void setInteractable(Interactable interactable) {
         if(interactable.getClass().equals(Game.class)) {
             this.interactable = interactable;
         } else {
@@ -33,6 +18,12 @@ public class GameGraphics extends Graphics {
     }
 
     // TODO: make the buttons actually do something
+
+    /**
+     * Given an empty JFrame, this constructs the main menu
+     *
+     * @param frame: JFrame
+     */
     @Override
     public void createDisplay(JFrame frame) {
 
