@@ -21,6 +21,8 @@ public class TrapRoom extends Room{
      */
     public void interact(Entities.Entity entity){
 
+        puzzle.askQuestion();
+
     }
 
 

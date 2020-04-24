@@ -1,20 +1,39 @@
 package Rooms;
 
+import Graphics.GraphicsHandler;
 import Interactions.Interactable;
 import Interactions.Observer;
 
 public class Puzzle extends Interactable {
 
 
-    private String PuzzleQuestion;
+    private PuzzleQuestion puzzleQuestion;
+    private String userAnswer; // Got from display
+
+    // TODO: delete when done testing
+    public static void main(String[] args) {
+
+        PuzzleQuestion puzzleQuestion = new PuzzleQuestion();
+        Puzzle puzzle = new Puzzle(puzzleQuestion);
+
+        GraphicsHandler graphicsHandler = new GraphicsHandler();
+        graphicsHandler.setInteractable(puzzle);
+        puzzle.registerObserver(graphicsHandler);
+
+        puzzle.askQuestion();
+
+    }
+
+    public Puzzle(PuzzleQuestion puzzleQuestion){
+        this.puzzleQuestion = puzzleQuestion;
+    }
 
     /**
      *
-     * @return question string
+     * @return PuzzleQuestion
      */
-    public String getQuestion(){
-        //reutrns question
-        return PuzzleQuestion;
+    public PuzzleQuestion getQuestion(){
+        return puzzleQuestion;
     }
 
     /**
@@ -24,28 +43,27 @@ public class Puzzle extends Interactable {
     public void askQuestion(){
         //asks the player the question
 
+        this.notifyObserver();
+        while(this.userAnswer == null){
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println(this.userAnswer);
+        if(this.puzzleQuestion.checkAnswer(this.userAnswer)){
+            // TODO: make good things happen
+        } else {
+            // TODO: make bad things happen
+        }
+        System.out.println(this.userAnswer);
+        this.userAnswer = null;
+
+        // TODO: return to floor
     }
 
-    /**
-     *  void checkanswer to question/puzzle
-     */
-
-    public void checkAnswer(){
-        //checks the answer of the question right vs wrong
-    }
-
-    @Override
-    public void registerObserver(Observer observer){
-
-    }
-
-    @Override
-    public void removeObserver(Observer observer) {
-
-    }
-
-    @Override
-    public void notifyObserver() {
-
+    public void asnwerQuestion(String answer) {
+        this.userAnswer = answer;
     }
 }

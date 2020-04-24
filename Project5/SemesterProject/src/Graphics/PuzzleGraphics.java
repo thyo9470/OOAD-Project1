@@ -1,27 +1,18 @@
 package Graphics;
 
+import Entities.Player;
 import Interactions.Interactable;
 import Rooms.Puzzle;
+import Rooms.PuzzleQuestion;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class PuzzleGraphics extends Graphics {
-
-    public static void main(String[] args) {
-
-        Interactable puzzle = new Puzzle();
-
-        PuzzleGraphics puzzleGraphics = new PuzzleGraphics();
-        puzzleGraphics.setInteractable(puzzle);
-
-        JFrame frame = new JFrame("Game Frame");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1000, 800);
-
-        puzzleGraphics.createDisplay(frame);
-
-    }
 
     @Override
     protected void setInteractable(Interactable interactable) {
@@ -40,13 +31,17 @@ public class PuzzleGraphics extends Graphics {
     @Override
     public void createDisplay(JFrame frame) {
 
+        // question info
+        Puzzle puzzle = ((Puzzle)this.interactable);
+        PuzzleQuestion puzzleQuestion = puzzle.getQuestion();
+        String question = puzzleQuestion.getQuestion();
 
         // question panel
         JPanel questionPanel = new JPanel();
         questionPanel.setLayout(new BoxLayout(questionPanel, BoxLayout.Y_AXIS));
 
         // question text
-        JLabel questionText = new JLabel("This will be a question");
+        JLabel questionText = new JLabel(question);
         questionText.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         questionPanel.add(Box.createRigidArea(new Dimension(100, 50)));
@@ -56,6 +51,34 @@ public class PuzzleGraphics extends Graphics {
         // input panel
         JPanel inputPanel = new JPanel();
         inputPanel.setBackground(Color.lightGray);
+
+        ButtonGroup bg = new ButtonGroup();
+        String[] puzzleOptions = puzzleQuestion.getOptions();
+        for(String op: puzzleOptions){
+            JRadioButton radioButton = new JRadioButton(op);
+            bg.add(radioButton);
+            inputPanel.add(radioButton);
+        }
+
+        JButton submitAnswer = new JButton("Submit");
+        submitAnswer.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                // Source: https://stackoverflow.com/questions/41314151/get-all-jradiobutton-from-a-buttongroup
+                //Convert Enumeration to a List
+                ArrayList<AbstractButton> listRadioButton = Collections.list(bg.getElements());
+
+                for (AbstractButton button : listRadioButton) {
+                    if(button.isSelected()){
+                        String answer = ((JRadioButton) button).getActionCommand();
+                        puzzle.asnwerQuestion(answer);
+                    }
+                }
+            }
+        });
+        inputPanel.add(submitAnswer);
+
 
         frame.getContentPane().add(BorderLayout.NORTH, questionPanel);
         frame.getContentPane().add(BorderLayout.CENTER, inputPanel);

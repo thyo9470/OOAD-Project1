@@ -1,5 +1,6 @@
 package Game;
 
+import Graphics.GraphicsHandler;
 import Interactions.Interactable;
 import Interactions.Observer;
 
@@ -12,6 +13,17 @@ public class Game extends Interactable {
     }
     static public int getCurrentLevel() {
         return currentLevel;
+    }
+
+    // TODO: delete when done testing
+    public static void main(String[] args) {
+
+        // create Game
+        Interactable game = new Game();
+
+        GraphicsHandler graphicsHandler = new GraphicsHandler();
+        graphicsHandler.drawGameMenu(game);
+
     }
 
     static public void levelUp() {

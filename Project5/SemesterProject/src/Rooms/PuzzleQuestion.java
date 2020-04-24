@@ -28,22 +28,26 @@ public class PuzzleQuestion {
     private String[] q4;
     private String[] q5;
 
+    public PuzzleQuestion() {
+       this.setRandomQuestion();
+    }
 
     /**
-     * @return question from a list of questions at random.
+     * Sets the question for this puzzle question object
      */
 
-    public String getQuestion(){
+    public void setRandomQuestion(){
         questionBank.add("Who wrote Hitchhikers Guide to the Galaxy?");
         questionBank.add("When did the Hitchhikers Guide to the Galaxy Movie Premiere?");
         questionBank.add("What animal left Earth in Hitchhikers Guide to the Galaxy?");
         questionBank.add("Which one is NOT a Star Wars Character?");
         questionBank.add("Solve: (15 + 28 / 12) + 17 * 0 + 69 ?");
         this.question = this.questionBank.get(rand.nextInt(questionBank.size()));
-        System.out.println(this.question);
-        return this.question;
     }
 
+    public String getQuestion() {
+        return this.question;
+    }
 
     /**
      * Getters and setters for the questions
@@ -60,7 +64,6 @@ public class PuzzleQuestion {
         String[] question3 = {"Dolphins", "Snails", "Baboons"};
         String[] question4 = {"Han Solo", "Jabba The Hutt", "Boogaloo"};
         String[] question5 = {"89.583", "89.5", "69"};
-
 
 
         /**
@@ -96,7 +99,7 @@ public class PuzzleQuestion {
 
     }
 
-    public String getAnswer(){
+    /*public String getAnswer(){
         //Take in user selection / input
 
         Scanner sc= new Scanner(System.in); //System.in is a standard input stream
@@ -105,7 +108,7 @@ public class PuzzleQuestion {
         System.out.print("You have entered: "+ this.answer);
 
         return this.answer;
-    }
+    }*/
 
 
     public boolean checkAnswer(String answer){
