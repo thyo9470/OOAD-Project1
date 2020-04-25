@@ -1,5 +1,8 @@
 package Rooms;
 
+import Entities.Enemy;
+import Entities.Entity;
+
 public class EnemyRoom extends Room{
 
     private Entities.Enemy enemy;
@@ -8,7 +11,7 @@ public class EnemyRoom extends Room{
      *
      * @param enemy
      */
-    public void setEnemy(Entities.Enemy enemy){
+    public void setEnemy(Enemy enemy){
 
     }
 
@@ -16,7 +19,7 @@ public class EnemyRoom extends Room{
      *
      * @param entity
      */
-    public void interact(Entities.Entity entity){
+    public void interact(Entity entity){
 
     }
 

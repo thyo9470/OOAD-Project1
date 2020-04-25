@@ -32,6 +32,14 @@ public class PuzzleQuestion {
        this.setRandomQuestion();
     }
 
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
     /**
      * Sets the question for this puzzle question object
      */
@@ -111,8 +119,7 @@ public class PuzzleQuestion {
     }*/
 
 
-    public boolean checkAnswer(String answer){
-
+    public boolean checkAnswer(){
         //if question == 1 && option == 2 then correct
         if( this.question.equals(this.questionBank.get(0)) && this.answer.equals("Douglas Adams") ){
             //correct
