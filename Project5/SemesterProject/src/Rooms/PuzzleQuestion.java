@@ -114,19 +114,19 @@ public class PuzzleQuestion {
     public boolean checkAnswer(String answer){
 
         //if question == 1 && option == 2 then correct
-        if( this.question.equals(this.questionBank.get(0)) && this.answer.equals("2") ){
+        if( this.question.equals(this.questionBank.get(0)) && this.answer.equals("Douglas Adams") ){
             //correct
             return true;
-        } else if( this.question.equals(this.questionBank.get(1)) && this.answer.equals("2") ){
+        } else if( this.question.equals(this.questionBank.get(1)) && this.answer.equals("2005") ){
             //correct
             return true;
-        } else if( this.question.equals(this.questionBank.get(2)) && this.answer.equals("1") ){
+        } else if( this.question.equals(this.questionBank.get(2)) && this.answer.equals("Dolphins") ){
             //correct
             return true;
-        } else if( this.question.equals(this.questionBank.get(3)) && this.answer.equals("3") ){
+        } else if( this.question.equals(this.questionBank.get(3)) && this.answer.equals("Boogaloo") ){
             //correct
             return true;
-        } else if( this.question.equals(this.questionBank.get(4)) && this.answer.equals("3") ){
+        } else if( this.question.equals(this.questionBank.get(4)) && this.answer.equals("69") ){
             //correct
             return true;
         } else {
