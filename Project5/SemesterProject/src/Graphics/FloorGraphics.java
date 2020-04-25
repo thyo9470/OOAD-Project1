@@ -3,28 +3,16 @@ package Graphics;
 import Entities.Entity;
 import Entities.Player;
 import Interactions.Interactable;
+import Items.Item;
 import Rooms.Floor;
+import Rooms.Room;
 
 import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class FloorGraphics extends Graphics {
-
-    // TODO: delete this after testing
-    public static void main(String[] args) {
-
-        Interactable player = new Player("Test");
-
-        Graphics floorGraphics = new FloorGraphics();
-        //floorGraphics.setInteractable(player); // This will actually be given a floor but since Floor isn't working I am passing a player
-
-        JFrame frame = new JFrame("Game Frame");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1000, 800);
-
-        floorGraphics.createDisplay(frame);
-
-    }
 
     @Override
     protected void setInteractable(Interactable interactable) {
@@ -44,13 +32,14 @@ public class FloorGraphics extends Graphics {
     public void createDisplay(JFrame frame) {
 
         // TODO: get Floor object to work
-        Entity entity = ((Floor) interactable).getPlayer();
+        Floor floor = (Floor) this.interactable;
+        Entity entity = floor.getPlayer();
 
         JPanel leftPanel = this.createLeftPanel(entity);
 
         // Tile Map Panel
         // TODO: make createTileMap take as input the dungeon grid
-        JPanel tileMapPanel = this.createTileMapPanel();
+        JPanel tileMapPanel = this.createTileMapPanel(floor);
 
         frame.getContentPane().add(BorderLayout.EAST, leftPanel);
         frame.getContentPane().add(BorderLayout.CENTER, tileMapPanel);
@@ -145,6 +134,23 @@ public class FloorGraphics extends Graphics {
         equipmentTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
         entityEquipmentPanel.add(equipmentTitle);
 
+        ArrayList<Item> equippedItems = entity.getItems();
+
+        entityEquipmentPanel.add(Box.createRigidArea(new Dimension(100, 10)));
+
+        for(Item item: equippedItems){
+            JLabel itemLabel = new JLabel(item.getDescription());
+
+            // TODO: improve tool tips
+            UIManager.put("ToolTip.background", Color.WHITE);
+            UIManager.put("ToolTip.font", new FontUIResource("SansSerif", Font.BOLD, 12));
+            itemLabel.setToolTipText(item.toString());
+
+            itemLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+            entityEquipmentPanel.add(Box.createRigidArea(new Dimension(100, 10)));
+            entityEquipmentPanel.add(itemLabel);
+        }
+
         return entityEquipmentPanel;
 
     }
@@ -155,15 +161,19 @@ public class FloorGraphics extends Graphics {
      *
      * @return JPanel
      */
-    private JPanel createTileMapPanel() {
+    private JPanel createTileMapPanel(Floor floor) {
 
-        int rows = 10;
-        int cols = 12;
+        ArrayList<ArrayList<Room>> tileMap = floor.getRoomMap();
+
+        int cols = tileMap.size();
+        int rows = tileMap.get(0).size();
+
         JPanel tileMapPanel = new JPanel(new GridLayout(rows, cols, 10, 10));
 
         for (int y = 0; y < rows; y++) {
             for( int x = 0; x < cols; x++) {
-                String text = Integer.toString(x) + "," + Integer.toString(y);
+                String text = tileMap.get(x).get(y).getClass().getSimpleName();
+                //String text = Integer.toString(x) + "," + Integer.toString(y);
                 JButton button = new JButton(text);
                 tileMapPanel.add(button, y, x);
             }

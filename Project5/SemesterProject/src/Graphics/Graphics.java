@@ -35,8 +35,6 @@ abstract public class Graphics {
             } else {
                 throw new IllegalArgumentException("The given interactable is not support: " + interactable.getClass().getSimpleName());
             }
-        } catch (Exception e) {
-            throw new IllegalArgumentException("A problem happened when processing the given interactbale: " + interactable.getClass().getSimpleName());
         }
     }
 

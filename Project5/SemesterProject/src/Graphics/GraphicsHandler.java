@@ -24,8 +24,8 @@ public class GraphicsHandler implements Observer {
     private Interactable interactable;
     private Graphics initialGraphics;
     private JFrame frame;
-    private final int HEIGHT = 800;
-    private final int WIDTH = 1000;
+    private final int HEIGHT = 900;
+    private final int WIDTH = 1800;
     private final String GAME_TITLE = "ADVENTURE GAME THE GAME";
 
     public GraphicsHandler() {
@@ -48,7 +48,6 @@ public class GraphicsHandler implements Observer {
         PuzzleGraphics.setSuccessor(GameGraphics);
 
     }
-
     public void setInteractable(Interactable interactable) {
         this.interactable = interactable;
     }
@@ -75,7 +74,8 @@ public class GraphicsHandler implements Observer {
      * For example: going from main menu to exploration phase or going from exploration to battle
      *
      */
-    private void changeDisplay() {
+    //private void changeDisplay() {
+    public void changeDisplay() { // TODO: change this to private after
 
        this.frame.getRootPane().getContentPane().removeAll();
 
