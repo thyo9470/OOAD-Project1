@@ -7,8 +7,8 @@ public class TrapRoom extends Room{
     private Puzzle puzzle;
 
     /**
-     *
-     * @param puzzle
+     * Sets the puzzle question
+     * @param puzzle: newPuzzle
      */
     public void setPuzzle(Puzzle puzzle){
         this.puzzle = puzzle;
@@ -16,8 +16,8 @@ public class TrapRoom extends Room{
 
 
     /**
-     *
-     * @param entity
+     * Asks player the Puzzle Question
+     * @param entity: currentEntity
      */
     public void interact(Entities.Entity entity){
 
