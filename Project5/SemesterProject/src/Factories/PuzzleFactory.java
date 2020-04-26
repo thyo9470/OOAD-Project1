@@ -1,6 +1,7 @@
 package Factories;
 
 import Rooms.Puzzle;
+import Rooms.PuzzleQuestion;
 
 public class PuzzleFactory {
 
@@ -10,8 +11,8 @@ public class PuzzleFactory {
         this.factory = factory;
     }
 
-    public Puzzle createPuzzle(Puzzle puzzleType){
+    public Puzzle createPuzzle(PuzzleQuestion puzzleType){
 
-        return puzzleType;
+        return new Puzzle(puzzleType);
     }
 }

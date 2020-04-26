@@ -10,8 +10,8 @@ public class EnemyFactory {
         this.factory = factory;
     }
 
-    public Enemy createEnemy(Enemy enemyType){
+    public Enemy createEnemy(String enemyType){
 
-        return enemyType;
+        return new Enemy(enemyType);
     }
 }
