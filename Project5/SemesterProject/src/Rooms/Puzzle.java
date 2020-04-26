@@ -61,7 +61,7 @@ public class Puzzle extends Interactable {
         }
         this.puzzleQuestion.setAnswer(null);
 
-        // TODO: return to floor
+        this.returnToFloor();
     }
 
     public void asnwerQuestion(String answer) {

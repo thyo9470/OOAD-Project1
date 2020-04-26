@@ -5,6 +5,8 @@ import Interactions.Interactable;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GameGraphics extends Graphics {
 
@@ -27,6 +29,7 @@ public class GameGraphics extends Graphics {
     @Override
     public void createDisplay(JFrame frame) {
 
+        Game game = ((Game)this.interactable);
 
         // main menu panel
         JPanel mainMenuPanel = new JPanel();
@@ -38,8 +41,29 @@ public class GameGraphics extends Graphics {
         JButton exitGameButton = new JButton("Exit Game");
 
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         startGameButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        startGameButton.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                /*
+                 TODO: 1. create floor factory
+                 TODO: 2. create floor with factory
+                 TODO: 3. set floor's factory
+                 TODO: 4. display floor
+                 */
+            }
+        });
         exitGameButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        exitGameButton.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                frame.dispose();
+            }
+        });
+
 
         mainMenuPanel.add(Box.createRigidArea(new Dimension(100, 100)));
         mainMenuPanel.add(titleLabel);

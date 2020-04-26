@@ -17,6 +17,7 @@ public abstract class Entity extends Interactable {
     protected Item swappingItem;
     protected Entity enemy;
     protected String description;
+    private int[] pos;
 
     // TODO: Delete when done testing
     public static void main(String[] args) {
@@ -53,6 +54,9 @@ public abstract class Entity extends Interactable {
     }
 
     public Entity(String description){
+
+        this.pos = new int[]{-1,-1};
+
         this.description = description;
         this.health = 100;
         this.mana = 100;
@@ -72,6 +76,14 @@ public abstract class Entity extends Interactable {
      */
     public ArrayList<Item> getItems() {
         return items;
+    }
+
+    public int[] getPos() {
+        return pos;
+    }
+
+    public void setPos(int[] pos) {
+        this.pos = pos;
     }
 
     public Item getMatchingItem(Item item) {

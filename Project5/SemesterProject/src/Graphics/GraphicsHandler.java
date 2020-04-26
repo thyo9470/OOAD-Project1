@@ -1,23 +1,9 @@
 package Graphics;
 
-import Entities.Enemy;
-import Entities.Entity;
-import Entities.Player;
-import Game.Game;
 import Interactions.Interactable;
 import Interactions.Observer;
-import Items.Helmet;
-import Items.Item;
-import Items.MainHand;
-import Items.Skills.DamageAbility;
-import Items.Skills.RecoverManaAbility;
-import Items.Skills.Skill;
-import Items.Skills.SkillAbility;
-import Rooms.Puzzle;
-import Rooms.PuzzleQuestion;
 
 import javax.swing.*;
-import java.awt.desktop.SystemSleepEvent;
 
 public class GraphicsHandler implements Observer {
 
@@ -77,9 +63,10 @@ public class GraphicsHandler implements Observer {
     //private void changeDisplay() {
     public void changeDisplay() { // TODO: change this to private after
 
-       this.frame.getRootPane().getContentPane().removeAll();
+        this.frame.getRootPane().getContentPane().removeAll();
 
         this.initialGraphics.handle(this.interactable, frame);
+
         this.frame.repaint();
         this.frame.revalidate();
 
@@ -90,6 +77,11 @@ public class GraphicsHandler implements Observer {
      */
     @Override
     public void update() {
+
+        if (this.interactable.getChangeState()){
+            this.interactable = this.interactable.getNextIntractable();
+        }
+
         this.changeDisplay();
     }
 }

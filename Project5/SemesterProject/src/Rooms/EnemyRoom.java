@@ -3,23 +3,25 @@ package Rooms;
 import Entities.Enemy;
 import Entities.Entity;
 
+import java.util.Set;
+
 public class EnemyRoom extends Room{
 
-    private Entities.Enemy enemy;
+    private Enemy enemy;
 
     /**
-     *
-     * @param enemy
+     * Sets enemy for room
+     * @param enemy: newEnemy
      */
-    public void setEnemy(Enemy enemy){
-
-    }
+    public void setEnemy(Enemy enemy){ this.enemy = enemy; }
 
     /**
-     *
-     * @param entity
+     * Enters battle when player comes across enemy
+     * @param entity: currentEntity
      */
     public void interact(Entity entity){
+
+        entity.battle(this.enemy);
 
     }
 

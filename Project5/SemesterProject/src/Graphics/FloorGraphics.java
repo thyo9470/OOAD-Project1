@@ -1,15 +1,20 @@
 package Graphics;
 
+import Entities.Enemy;
 import Entities.Entity;
 import Entities.Player;
 import Interactions.Interactable;
 import Items.Item;
 import Rooms.Floor;
+import Rooms.Puzzle;
 import Rooms.Room;
+import Rooms.TrapRoom;
 
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class FloorGraphics extends Graphics {
@@ -164,6 +169,7 @@ public class FloorGraphics extends Graphics {
     private JPanel createTileMapPanel(Floor floor) {
 
         ArrayList<ArrayList<Room>> tileMap = floor.getRoomMap();
+        Entity player = floor.getPlayer();
 
         int cols = tileMap.size();
         int rows = tileMap.get(0).size();
@@ -172,9 +178,40 @@ public class FloorGraphics extends Graphics {
 
         for (int y = 0; y < rows; y++) {
             for( int x = 0; x < cols; x++) {
-                String text = tileMap.get(x).get(y).getClass().getSimpleName();
-                //String text = Integer.toString(x) + "," + Integer.toString(y);
+                Room currentRoom = tileMap.get(x).get(y);
+                String text = currentRoom.getClass().getSimpleName();
                 JButton button = new JButton(text);
+                int[] playerPos = player.getPos();
+                if(Math.abs(x - playerPos[0]) > 1 || Math.abs(y - playerPos[1]) > 1){
+                    button.setText("");
+                    button.setEnabled(false);
+                }
+                if(currentRoom.hasBeenVisited()){
+                    button.setText("Visited");
+                    button.setEnabled(false);
+                }
+                // TODO: Check in about displaying last room
+
+                int finalX = x;
+                int finalY = y;
+                button.addActionListener(new ActionListener()
+                {
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        currentRoom.visit();
+                        if(currentRoom instanceof TrapRoom){
+                            Puzzle puzzle = ((TrapRoom)currentRoom).getPuzzle();
+                            floor.setNextIntractable(puzzle);
+                            puzzle.setFloor(floor);
+                        } else {
+                            floor.setNextIntractable(player);
+                            player.setFloor(floor);
+                        }
+                        currentRoom.enterRoom(player);
+                        player.setPos(new int[]{finalX, finalY});
+                    }
+                });
+
                 tileMapPanel.add(button, y, x);
             }
         }

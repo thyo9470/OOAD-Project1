@@ -4,6 +4,7 @@ import Items.Item;
 import Items.Skills.Skill;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 public class Player extends Entity{
 
@@ -43,9 +44,12 @@ public class Player extends Entity{
      */
     @Override
     public void battle(Entity opponent) {
+
+
         this.enemy = opponent;
 
         this.notifyObserver();
+
         Skill selectedSkill = this.makeMove();
         while((this.getMana() - selectedSkill.getManaCost()) < 0 || (this.getHealth() - selectedSkill.getHealthCost()) <= 0) {
             selectedSkill = this.makeMove();
@@ -53,7 +57,7 @@ public class Player extends Entity{
         selectedSkill.activate(this, opponent);
 
         if (opponent.getHealth() <= 0) {
-            if (opponent.getClass().equals(Enemy.class)) {
+            if (opponent instanceof Enemy) {
                 Item reward = ((Enemy)opponent).getRewardItem();
                 this.promptSwap(reward);
             }
@@ -84,7 +88,7 @@ public class Player extends Entity{
             this.itemToUse = null;
         }
         System.out.println(this);
-        // TODO: go back to floor
+        this.returnToFloor();
     }
 
     /**

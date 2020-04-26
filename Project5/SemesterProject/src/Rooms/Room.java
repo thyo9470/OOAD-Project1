@@ -1,5 +1,8 @@
 package Rooms;
 
+import Entities.Entity;
+import Interactions.Interactable;
+
 public abstract class Room {
 
     /**
@@ -20,6 +23,9 @@ public abstract class Room {
         return visited;
     }
 
+    public void visit() {
+        this.visited = true;
+    }
 
     /**
      *isFloorEnd
@@ -32,14 +38,26 @@ public abstract class Room {
 
 
     /**
-     * interact
+     * Used to interact with a specific room and it's objects
      * @param entity
      */
 
-    public void interact(Entities.Entity entity){
+    public void enterRoom(Entity entity) {
+
+        Room selfRef = this;
+        Runnable run = new Runnable() {
+            @Override
+            public void run() {
+                selfRef.interact(entity);
+            }
+        };
+        Thread test = new Thread(run);
+        test.setName("room-thread");
+        test.start();
 
     }
 
+    abstract public void interact(Entity entity);
 
 
 }

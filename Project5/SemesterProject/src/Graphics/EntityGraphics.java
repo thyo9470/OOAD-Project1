@@ -37,7 +37,6 @@ public class EntityGraphics extends Graphics {
      */
     @Override
     protected void createDisplay(JFrame frame) {
-
         Entity player = ((Entity) this.interactable);
         Entity enemy = player.getEnemy();
 
@@ -167,7 +166,7 @@ public class EntityGraphics extends Graphics {
             {
                 public void actionPerformed(ActionEvent e)
                 {
-                    if(entity.getClass().equals(Player.class)) {
+                    if(entity instanceof  Player){
                         ((Player)entity).setSkillToUse(skill);
                     }
                 }
