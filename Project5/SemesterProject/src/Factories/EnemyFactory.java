@@ -10,21 +10,12 @@ import Items.Skills.Skill;
 
 public class EnemyFactory {
 
+    private ItemFactory fact;
     public Enemy createEnemy(){
 
         //Todo: add item variety for enemies
         Enemy enemy = new Enemy("enemy");
-        Skill knifeSkill = new Skill("stab");
-        DamageAbility damageAbility = new DamageAbility("10 base damage", 10, 20, 0);
-        knifeSkill.addAbility(damageAbility);
-        Item knife = new MainHand("knife", knifeSkill);
-        //enemy.equipItem(knife);
-
-        Skill recoverSkill = new Skill("recover");
-        RecoverManaAbility recoverAbility = new RecoverManaAbility("Recover mana", 10, 0, 0);
-        recoverSkill.addAbility(recoverAbility);
-        Item pants = new Armor("Pants", recoverSkill);
-        enemy.equipItem(pants);
+        enemy.equipItem(fact.createItem());
 
         return enemy;
     }
