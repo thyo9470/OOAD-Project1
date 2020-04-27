@@ -22,26 +22,32 @@ public class RoomFactory {
     public Room createRandomRoom(){
         Random rand = new Random();
         double random = rand.nextDouble();
-        if(random < 0.2){
-            return new TreasureRoom();
+        if(random < 0.1){
+            TreasureRoom treasureRoom = new TreasureRoom();
+            treasureRoom.setItem(ItemFactory.createItem());
+            return treasureRoom;
         }
         else if(random < 0.4){
-            return new TrapRoom();
+            TrapRoom puzzleRoom = new TrapRoom();
+            puzzleRoom.setPuzzle(PuzzleFactory.createPuzzle());
+            return puzzleRoom;
         }
         else{
-            return new EnemyRoom();
+            EnemyRoom enemyRoom = new EnemyRoom();
+            enemyRoom.setEnemy(EnemyFactory.createEnemy());
+            return enemyRoom;
         }
     }
 
     public Room createRoom(String roomtype){
 
-        if(roomtype == "Enemy"){
+        if(roomtype.equals("Enemy")){
             return new EnemyRoom();
         }
-        else if(roomtype == "Puzzle"){
+        else if(roomtype.equals("Puzzle")){
             return new TrapRoom();
         }
-        else if(roomtype == "Treasure"){
+        else if(roomtype.equals("Treasure")){
             return new TreasureRoom();
         }
         return new EnemyRoom();

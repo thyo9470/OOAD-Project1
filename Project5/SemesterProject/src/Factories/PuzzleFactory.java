@@ -2,6 +2,7 @@ package Factories;
 
 import Rooms.Puzzle;
 import Rooms.PuzzleQuestion;
+import Rooms.TrapRoom;
 
 public class PuzzleFactory {
 
@@ -11,8 +12,9 @@ public class PuzzleFactory {
         this.factory = factory;
     }
 
-    public Puzzle createPuzzle(PuzzleQuestion puzzleType){
+    public Puzzle createPuzzle(){
 
-        return new Puzzle(puzzleType);
+        PuzzleQuestion puzzleQuestion = new PuzzleQuestion();
+        return new Puzzle(puzzleQuestion);
     }
 }
