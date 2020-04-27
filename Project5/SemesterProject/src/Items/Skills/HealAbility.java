@@ -22,7 +22,7 @@ public class HealAbility extends SkillAbility {
 
         user.damage(-this.healAmount);
         user.damage(this.healthCost);
-        user.damage(this.manaCost);
+        user.drainMana(this.manaCost);
 
     }
 }

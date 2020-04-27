@@ -22,7 +22,7 @@ public class DrainManaAbility extends SkillAbility {
 
         opponent.drainMana(this.manaAmount);
         user.damage(this.healthCost);
-        user.damage(this.manaCost);
+        user.drainMana(this.manaCost);
 
     }
 }

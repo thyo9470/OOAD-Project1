@@ -17,7 +17,7 @@ public class RoomFactory {
     public RoomFactory(){
         this.itemFactory = new ItemFactory();
         this.enemyFactory = new EnemyFactory(itemFactory);
-        this.puzzleFactory = new PuzzleFactory();
+        this.puzzleFactory = new PuzzleFactory(itemFactory);
     }
 
     public Room createRandomRoom(){

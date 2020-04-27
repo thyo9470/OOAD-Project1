@@ -5,7 +5,6 @@ import Factories.FloorFactory;
 import Game.Game;
 import Interactions.Interactable;
 
-import java.awt.desktop.SystemSleepEvent;
 import java.util.ArrayList;
 
 public class Floor extends Interactable {
@@ -40,19 +39,18 @@ public class Floor extends Interactable {
     }
 
     public void makeMove(Room room) {
-        // make player move to shtuff
         if(room.isFloorEnd()){
-            System.out.println("EXIT PRESSED");
             if(Game.getCurrentLevel() == Game.getLastLevel()){
-                // End Game
+                Game.setWinGame();
+                this.setNextIntractable(this);
             }else {
-                System.out.println("CREATE NE FLOOR");
-                Interactable floor = this.floorFactory.makeFloor();
-                ((Floor)floor).setPlayer((Player)this.player);
+                Interactable newFloor = this.floorFactory.makeFloor();
+                ((Floor)newFloor).setPlayer((Player)this.player);
                 ((Player)this.player).setPos(new int[]{-1,-1});
                 Game.levelUp();
-                this.setNextIntractable(floor);
-                for(ArrayList<Room> roomRow : ((Floor)floor).getRoomMap()) {
+                newFloor.registerObserver(this.graphicsHandler);
+                this.setNextIntractable(newFloor);
+                for(ArrayList<Room> roomRow : ((Floor)newFloor).getRoomMap()) {
                     for(Room roomlet : roomRow){
                         if(roomlet instanceof TrapRoom){
                             Puzzle puzzle = ((TrapRoom)roomlet).getPuzzle();
@@ -60,8 +58,8 @@ public class Floor extends Interactable {
                         }
                     }
                 }
-                this.notifyObserver();
             }
+            this.notifyObserver();
             return;
         }
 

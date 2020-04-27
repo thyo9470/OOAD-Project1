@@ -20,8 +20,9 @@ import java.util.ArrayList;
 
 public class Game extends Interactable {
     static final private int LAST_LEVEL = 5;
-    static private int currentLevel;
+    static private int currentLevel = 1;
     static private boolean gameOver = false;
+    static private boolean winGame = false;
 
     static public int getLastLevel() {
         return LAST_LEVEL;
@@ -51,6 +52,14 @@ public class Game extends Interactable {
 
     static public void setGameOver(){
         gameOver = true;
+    }
+
+    static public boolean getWinGame() {
+        return winGame;
+    }
+
+    static public void setWinGame() {
+        winGame = true;
     }
 
     public Game(GraphicsHandler graphicsHandler){

@@ -34,7 +34,34 @@ public class FloorGraphics extends Graphics {
     @Override
     public void createDisplay(JFrame frame) {
 
-        if(Game.getGameOver()){
+        if (Game.getWinGame()){
+
+            JPanel winGamePanel = new JPanel();
+            winGamePanel.setLayout(new BoxLayout(winGamePanel, BoxLayout.Y_AXIS));
+
+            JLabel winGameLabel = new JLabel("YOU WIN!!");
+            winGameLabel.setFont (winGameLabel.getFont ().deriveFont (64.0f));
+            winGameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+            JButton exitButton = new JButton("Exit");
+            exitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+            exitButton.addActionListener(new ActionListener()
+            {
+                public void actionPerformed(ActionEvent e)
+                {
+                    frame.dispose();
+                }
+            });
+
+            winGamePanel.add(Box.createRigidArea(new Dimension(100, 100)));
+            winGamePanel.add(winGameLabel);
+            winGamePanel.add(Box.createRigidArea(new Dimension(100, 100)));
+            winGamePanel.add(exitButton);
+
+            frame.add(winGamePanel);
+
+        } else if(Game.getGameOver()){
+
             JPanel gameOverPanel = new JPanel();
             gameOverPanel.setLayout(new BoxLayout(gameOverPanel, BoxLayout.Y_AXIS));
 

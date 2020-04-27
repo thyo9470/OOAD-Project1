@@ -22,7 +22,7 @@ public class RecoverManaAbility extends SkillAbility{
 
         user.drainMana(-this.manaAmount);
         user.damage(this.healthCost);
-        user.damage(this.manaCost);
+        user.drainMana(this.manaCost);
 
     }
 }

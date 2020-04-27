@@ -5,8 +5,6 @@ import Game.Game;
 import Graphics.GraphicsHandler;
 import Rooms.Floor;
 
-import java.awt.desktop.SystemSleepEvent;
-
 abstract public class Interactable implements Observable {
 
     protected GraphicsHandler graphicsHandler;
@@ -41,7 +39,6 @@ abstract public class Interactable implements Observable {
         if(Thread.currentThread().getName() == "room-thread"){
             Thread.interrupted();
         }
-        System.out.println("RETURN TO FLOOR");
         Entity entity = this.floor.getPlayer();
         if(entity.getHealth() <= 0){
             Game.setGameOver();

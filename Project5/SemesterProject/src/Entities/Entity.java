@@ -3,10 +3,7 @@ package Entities;
 import Graphics.GraphicsHandler;
 import Items.*;
 import Interactions.Interactable;
-import Items.Skills.DamageAbility;
-import Items.Skills.RecoverManaAbility;
-import Items.Skills.Skill;
-import Items.Skills.SkillAbility;
+import Items.Skills.*;
 
 import java.util.ArrayList;
 
@@ -29,8 +26,9 @@ public abstract class Entity extends Interactable {
         this.mana = 100;
 
         // Everything spawns with at least undies
-        SkillAbility shiver = new RecoverManaAbility("Shiver", 10, 0,0);
+        SkillAbility shiver = new HealAbility("Shiver", 10, 0,0);
         Skill nothing = new Skill("Shiver");
+        nothing.addAbility(shiver);
         Item undies = new Armor("Undies", nothing, 0, 2);
 
         this.equipItem(undies);
@@ -74,7 +72,6 @@ public abstract class Entity extends Interactable {
      * @param newItem
      */
     public void equipItem(Item newItem) {
-
         for(int i = 0; i < this.items.size(); i++) {
             Item currentItem = this.items.get(i);
             if(currentItem.getClass().equals(newItem.getClass())){
