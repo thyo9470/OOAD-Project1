@@ -55,6 +55,7 @@ public class Puzzle extends Interactable {
         }
         if(this.puzzleQuestion.checkAnswer()){
             if(this.rewardItem != null) {
+                this.setNextIntractable(entity);
                 entity.promptSwap(this.rewardItem);
             }
         } else {

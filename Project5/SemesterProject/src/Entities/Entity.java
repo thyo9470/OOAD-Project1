@@ -26,7 +26,7 @@ public abstract class Entity extends Interactable {
         this.mana = 100;
 
         // Everything spawns with at least undies
-        SkillAbility shiver = new HealAbility("Shiver", 10, 0,0);
+        SkillAbility shiver = new RecoverManaAbility("Recovers 10 mana", 10, 0,0);
         Skill nothing = new Skill("Shiver");
         nothing.addAbility(shiver);
         Item undies = new Armor("Undies", nothing, 0, 2);

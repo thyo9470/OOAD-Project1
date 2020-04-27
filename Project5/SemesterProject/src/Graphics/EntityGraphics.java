@@ -208,7 +208,7 @@ public class EntityGraphics extends Graphics {
      * @return
      */
     private JPanel createEntityInfo(Entity entity) {
-
+        System.out.println(entity);
         JPanel entityInfo = new JPanel();
         entityInfo.setLayout(new BoxLayout(entityInfo, BoxLayout.Y_AXIS));
         entityInfo.setBackground(Color.lightGray);

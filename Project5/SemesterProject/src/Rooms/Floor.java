@@ -64,13 +64,13 @@ public class Floor extends Interactable {
         }
 
         room.visit();
+        this.player.setFloor(this);
         if(room instanceof TrapRoom){
             Puzzle puzzle = ((TrapRoom)room).getPuzzle();
             this.setNextIntractable(puzzle);
             puzzle.setFloor(this);
         } else {
             this.setNextIntractable(this.player);
-            this.player.setFloor(this);
         }
         room.enterRoom(this.player);
     }

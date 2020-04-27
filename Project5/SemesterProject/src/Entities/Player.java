@@ -4,7 +4,6 @@ import Items.Item;
 import Items.Skills.Skill;
 
 import java.util.ArrayList;
-import java.util.Set;
 
 public class Player extends Entity{
 
@@ -27,7 +26,7 @@ public class Player extends Entity{
         this.skillToUse = null;
         while(this.skillToUse == null) {
            try {
-               Thread.sleep(100);
+               Thread.sleep(500);
            } catch (InterruptedException e) {
                e.printStackTrace();
            }
