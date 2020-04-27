@@ -19,40 +19,6 @@ public abstract class Entity extends Interactable {
     protected String description;
     private int[] pos;
 
-    // TODO: Delete when done testing
-    public static void main(String[] args) {
-
-        // create Player
-        Interactable player = new Player("player");
-        Skill hatSkill = new Skill("Sit on head");
-        RecoverManaAbility recoverManaAbility = new RecoverManaAbility("Recover 20 mana", 20, 0, 0);
-        hatSkill.addAbility(recoverManaAbility);
-        Item hat = new Helmet("hat", hatSkill);
-        ((Entity)player).equipItem(hat);
-
-        // equip main hand item
-        Skill swordSkill = new Skill("stab");
-        DamageAbility damageAbility = new DamageAbility("10 base damage", 10, 20, 0);
-        swordSkill.addAbility(damageAbility);
-        Item sword = new MainHand("Sword", swordSkill);
-        ((Entity)player).equipItem(sword);
-
-
-        Interactable enemy = new Enemy("enemy");
-        Skill knifeSkill = new Skill("stab");
-        knifeSkill.addAbility(damageAbility);
-        Item knife = new MainHand("knife", knifeSkill);
-        ((Enemy)enemy).setRewardItem(knife);
-
-
-        GraphicsHandler graphicsHandler = new GraphicsHandler();
-        graphicsHandler.setInteractable(player);
-        player.registerObserver(graphicsHandler);
-
-        ((Entity) player).battle((Entity) enemy);
-
-    }
-
     public Entity(String description){
 
         this.pos = new int[]{-1,-1};
@@ -62,10 +28,10 @@ public abstract class Entity extends Interactable {
         this.mana = 100;
 
         // Everything spawns with at least undies
-        Skill nothing = new Skill("Shiver");
-        Item undies = new Armor("Undies", nothing);
+        //Skill nothing = new Skill("Shiver");
+        //Item undies = new Armor("Undies", nothing);
 
-        this.equipItem(undies);
+        //this.equipItem(undies);
     }
 
     /**

@@ -93,7 +93,7 @@ public class EntityGraphics extends Graphics {
         {
             public void actionPerformed(ActionEvent e)
             {
-                if(entity.getClass().equals(Player.class)) {
+                if(entity instanceof Player){
                     ((Player)entity).setItemToUse(oldItem);
                 }
             }

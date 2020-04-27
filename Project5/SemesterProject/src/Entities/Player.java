@@ -33,8 +33,14 @@ public class Player extends Entity{
            }
         }
         Skill selectedSkill = this.skillToUse;
-        System.out.println(this.getClass().getSimpleName() + " used: " + selectedSkill.getDescription()); // TODO: delete when done
         return selectedSkill;
+    }
+
+    /**
+     * sets the player to (-1,-1) which is the starting point of all levels
+     */
+    public void resetPos(){
+        this.setPos(new int[]{-1,-1});
     }
 
     /**
@@ -74,9 +80,8 @@ public class Player extends Entity{
      */
     public void promptSwap(Item newItem){
         this.swappingItem = newItem;
-        this.notifyObserver();
-        System.out.println(this);
-        if(newItem != null) {
+        if(this.getMatchingItem(newItem) != null) {
+            this.notifyObserver();
             while(this.itemToUse == null) {
                 try {
                     Thread.sleep(100);
@@ -85,9 +90,11 @@ public class Player extends Entity{
                 }
             }
             this.equipItem(this.itemToUse);
-            this.itemToUse = null;
+        } else {
+            this.equipItem(newItem);
         }
-        System.out.println(this);
+        this.itemToUse = null;
+        this.swappingItem = null;
         this.returnToFloor();
     }
 

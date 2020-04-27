@@ -3,6 +3,7 @@ package Graphics;
 import Entities.Enemy;
 import Entities.Entity;
 import Entities.Player;
+import Game.Game;
 import Interactions.Interactable;
 import Items.Item;
 import Rooms.Floor;
@@ -88,6 +89,12 @@ public class FloorGraphics extends Graphics {
 
         entityInfoPanel.add(Box.createRigidArea(new Dimension(100, 20)));
 
+        JLabel currentLevel = new JLabel("Level: " + Integer.toString(Game.getCurrentLevel()));
+        currentLevel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        entityInfoPanel.add(currentLevel);
+
+        entityInfoPanel.add(Box.createRigidArea(new Dimension(100, 30)));
+
         JLabel entityInfoTitle = new JLabel("Player Info");
         entityInfoTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
         entityInfoPanel.add(entityInfoTitle);
@@ -107,6 +114,8 @@ public class FloorGraphics extends Graphics {
         JLabel manaLabel = new JLabel("Mana: " + Integer.toString(mana));
         manaLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         entityInfoPanel.add(manaLabel);
+
+        entityInfoPanel.add(Box.createRigidArea(new Dimension(100, 30)));
 
         JLabel attackLabel = new JLabel("Attack: " + Integer.toString(attack));
         attackLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -182,6 +191,9 @@ public class FloorGraphics extends Graphics {
                 String text = currentRoom.getClass().getSimpleName();
                 JButton button = new JButton(text);
                 int[] playerPos = player.getPos();
+                if(currentRoom.isFloorEnd()){
+                    button.setText("Exit Floor");
+                }
                 if(Math.abs(x - playerPos[0]) > 1 || Math.abs(y - playerPos[1]) > 1){
                     button.setText("");
                     button.setEnabled(false);
@@ -190,7 +202,6 @@ public class FloorGraphics extends Graphics {
                     button.setText("Visited");
                     button.setEnabled(false);
                 }
-                // TODO: Check in about displaying last room
 
                 int finalX = x;
                 int finalY = y;
@@ -198,16 +209,7 @@ public class FloorGraphics extends Graphics {
                 {
                     public void actionPerformed(ActionEvent e)
                     {
-                        currentRoom.visit();
-                        if(currentRoom instanceof TrapRoom){
-                            Puzzle puzzle = ((TrapRoom)currentRoom).getPuzzle();
-                            floor.setNextIntractable(puzzle);
-                            puzzle.setFloor(floor);
-                        } else {
-                            floor.setNextIntractable(player);
-                            player.setFloor(floor);
-                        }
-                        currentRoom.enterRoom(player);
+                        floor.makeMove(currentRoom);
                         player.setPos(new int[]{finalX, finalY});
                     }
                 });

@@ -47,12 +47,7 @@ public class GameGraphics extends Graphics {
         {
             public void actionPerformed(ActionEvent e)
             {
-                /*
-                 TODO: 1. create floor factory
-                 TODO: 2. create floor with factory
-                 TODO: 3. set floor's factory
-                 TODO: 4. display floor
-                 */
+                game.startGame();
             }
         });
         exitGameButton.setAlignmentX(Component.CENTER_ALIGNMENT);

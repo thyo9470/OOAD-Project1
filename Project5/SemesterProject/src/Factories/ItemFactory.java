@@ -13,7 +13,7 @@ public class ItemFactory {
     private List<String> itemTypes = new ArrayList<String>();
     private List<String> skillTypes = new ArrayList<String>();
 
-    public ItemFactory(ItemFactory factory){
+    public ItemFactory(){
         itemTypes.add("Armor");
         itemTypes.add("Helmet");
         itemTypes.add("MainHand");

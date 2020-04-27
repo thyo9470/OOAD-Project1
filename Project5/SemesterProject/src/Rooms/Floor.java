@@ -1,111 +1,26 @@
 package Rooms;
 
-import Entities.Entity;
 import Entities.Player;
-import Graphics.GraphicsHandler;
+import Factories.FloorFactory;
+import Game.Game;
 import Interactions.Interactable;
-import Items.Helmet;
-import Items.Item;
-import Items.MainHand;
-import Items.Skills.DamageAbility;
-import Items.Skills.RecoverManaAbility;
-import Items.Skills.Skill;
 
+import java.awt.desktop.SystemSleepEvent;
 import java.util.ArrayList;
 
 public class Floor extends Interactable {
 
-    private static ArrayList<Object> dummyRoomMap;
-    public static void main(String[] args) {
-
-        dummyRoomMap = new ArrayList<>();
-        Interactable floor = new Floor(dummyRoomMap);
-
-
-        GraphicsHandler graphicsHandler = new GraphicsHandler();
-        graphicsHandler.setInteractable(floor);
-        floor.registerObserver(graphicsHandler);
-
-        for(ArrayList<Room> roomRow : ((Floor)floor).getRoomMap()) {
-            for(Room room : roomRow){
-                if(room instanceof TrapRoom){
-                   Puzzle puzzle = ((TrapRoom)room).getPuzzle();
-                   puzzle.registerObserver(graphicsHandler);
-                }
-            }
-        }
-
-        Entity player = ((Floor) floor).getPlayer();
-        player.registerObserver(graphicsHandler);
-
-        graphicsHandler.changeDisplay();
-
-    }
-
-    // private FloorFactory floorFactory; TODO: make floor factory
+    private FloorFactory floorFactory;
     private ArrayList<ArrayList<Room>> roomMap;
     private Player player;
     final private int ROWS = 10;
     final private int COLS = 12;
 
-    public Floor(ArrayList<ArrayList<Room>> roomMap) {
+    public Floor(ArrayList<ArrayList<Room>> roomMap, FloorFactory floorFactory) {
 
-        //preserving this code for future reference if needed
-        /*
-        this.roomMap = new ArrayList<>();
-        for(int x = 0; x < this.COLS; x++){
-            ArrayList<Room> roomRow = new ArrayList<>();
-            for(int y = 0; y < this.ROWS; y++){
-                if(y % 3 == 0) {
-                    EnemyRoom enemyRoom = new EnemyRoom();
+        this.roomMap = roomMap;
+        this.floorFactory = floorFactory;
 
-                    Enemy enemy = new Enemy("enemy");
-                    Skill knifeSkill = new Skill("stab");
-                    DamageAbility damageAbility = new DamageAbility("10 base damage", 10, 20, 0);
-                    knifeSkill.addAbility(damageAbility);
-                    Item knife = new MainHand("knife", knifeSkill);
-                    ((Enemy)enemy).setRewardItem(knife);
-
-                    enemyRoom.setEnemy(enemy);
-
-                    roomRow.add(enemyRoom);
-                } else if (y % 4 == 0){
-                    TrapRoom trapRoom = new TrapRoom();
-                    PuzzleQuestion puzzleQuestion = new PuzzleQuestion();
-                    Puzzle puzzle = new Puzzle(puzzleQuestion);
-                    trapRoom.setPuzzle(puzzle);
-                    roomRow.add(trapRoom);
-                } else {
-                    TreasureRoom treasureRoom = new TreasureRoom();
-                    Skill hatSkill = new Skill("Sit on head");
-                    RecoverManaAbility recoverManaAbility = new RecoverManaAbility("Recover 20 mana", 20, 0, 0);
-                    hatSkill.addAbility(recoverManaAbility);
-                    Item hat = new Helmet("hat 2.0", hatSkill);
-                    treasureRoom.setItem(hat);
-                    roomRow.add(treasureRoom);
-                }
-            }
-            this.roomMap.add(roomRow);
-        }
-
-         */
-
-        // create Player
-        Interactable player = new Player("player");
-        Skill hatSkill = new Skill("Sit on head");
-        RecoverManaAbility recoverManaAbility = new RecoverManaAbility("Recover 20 mana", 20, 0, 0);
-        hatSkill.addAbility(recoverManaAbility);
-        Item hat = new Helmet("hat", hatSkill);
-        ((Entity)player).equipItem(hat);
-
-        // equip main hand item
-        Skill swordSkill = new Skill("stab");
-        DamageAbility damageAbility = new DamageAbility("10 base damage", 10, 20, 0);
-        swordSkill.addAbility(damageAbility);
-        Item sword = new MainHand("Sword", swordSkill);
-        ((Entity)player).equipItem(sword);
-
-        this.player = ((Player)player);
     }
 
     public void setPlayer(Player player) {
@@ -114,10 +29,6 @@ public class Floor extends Interactable {
 
     public Player getPlayer() {
         return player;
-    }
-
-    public void setRoomMap(ArrayList<ArrayList<Room>> roomMap) {
-        this.roomMap = roomMap;
     }
 
     public ArrayList<ArrayList<Room>> getRoomMap() {
@@ -130,6 +41,40 @@ public class Floor extends Interactable {
 
     public void makeMove(Room room) {
         // make player move to shtuff
+        if(room.isFloorEnd()){
+            System.out.println("EXIT PRESSED");
+            if(Game.getCurrentLevel() == Game.getLastLevel()){
+                // End Game
+            }else {
+                System.out.println("CREATE NE FLOOR");
+                Interactable floor = this.floorFactory.makeFloor();
+                ((Floor)floor).setPlayer((Player)this.player);
+                ((Player)this.player).setPos(new int[]{-1,-1});
+                Game.levelUp();
+                this.setNextIntractable(floor);
+                for(ArrayList<Room> roomRow : ((Floor)floor).getRoomMap()) {
+                    for(Room roomlet : roomRow){
+                        if(roomlet instanceof TrapRoom){
+                            Puzzle puzzle = ((TrapRoom)roomlet).getPuzzle();
+                            puzzle.registerObserver(this.graphicsHandler);
+                        }
+                    }
+                }
+                this.notifyObserver();
+            }
+            return;
+        }
+
+        room.visit();
+        if(room instanceof TrapRoom){
+            Puzzle puzzle = ((TrapRoom)room).getPuzzle();
+            this.setNextIntractable(puzzle);
+            puzzle.setFloor(this);
+        } else {
+            this.setNextIntractable(this.player);
+            this.player.setFloor(this);
+        }
+        room.enterRoom(this.player);
     }
 
 }
