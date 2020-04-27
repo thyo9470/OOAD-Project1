@@ -1,8 +1,5 @@
 package Items;
 
-import Entities.Enemy;
-import Entities.Entity;
-import Entities.Player;
 import Items.Skills.Skill;
 import Items.Skills.SkillAbility;
 

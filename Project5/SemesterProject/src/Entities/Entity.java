@@ -6,6 +6,7 @@ import Interactions.Interactable;
 import Items.Skills.DamageAbility;
 import Items.Skills.RecoverManaAbility;
 import Items.Skills.Skill;
+import Items.Skills.SkillAbility;
 
 import java.util.ArrayList;
 
@@ -28,10 +29,11 @@ public abstract class Entity extends Interactable {
         this.mana = 100;
 
         // Everything spawns with at least undies
-        //Skill nothing = new Skill("Shiver");
-        //Item undies = new Armor("Undies", nothing);
+        SkillAbility shiver = new RecoverManaAbility("Shiver", 10, 0,0);
+        Skill nothing = new Skill("Shiver");
+        Item undies = new Armor("Undies", nothing);
 
-        //this.equipItem(undies);
+        this.equipItem(undies);
     }
 
     /**
@@ -157,6 +159,7 @@ public abstract class Entity extends Interactable {
      * @param amount - how much pre-defense damage being dealt
      */
     public void damage(int amount){
+        System.out.println(this.getDefense());
         this.health -= amount/(this.getDefense() + 1);
     }
 
@@ -177,7 +180,6 @@ public abstract class Entity extends Interactable {
      * @return
      */
     @Override
-    // TODO: Use this for floor display and format to be in HTML
     public String toString() {
         String fullDescription = description;
         fullDescription += " || Health: " + this.getHealth();
@@ -200,12 +202,10 @@ public abstract class Entity extends Interactable {
 
     /**
      * Subtracts a given amount of mana from an entity
-     * TODO: determine if we want to use defense to help calculate the mana drained
      *
      * @param amount - how much mana to drain from entity
      */
     public void drainMana(int amount){
-        System.out.println("Draining mana: " + Integer.toString(amount));
         this.mana -= amount;
     }
 

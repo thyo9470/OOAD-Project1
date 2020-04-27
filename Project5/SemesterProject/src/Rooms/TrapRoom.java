@@ -1,6 +1,7 @@
 package Rooms;
 
 
+import Entities.Entity;
 import Interactions.Interactable;
 
 public class TrapRoom extends Room{
@@ -24,8 +25,9 @@ public class TrapRoom extends Room{
      * Asks player the Puzzle Question
      * @param entity: currentEntity
      */
-    public void interact(Entities.Entity entity){
+    public void interact(Entity entity){
 
+        this.puzzle.setEntity(entity);
         this.puzzle.askQuestion();
 
     }

@@ -1,30 +1,31 @@
 package Rooms;
 
-import Graphics.GraphicsHandler;
+import Entities.Entity;
 import Interactions.Interactable;
-import Interactions.Observer;
+import Items.Item;
 
 public class Puzzle extends Interactable {
 
-
     private PuzzleQuestion puzzleQuestion;
-
-    // TODO: delete when done testing
-    public static void main(String[] args) {
-
-        PuzzleQuestion puzzleQuestion = new PuzzleQuestion();
-        Puzzle puzzle = new Puzzle(puzzleQuestion);
-
-        GraphicsHandler graphicsHandler = new GraphicsHandler();
-        graphicsHandler.setInteractable(puzzle);
-        puzzle.registerObserver(graphicsHandler);
-
-        puzzle.askQuestion();
-
-    }
+    private Item rewardItem;
+    private Entity entity;
+    private int damage;
 
     public Puzzle(PuzzleQuestion puzzleQuestion){
         this.puzzleQuestion = puzzleQuestion;
+        this.damage = 500;
+    }
+
+    public void setRewardItem(Item rewardItem) {
+        this.rewardItem = rewardItem;
+    }
+
+    public void setEntity(Entity entity) {
+        this.entity = entity;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
     }
 
     /**
@@ -37,8 +38,10 @@ public class Puzzle extends Interactable {
 
     /**
      * calls the actual question/puzzle
+     * Waits for answer
+     * If correct: give item
+     * if wrong: damage player
      */
-
     public void askQuestion(){
         //asks the player the question
 
@@ -51,20 +54,24 @@ public class Puzzle extends Interactable {
             }
         }
         if(this.puzzleQuestion.checkAnswer()){
-            // TODO: make good things happen
-            // TODO: maybe have the puzzle store an item with it so that it can reward an item
-            System.out.println("GOOD ANSWER!");
+            if(this.rewardItem != null) {
+                entity.promptSwap(this.rewardItem);
+            }
         } else {
-            // TODO: make bad things happen
-            // TODO: think of bad things: damage, manaDrain, losing an item, etc.
-            System.out.println("BAD ANSWER!");
+            System.out.println(this.damage);
+            entity.damage(this.damage);
         }
         this.puzzleQuestion.setAnswer(null);
 
         this.returnToFloor();
     }
 
-    public void asnwerQuestion(String answer) {
+    /**
+     * used by graphics to give an answer to the question
+     *
+     * @param answer:String
+     */
+    public void answerQuestion(String answer) {
         this.puzzleQuestion.setAnswer(answer);
     }
 }

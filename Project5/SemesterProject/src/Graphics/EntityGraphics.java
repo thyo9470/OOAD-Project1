@@ -31,7 +31,6 @@ public class EntityGraphics extends Graphics {
 
     /**
      * given an empty JFrame it will construct any scence that are for entities: battles and swap item
-     *  TODO: add swap item GUI
      *
      * @param frame: JFrame
      */

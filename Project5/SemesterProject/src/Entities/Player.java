@@ -51,7 +51,6 @@ public class Player extends Entity{
     @Override
     public void battle(Entity opponent) {
 
-
         this.enemy = opponent;
 
         this.notifyObserver();

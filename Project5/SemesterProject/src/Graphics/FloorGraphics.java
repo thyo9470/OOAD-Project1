@@ -1,15 +1,11 @@
 package Graphics;
 
-import Entities.Enemy;
 import Entities.Entity;
-import Entities.Player;
 import Game.Game;
 import Interactions.Interactable;
 import Items.Item;
 import Rooms.Floor;
-import Rooms.Puzzle;
 import Rooms.Room;
-import Rooms.TrapRoom;
 
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
@@ -31,24 +27,50 @@ public class FloorGraphics extends Graphics {
 
     /**
      * given an empty JFrame, this displays everything for the exploration part of the game
+     *  - this will also handle displaying the game over display
      *
      * @param frame: JFrame
      */
     @Override
     public void createDisplay(JFrame frame) {
 
-        // TODO: get Floor object to work
-        Floor floor = (Floor) this.interactable;
-        Entity entity = floor.getPlayer();
+        if(Game.getGameOver()){
+            JPanel gameOverPanel = new JPanel();
+            gameOverPanel.setLayout(new BoxLayout(gameOverPanel, BoxLayout.Y_AXIS));
 
-        JPanel leftPanel = this.createLeftPanel(entity);
+            JLabel gameOverLabel = new JLabel("GAME OVER");
+            gameOverLabel.setFont (gameOverLabel.getFont ().deriveFont (64.0f));
+            gameOverLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        // Tile Map Panel
-        // TODO: make createTileMap take as input the dungeon grid
-        JPanel tileMapPanel = this.createTileMapPanel(floor);
+            JButton exitButton = new JButton("Exit");
+            exitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+            exitButton.addActionListener(new ActionListener()
+            {
+                public void actionPerformed(ActionEvent e)
+                {
+                    frame.dispose();
+                }
+            });
 
-        frame.getContentPane().add(BorderLayout.EAST, leftPanel);
-        frame.getContentPane().add(BorderLayout.CENTER, tileMapPanel);
+            gameOverPanel.add(Box.createRigidArea(new Dimension(100, 100)));
+            gameOverPanel.add(gameOverLabel);
+            gameOverPanel.add(Box.createRigidArea(new Dimension(100, 100)));
+            gameOverPanel.add(exitButton);
+
+            frame.add(gameOverPanel);
+
+        } else {
+            Floor floor = (Floor) this.interactable;
+            Entity entity = floor.getPlayer();
+
+            JPanel leftPanel = this.createLeftPanel(entity);
+
+            // Tile Map Panel
+            JPanel tileMapPanel = this.createTileMapPanel(floor);
+
+            frame.getContentPane().add(BorderLayout.EAST, leftPanel);
+            frame.getContentPane().add(BorderLayout.CENTER, tileMapPanel);
+        }
 
         frame.setVisible(true);
     }
@@ -106,7 +128,6 @@ public class FloorGraphics extends Graphics {
 
         entityInfoPanel.add(Box.createRigidArea(new Dimension(100, 50)));
 
-        // TODO: change this to just use player toString that will in the future produce HTML representation of itself
         JLabel healthLabel = new JLabel("Health: " + Integer.toString(health));
         healthLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         entityInfoPanel.add(healthLabel);
@@ -155,7 +176,6 @@ public class FloorGraphics extends Graphics {
         for(Item item: equippedItems){
             JLabel itemLabel = new JLabel(item.getDescription());
 
-            // TODO: improve tool tips
             UIManager.put("ToolTip.background", Color.WHITE);
             UIManager.put("ToolTip.font", new FontUIResource("SansSerif", Font.BOLD, 12));
             itemLabel.setToolTipText(item.toString());
@@ -171,7 +191,6 @@ public class FloorGraphics extends Graphics {
 
     /**
      * Creates the map of the dungeon floor
-     * TODO: determine if this needs to be passed the tile map
      *
      * @return JPanel
      */

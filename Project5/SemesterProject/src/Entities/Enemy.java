@@ -14,7 +14,7 @@ public class Enemy extends Entity{
 
     @Override
     public void promptSwap(Item newItem) {
-        // TODO: create way for enemy to swap item
+        this.equipItem(newItem);
     }
 
     public Item getRewardItem() {
@@ -55,7 +55,7 @@ public class Enemy extends Entity{
         }
 
         if(opponent.getHealth() <= 0) {
-            // TODO: enemy wins
+            opponent.returnToFloor();
         } else {
             opponent.battle(this);
         }

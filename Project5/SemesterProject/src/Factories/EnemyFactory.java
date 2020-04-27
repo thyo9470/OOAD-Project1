@@ -18,13 +18,7 @@ public class EnemyFactory {
         DamageAbility damageAbility = new DamageAbility("10 base damage", 10, 20, 0);
         knifeSkill.addAbility(damageAbility);
         Item knife = new MainHand("knife", knifeSkill);
-        //enemy.equipItem(knife);
-
-        Skill recoverSkill = new Skill("recover");
-        RecoverManaAbility recoverAbility = new RecoverManaAbility("Recover mana", 10, 0, 0);
-        recoverSkill.addAbility(recoverAbility);
-        Item pants = new Armor("Pants", recoverSkill);
-        enemy.equipItem(pants);
+        enemy.equipItem(knife);
 
         return enemy;
     }

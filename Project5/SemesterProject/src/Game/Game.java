@@ -5,7 +5,6 @@ import Entities.Player;
 import Factories.FloorFactory;
 import Graphics.GraphicsHandler;
 import Interactions.Interactable;
-import Interactions.Observer;
 import Items.Helmet;
 import Items.Item;
 import Items.MainHand;
@@ -22,6 +21,7 @@ import java.util.ArrayList;
 public class Game extends Interactable {
     static final private int LAST_LEVEL = 5;
     static private int currentLevel;
+    static private boolean gameOver = true;
 
     static public int getLastLevel() {
         return LAST_LEVEL;
@@ -32,19 +32,25 @@ public class Game extends Interactable {
 
     private GraphicsHandler graphicsHandler;
 
-    // TODO: delete when done testing
     public static void main(String[] args) {
 
         // create Game
         GraphicsHandler graphicsHandler = new GraphicsHandler();
         Interactable game = new Game(graphicsHandler);
 
-
     }
 
     static public void levelUp() {
         // level up i assume is just:
         currentLevel++;
+    }
+
+    static public boolean getGameOver() {
+        return gameOver;
+    }
+
+    static public void setGameOver(){
+        gameOver = true;
     }
 
     public Game(GraphicsHandler graphicsHandler){

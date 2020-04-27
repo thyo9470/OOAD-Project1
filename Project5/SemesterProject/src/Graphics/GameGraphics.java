@@ -19,8 +19,6 @@ public class GameGraphics extends Graphics {
         }
     }
 
-    // TODO: make the buttons actually do something
-
     /**
      * Given an empty JFrame, this constructs the main menu
      *

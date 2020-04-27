@@ -52,8 +52,7 @@ public class GraphicsHandler implements Observer {
      * For example: going from main menu to exploration phase or going from exploration to battle
      *
      */
-    //private void changeDisplay() {
-    private void changeDisplay() { // TODO: change this to private after
+    private void changeDisplay() {
 
         this.frame.getRootPane().getContentPane().removeAll();
 

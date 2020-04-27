@@ -72,7 +72,7 @@ public class PuzzleGraphics extends Graphics {
                 for (AbstractButton button : listRadioButton) {
                     if(button.isSelected()){
                         String answer = ((JRadioButton) button).getActionCommand();
-                        puzzle.asnwerQuestion(answer);
+                        puzzle.answerQuestion(answer);
                     }
                 }
             }

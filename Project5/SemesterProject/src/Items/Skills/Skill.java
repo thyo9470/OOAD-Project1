@@ -4,7 +4,6 @@ import Entities.Entity;
 
 import java.util.ArrayList;
 
-// TODO: Make into Strategy Pattern
 public class Skill {
 
     private String description;

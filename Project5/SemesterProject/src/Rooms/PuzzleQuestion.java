@@ -96,66 +96,66 @@ public class PuzzleQuestion {
             //its question 1 so return options
             this.options = question1;
             //Used for printing out to test
-            System.out.println(Arrays.toString(this.options));
+
             return this.options;
         } else if (this.questionBank.get(1).equals(this.question)){
             //its question2 so return options
             this.options = question2;
-            System.out.println(Arrays.toString(this.options));
+
             return this.options;
         } else if (this.questionBank.get(2).equals(this.question)){
             this.options = question3;
-            System.out.println(Arrays.toString(this.options));
+
             return this.options;
 
         } else if (this.questionBank.get(3).equals(this.question)){
             this.options = question4;
-            System.out.println(Arrays.toString(this.options));
+
             return this.options;
 
         } else if (this.questionBank.get(4).equals(this.question)){
             this.options = question5;
-            System.out.println(Arrays.toString(this.options));
+
             return this.options;
         } else if(this.questionBank.get(5).equals(this.question)){
             this.options = question6;
-            System.out.println(Arrays.toString(this.options));
+
             return this.options;
         } else if(this.questionBank.get(6).equals(this.question)) {
             this.options = question7;
-            System.out.println(Arrays.toString(this.options));
+
             return this.options;
         } else if(this.questionBank.get(7).equals(this.question)) {
             this.options = question8;
-            System.out.println(Arrays.toString(this.options));
+
             return this.options;
         } else if(this.questionBank.get(8).equals(this.question)) {
             this.options = question9;
-            System.out.println(Arrays.toString(this.options));
+
             return this.options;
         } else if(this.questionBank.get(9).equals(this.question)) {
             this.options = question10;
-            System.out.println(Arrays.toString(this.options));
+
             return this.options;
         } else if(this.questionBank.get(10).equals(this.question)){
             this.options = question11;
-            System.out.println(Arrays.toString(this.options));
+
             return this.options;
         } else if(this.questionBank.get(11).equals(this.question)) {
             this.options = question12;
-            System.out.println(Arrays.toString(this.options));
+
             return this.options;
         } else if(this.questionBank.get(12).equals(this.question)) {
             this.options = question13;
-            System.out.println(Arrays.toString(this.options));
+
             return this.options;
         } else if(this.questionBank.get(13).equals(this.question)){
             this.options = question14;
-            System.out.println(Arrays.toString(this.options));
+
             return this.options;
         } else {
             this.options = question15;
-            System.out.println(Arrays.toString(this.options));
+
             return this.options;
 
         }
