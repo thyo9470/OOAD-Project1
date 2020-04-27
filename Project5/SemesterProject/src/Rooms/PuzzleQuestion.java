@@ -4,7 +4,6 @@ import java.lang.String;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 import java.util.Arrays;
 
 
@@ -22,11 +21,6 @@ public class PuzzleQuestion {
 
 
     private List<String> questionBank = new ArrayList<>();
-    private String[] q1;
-    private String[] q2;
-    private String[] q3;
-    private String[] q4;
-    private String[] q5;
 
     public PuzzleQuestion() {
        this.setRandomQuestion();
@@ -50,6 +44,16 @@ public class PuzzleQuestion {
         questionBank.add("What animal left Earth in Hitchhikers Guide to the Galaxy?");
         questionBank.add("Which one is NOT a Star Wars Character?");
         questionBank.add("Solve: (15 + 28 / 12) + 17 * 0 + 69 ?");
+        questionBank.add("Which of these movies is Chris Evans not int?");
+        questionBank.add("How many Star Wars movies are there?");
+        questionBank.add("When was CU Boulder Founded?");
+        questionBank.add("What is the state flower of Colorado?");
+        questionBank.add("Which Beatle was the youngest Beatle?");
+        questionBank.add("Who was the 28th President?");
+        questionBank.add("What weapon does Gimli from Lord of the Rings wield?");
+        questionBank.add("How many swallows does it take to carry a coconut?");
+        questionBank.add("When is the Queen of England's Birthday?");
+        questionBank.add("How big is the Earth's radius?");
         this.question = this.questionBank.get(rand.nextInt(questionBank.size()));
     }
 
@@ -59,7 +63,7 @@ public class PuzzleQuestion {
 
     /**
      * Getters and setters for the questions
-     * @return
+     * @return getOptionforCurrQuestion
      */
     public String[] getOptions(){
 
@@ -72,6 +76,16 @@ public class PuzzleQuestion {
         String[] question3 = {"Dolphins", "Snails", "Baboons"};
         String[] question4 = {"Han Solo", "Jabba The Hutt", "Boogaloo"};
         String[] question5 = {"89.583", "89.5", "69"};
+        String[] question6 = {"Spiderman Homecoming", "Thor II", "Antman"};
+        String[] question7 = {"9", "11", "7"};
+        String[] question8 = {"1876", "1899", "1912"};
+        String[] question9 = {"Columbine", "Poppy", "Petunia"};
+        String[] question10 = {"Ringo", "John", "George"};
+        String[] question11 = {"William Taft", "Woodrow Wilson", "Theodore Roosevelt"};
+        String[] question12 = {"A Sword", "A Bow", "An Axe"};
+        String[] question13 = {"It depends, African or European", "One", "Two"};
+        String[] question14 = {"April 30th", "May 30th", "April 21st"};
+        String[] question15 = {"3958 miles", "40002 miles", "789 miles"};
 
 
         /**
@@ -99,24 +113,54 @@ public class PuzzleQuestion {
             System.out.println(Arrays.toString(this.options));
             return this.options;
 
-        } else {
+        } else if (this.questionBank.get(4).equals(this.question)){
             this.options = question5;
             System.out.println(Arrays.toString(this.options));
             return this.options;
+        } else if(this.questionBank.get(5).equals(this.question)){
+            this.options = question6;
+            System.out.println(Arrays.toString(this.options));
+            return this.options;
+        } else if(this.questionBank.get(6).equals(this.question)) {
+            this.options = question7;
+            System.out.println(Arrays.toString(this.options));
+            return this.options;
+        } else if(this.questionBank.get(7).equals(this.question)) {
+            this.options = question8;
+            System.out.println(Arrays.toString(this.options));
+            return this.options;
+        } else if(this.questionBank.get(8).equals(this.question)) {
+            this.options = question9;
+            System.out.println(Arrays.toString(this.options));
+            return this.options;
+        } else if(this.questionBank.get(9).equals(this.question)) {
+            this.options = question10;
+            System.out.println(Arrays.toString(this.options));
+            return this.options;
+        } else if(this.questionBank.get(10).equals(this.question)){
+            this.options = question11;
+            System.out.println(Arrays.toString(this.options));
+            return this.options;
+        } else if(this.questionBank.get(11).equals(this.question)) {
+            this.options = question12;
+            System.out.println(Arrays.toString(this.options));
+            return this.options;
+        } else if(this.questionBank.get(12).equals(this.question)) {
+            this.options = question13;
+            System.out.println(Arrays.toString(this.options));
+            return this.options;
+        } else if(this.questionBank.get(13).equals(this.question)){
+            this.options = question14;
+            System.out.println(Arrays.toString(this.options));
+            return this.options;
+        } else {
+            this.options = question15;
+            System.out.println(Arrays.toString(this.options));
+            return this.options;
+
         }
 
     }
-
-    /*public String getAnswer(){
-        //Take in user selection / input
-
-        Scanner sc= new Scanner(System.in); //System.in is a standard input stream
-        System.out.print("Your Answer (1) (2) or (3): ");
-        this.answer= sc.nextLine();              //reads string
-        System.out.print("You have entered: "+ this.answer);
-
-        return this.answer;
-    }*/
 
 
     public boolean checkAnswer(){
@@ -134,6 +178,36 @@ public class PuzzleQuestion {
             //correct
             return true;
         } else if( this.question.equals(this.questionBank.get(4)) && this.answer.equals("69") ){
+            //correct
+            return true;
+        } else if( this.question.equals(this.questionBank.get(5)) && this.answer.equals("Antman") ){
+            //correct
+            return true;
+        } else if( this.question.equals(this.questionBank.get(6)) && this.answer.equals("11") ){
+            //correct
+            return true;
+        } else if( this.question.equals(this.questionBank.get(7)) && this.answer.equals("1876") ){
+            //correct
+            return true;
+        } else if( this.question.equals(this.questionBank.get(8)) && this.answer.equals("Columbine") ){
+            //correct
+            return true;
+        } else if( this.question.equals(this.questionBank.get(9)) && this.answer.equals("George") ){
+            //correct
+            return true;
+        } else if( this.question.equals(this.questionBank.get(10)) && this.answer.equals("Woodrow Wilson") ){
+            //correct
+            return true;
+        } else if( this.question.equals(this.questionBank.get(11)) && this.answer.equals("An Axe") ){
+            //correct
+            return true;
+        } else if( this.question.equals(this.questionBank.get(12)) && this.answer.equals("It depends, African or European")){
+            //correct
+            return true;
+        } else if( this.question.equals(this.questionBank.get(13)) && this.answer.equals("April 21st") ){
+            //correct
+            return true;
+        } else if( this.question.equals(this.questionBank.get(14)) && this.answer.equals("3958 miles") ){
             //correct
             return true;
         } else {
