@@ -14,15 +14,9 @@ public class EnemyFactory {
 
     public Enemy createEnemy(){
 
-        Random rand = new Random();
-        double random = rand.nextDouble();
         Enemy enemy = new Enemy("enemy");
-        if(random < 0.5){
-            enemy.equipItem(itemFactory.createNewItem("Helmet"));
-        }
-        else{
-            enemy.equipItem(itemFactory.createNewItem("OffHand"));
-        }
+        enemy.equipItem(itemFactory.enemyDefaultItem());
+        enemy.equipItem(itemFactory.createItem());
         return enemy;
     }
 }
