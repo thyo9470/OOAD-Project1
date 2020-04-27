@@ -48,20 +48,12 @@ public class GraphicsHandler implements Observer {
     }
 
     /**
-     *  Will return a user to the exploration floor after interacting with a room
-     *
-     */
-    public void returnToFloor() {
-        // TODO: implement when we have to move to previous graphics elements
-    }
-
-    /**
      * Will change the display when going from scene to scene
      * For example: going from main menu to exploration phase or going from exploration to battle
      *
      */
     //private void changeDisplay() {
-    public void changeDisplay() { // TODO: change this to private after
+    private void changeDisplay() { // TODO: change this to private after
 
         this.frame.getRootPane().getContentPane().removeAll();
 

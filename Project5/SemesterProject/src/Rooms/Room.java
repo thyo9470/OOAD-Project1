@@ -36,6 +36,10 @@ public abstract class Room {
         return floorEnd;
     }
 
+    public void setFloorEnd(){
+        this.floorEnd = true;
+    }
+
 
     /**
      * Used to interact with a specific room and it's objects

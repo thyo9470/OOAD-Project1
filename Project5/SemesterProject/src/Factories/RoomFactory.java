@@ -10,13 +10,14 @@ import java.util.Random;
 public class RoomFactory {
 
     //References to specific room type factories
-    private EnemyFactory EnemyFactory;
-    private ItemFactory ItemFactory;
-    private PuzzleFactory PuzzleFactory;
-    private RoomFactory factory;
+    private EnemyFactory enemyFactory;
+    private ItemFactory itemFactory;
+    private PuzzleFactory puzzleFactory;
 
-    public RoomFactory(RoomFactory factory){
-        this.factory = factory;
+    public RoomFactory(){
+        this.enemyFactory = new EnemyFactory();
+        this.itemFactory = new ItemFactory();
+        this.puzzleFactory = new PuzzleFactory();
     }
 
     public Room createRandomRoom(){
@@ -24,17 +25,17 @@ public class RoomFactory {
         double random = rand.nextDouble();
         if(random < 0.1){
             TreasureRoom treasureRoom = new TreasureRoom();
-            treasureRoom.setItem(ItemFactory.createItem());
+            treasureRoom.setItem(itemFactory.createItem());
             return treasureRoom;
         }
         else if(random < 0.4){
             TrapRoom puzzleRoom = new TrapRoom();
-            puzzleRoom.setPuzzle(PuzzleFactory.createPuzzle());
+            puzzleRoom.setPuzzle(puzzleFactory.createPuzzle());
             return puzzleRoom;
         }
         else{
             EnemyRoom enemyRoom = new EnemyRoom();
-            enemyRoom.setEnemy(EnemyFactory.createEnemy());
+            enemyRoom.setEnemy(enemyFactory.createEnemy());
             return enemyRoom;
         }
     }

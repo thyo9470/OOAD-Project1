@@ -7,8 +7,8 @@ abstract public class Interactable implements Observable {
 
     protected GraphicsHandler graphicsHandler;
     protected Floor floor;
-    protected Boolean changeState = false;
-    protected Interactable nextIntractable;
+    private Boolean changeState = false;
+    private Interactable nextIntractable;
 
     public Boolean isChangeState() {
         return this.changeState;

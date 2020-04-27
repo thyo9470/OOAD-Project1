@@ -23,18 +23,18 @@ abstract public class Item{
     @Override
     public String toString(){
 
-       description = "<u>" + this.description + "</u><br>";
+       String fullDescription = "<u>" + this.description + "</u><br>";
 
-        description += "<br>Attack: " + this.attack;
-        description += "<br>Defense: " + this.defense;
-        description += "<br><br><u>Skill</u>: " + this.skill.getDescription();
+        fullDescription += "<br>Attack: " + this.attack;
+        fullDescription += "<br>Defense: " + this.defense;
+        fullDescription += "<br><br><u>Skill</u>: " + this.skill.getDescription();
         for(SkillAbility ability: this.skill.getSkillAbilities()){
-            description += "<br>" + ability.getClass().getSimpleName() + ": " + ability.getDescription();
+            fullDescription += "<br>" + ability.getClass().getSimpleName() + ": " + ability.getDescription();
         }
 
-        description = "<html>" + description + "</html>";
+        fullDescription = "<html>" + fullDescription + "</html>";
 
-        return description;
+        return fullDescription;
     }
 
     public int getAttack() {

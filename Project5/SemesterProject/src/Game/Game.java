@@ -1,28 +1,44 @@
 package Game;
 
+import Entities.Entity;
+import Entities.Player;
+import Factories.FloorFactory;
 import Graphics.GraphicsHandler;
 import Interactions.Interactable;
 import Interactions.Observer;
+import Items.Helmet;
+import Items.Item;
+import Items.MainHand;
+import Items.Skills.DamageAbility;
+import Items.Skills.RecoverManaAbility;
+import Items.Skills.Skill;
+import Rooms.Floor;
+import Rooms.Puzzle;
+import Rooms.Room;
+import Rooms.TrapRoom;
+
+import java.util.ArrayList;
 
 public class Game extends Interactable {
-    static private int lastLevel;
+    static final private int LAST_LEVEL = 5;
     static private int currentLevel;
 
     static public int getLastLevel() {
-        return lastLevel;
+        return LAST_LEVEL;
     }
     static public int getCurrentLevel() {
         return currentLevel;
     }
 
+    private GraphicsHandler graphicsHandler;
+
     // TODO: delete when done testing
     public static void main(String[] args) {
 
         // create Game
-        Interactable game = new Game();
-
         GraphicsHandler graphicsHandler = new GraphicsHandler();
-        graphicsHandler.drawGameMenu(game);
+        Interactable game = new Game(graphicsHandler);
+
 
     }
 
@@ -31,26 +47,51 @@ public class Game extends Interactable {
         currentLevel++;
     }
 
-    private void setupGame() {
-        // setup game objects and stuff
+    public Game(GraphicsHandler graphicsHandler){
+        this.graphicsHandler = graphicsHandler;
+        graphicsHandler.drawGameMenu(this);
     }
 
-    private void startGame() {
-        // start game
-    }
+    public void startGame() {
+        // Create floor factory and floor
+        FloorFactory floorFactory = new FloorFactory();
 
-    @Override
-    public void registerObserver(Observer observer) {
+        Interactable floor = floorFactory.makeFloor();
 
-    }
+        // create Player
+        Interactable player = new Player("player");
+        Skill hatSkill = new Skill("Sit on head");
+        RecoverManaAbility recoverManaAbility = new RecoverManaAbility("Recover 20 mana", 20, 0, 0);
+        hatSkill.addAbility(recoverManaAbility);
+        Item hat = new Helmet("hat", hatSkill);
+        ((Entity)player).equipItem(hat);
 
-    @Override
-    public void removeObserver(Observer observer) {
+        // equip main hand item
+        Skill swordSkill = new Skill("stab");
+        DamageAbility damageAbility = new DamageAbility("10 base damage", 10, 20, 0);
+        swordSkill.addAbility(damageAbility);
+        Item sword = new MainHand("Sword", swordSkill);
+        ((Entity)player).equipItem(sword);
 
-    }
+        ((Floor)floor).setPlayer((Player)player);
 
-    @Override
-    public void notifyObserver() {
+        this.graphicsHandler.setInteractable(floor);
+        floor.registerObserver(this.graphicsHandler);
 
+
+        for(ArrayList<Room> roomRow : ((Floor)floor).getRoomMap()) {
+            for(Room room : roomRow){
+                if(room instanceof TrapRoom){
+                    Puzzle puzzle = ((TrapRoom)room).getPuzzle();
+                    puzzle.registerObserver(this.graphicsHandler);
+                }
+            }
+        }
+
+        player.registerObserver(this.graphicsHandler);
+        this.registerObserver(this.graphicsHandler);
+
+        this.setNextIntractable(floor);
+        this.notifyObserver();
     }
 }

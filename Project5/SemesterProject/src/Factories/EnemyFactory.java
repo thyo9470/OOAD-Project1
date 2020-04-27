@@ -1,21 +1,31 @@
 package Factories;
 
 import Entities.Enemy;
+import Items.Armor;
 import Items.Item;
+import Items.MainHand;
+import Items.Skills.DamageAbility;
+import Items.Skills.RecoverManaAbility;
+import Items.Skills.Skill;
 
 public class EnemyFactory {
 
-    private EnemyFactory factory;
-    private ItemFactory fact;
-
-    public EnemyFactory(EnemyFactory factory){
-        this.factory = factory;
-    }
-
     public Enemy createEnemy(){
 
+        //Todo: add item variety for enemies
         Enemy enemy = new Enemy("enemy");
-        enemy.setRewardItem(fact.createItem());
+        Skill knifeSkill = new Skill("stab");
+        DamageAbility damageAbility = new DamageAbility("10 base damage", 10, 20, 0);
+        knifeSkill.addAbility(damageAbility);
+        Item knife = new MainHand("knife", knifeSkill);
+        //enemy.equipItem(knife);
+
+        Skill recoverSkill = new Skill("recover");
+        RecoverManaAbility recoverAbility = new RecoverManaAbility("Recover mana", 10, 0, 0);
+        recoverSkill.addAbility(recoverAbility);
+        Item pants = new Armor("Pants", recoverSkill);
+        enemy.equipItem(pants);
+
         return enemy;
     }
 }
