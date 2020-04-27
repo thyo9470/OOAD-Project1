@@ -1,6 +1,5 @@
 package Rooms;
 
-import Entities.Enemy;
 import Entities.Entity;
 import Entities.Player;
 import Graphics.GraphicsHandler;
@@ -16,9 +15,11 @@ import java.util.ArrayList;
 
 public class Floor extends Interactable {
 
+    private static ArrayList<Object> dummyRoomMap;
     public static void main(String[] args) {
 
-        Interactable floor = new Floor();
+        dummyRoomMap = new ArrayList<>();
+        Interactable floor = new Floor(dummyRoomMap);
 
 
         GraphicsHandler graphicsHandler = new GraphicsHandler();
@@ -47,8 +48,10 @@ public class Floor extends Interactable {
     final private int ROWS = 10;
     final private int COLS = 12;
 
-    public Floor() {
+    public Floor(ArrayList<ArrayList<Room>> roomMap) {
 
+        //preserving this code for future reference if needed
+        /*
         this.roomMap = new ArrayList<>();
         for(int x = 0; x < this.COLS; x++){
             ArrayList<Room> roomRow = new ArrayList<>();
@@ -84,6 +87,8 @@ public class Floor extends Interactable {
             }
             this.roomMap.add(roomRow);
         }
+
+         */
 
         // create Player
         Interactable player = new Player("player");
