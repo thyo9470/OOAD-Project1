@@ -10,9 +10,9 @@ abstract public class Item{
     private int defense;
     private String description;
 
-    public Item(String description, Skill skill) {
-        this.attack = 10;
-        this.defense = 20;
+    public Item(String description, Skill skill, int attack, int defense) {
+        this.attack = attack;
+        this.defense = defense;
         this.skill = skill;
         this.description = description;
     }

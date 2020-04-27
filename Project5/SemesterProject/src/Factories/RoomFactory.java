@@ -15,8 +15,8 @@ public class RoomFactory {
     private PuzzleFactory puzzleFactory;
 
     public RoomFactory(){
-        this.enemyFactory = new EnemyFactory();
         this.itemFactory = new ItemFactory();
+        this.enemyFactory = new EnemyFactory(itemFactory);
         this.puzzleFactory = new PuzzleFactory();
     }
 

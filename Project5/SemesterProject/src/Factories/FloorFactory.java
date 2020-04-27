@@ -34,8 +34,6 @@ public class FloorFactory {
         Random rand = new Random();
         int exitY = rand.nextInt(this.ROWS - this.ROWS/2) + this.ROWS/2;
         int exitX = rand.nextInt(this.COLS - this.COLS/2) + this.COLS/2;
-        exitY = 2;
-        exitX = 2;
 
         roomMap.get(exitX).get(exitY).setFloorEnd();
 

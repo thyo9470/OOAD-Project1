@@ -1,24 +1,21 @@
 package Factories;
 
 import Entities.Enemy;
-import Items.Armor;
-import Items.Item;
-import Items.MainHand;
-import Items.Skills.DamageAbility;
-import Items.Skills.RecoverManaAbility;
-import Items.Skills.Skill;
 
 public class EnemyFactory {
 
+    private ItemFactory itemFactory;
+
+    public EnemyFactory(ItemFactory itemFactory) {
+       this.itemFactory = itemFactory;
+    }
+
     public Enemy createEnemy(){
 
-        //Todo: add item variety for enemies
+        // TODO: Make sure the enemies have both defense and attack
+        // since one item will pretty much assign only one they end up either being really week or having not attack
         Enemy enemy = new Enemy("enemy");
-        Skill knifeSkill = new Skill("stab");
-        DamageAbility damageAbility = new DamageAbility("10 base damage", 10, 20, 0);
-        knifeSkill.addAbility(damageAbility);
-        Item knife = new MainHand("knife", knifeSkill);
-        enemy.equipItem(knife);
+        enemy.equipItem(itemFactory.createItem());
 
         return enemy;
     }

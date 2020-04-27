@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class Game extends Interactable {
     static final private int LAST_LEVEL = 5;
     static private int currentLevel;
-    static private boolean gameOver = true;
+    static private boolean gameOver = false;
 
     static public int getLastLevel() {
         return LAST_LEVEL;
@@ -69,14 +69,14 @@ public class Game extends Interactable {
         Skill hatSkill = new Skill("Sit on head");
         RecoverManaAbility recoverManaAbility = new RecoverManaAbility("Recover 20 mana", 20, 0, 0);
         hatSkill.addAbility(recoverManaAbility);
-        Item hat = new Helmet("hat", hatSkill);
+        Item hat = new Helmet("hat", hatSkill, 0, 10);
         ((Entity)player).equipItem(hat);
 
         // equip main hand item
         Skill swordSkill = new Skill("stab");
         DamageAbility damageAbility = new DamageAbility("10 base damage", 10, 20, 0);
         swordSkill.addAbility(damageAbility);
-        Item sword = new MainHand("Sword", swordSkill);
+        Item sword = new MainHand("Sword", swordSkill, 10, 0);
         ((Entity)player).equipItem(sword);
 
         ((Floor)floor).setPlayer((Player)player);
