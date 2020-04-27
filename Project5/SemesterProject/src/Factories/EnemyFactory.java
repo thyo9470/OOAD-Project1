@@ -14,9 +14,12 @@ public class EnemyFactory {
 
     public Enemy createEnemy(){
 
+        int level = Game.Game.getCurrentLevel();
         Enemy enemy = new Enemy("enemy");
         enemy.equipItem(itemFactory.enemyDefaultItem());
-        enemy.equipItem(itemFactory.createItem());
+        for(int i = 1; i < level; i++){
+            enemy.equipItem(itemFactory.createItem());
+        }
         return enemy;
     }
 }
