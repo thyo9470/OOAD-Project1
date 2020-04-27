@@ -6,11 +6,13 @@ import Rooms.TrapRoom;
 
 public class PuzzleFactory {
 
+    private ItemFactory itemFactory;
+
     public Puzzle createPuzzle(){
 
-        // TODO: give the puzzle a reward item
-
         PuzzleQuestion puzzleQuestion = new PuzzleQuestion();
-        return new Puzzle(puzzleQuestion);
+        Puzzle puzzle = new Puzzle(puzzleQuestion);
+        puzzle.setRewardItem(itemFactory.createItem());
+        return puzzle;
     }
 }

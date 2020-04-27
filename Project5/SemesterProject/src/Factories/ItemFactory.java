@@ -92,4 +92,23 @@ public class ItemFactory {
             return new OffHand("A mystical artefact to be carried in the useless right hand", newSkill, (int) (30*(level*0.5)), (int) (10*(level*0.5)));
         }
     }
+
+    public Item createNewItem(String type){
+        int level = getCurrentLevel();
+        String skill = chooseSkillType();
+        Skill newSkill = new Skill(String.format("%s's ability", type));
+        newSkill.addAbility(makeSkill(skill));
+        if(type.equals("Armor")){
+            return new Armor("A protective breastplate", newSkill, 0, (int) (40*(level*0.5)));
+        }
+        else if(type == "Helmet"){
+            return new Helmet("A mighty hat to sit upon the head", newSkill, (int) (10*(level*0.5)), (int) (30*(level*0.5)));
+        }
+        else if(type == "MainHand"){
+            return new MainHand("A powerful weapon carried in the primary hand, the left of course", newSkill, (int) (40*(level*0.5)), (int) (0*(level*0.5)));
+        }
+        else{
+            return new OffHand("A mystical artefact to be carried in the useless right hand", newSkill, (int) (30*(level*0.5)), (int) (10*(level*0.5)));
+        }
+    }
 }

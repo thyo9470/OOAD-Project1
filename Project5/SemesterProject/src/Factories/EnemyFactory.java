@@ -2,6 +2,8 @@ package Factories;
 
 import Entities.Enemy;
 
+import java.util.Random;
+
 public class EnemyFactory {
 
     private ItemFactory itemFactory;
@@ -12,11 +14,15 @@ public class EnemyFactory {
 
     public Enemy createEnemy(){
 
-        // TODO: Make sure the enemies have both defense and attack
-        // since one item will pretty much assign only one they end up either being really week or having not attack
+        Random rand = new Random();
+        double random = rand.nextDouble();
         Enemy enemy = new Enemy("enemy");
-        enemy.equipItem(itemFactory.createItem());
-
+        if(random < 0.5){
+            enemy.equipItem(itemFactory.createNewItem("Helmet"));
+        }
+        else{
+            enemy.equipItem(itemFactory.createNewItem("OffHand"));
+        }
         return enemy;
     }
 }
