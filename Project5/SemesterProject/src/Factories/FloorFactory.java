@@ -1,43 +1,53 @@
 package Factories;
 
-import Interactions.Interactable;
+import Game.Game;
 import Rooms.*;
 import Rooms.Floor;
 
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * SIMPLE FACTORY PATTERN
+ * Acts as a simple factory for floors
+ */
 public class FloorFactory {
 
     private RoomFactory roomFactory;
-    private ArrayList<ArrayList<Room>> roomMap;
-    final private int ROWS = 10;
-    final private int COLS = 12;
 
     public FloorFactory(){
         this.roomFactory = new RoomFactory();
     }
 
-    public Interactable makeFloor(){
+    /**
+     * Generates a floor object and populates it with rooms from the roomFactory
+     *  - sets one of the rooms as the end room
+     *  - sets the size of the floor depending on level
+     * @return
+     */
+    public Floor makeFloor(){
+        int rows = Game.getCurrentLevel() * 2;
+        int cols = Game.getCurrentLevel() * 3;
+        System.out.println(Game.getCurrentLevel());
 
         // Create room map for floor
-        roomMap = new ArrayList<>();
-        for(int x = 0; x < COLS; x++){
+        ArrayList<ArrayList<Room>> roomMap = new ArrayList<>();
+        for(int x = 0; x < cols; x++){
             ArrayList<Room> roomRow = new ArrayList<>();
-            for(int y = 0; y < ROWS; y++){
+            for(int y = 0; y < rows; y++){
                 roomRow.add(this.roomFactory.createRandomRoom());
             }
-            this.roomMap.add(roomRow);
+            roomMap.add(roomRow);
         }
 
         // select the end room
         Random rand = new Random();
-        int exitY = rand.nextInt(this.ROWS - this.ROWS/2) + this.ROWS/2;
-        int exitX = rand.nextInt(this.COLS - this.COLS/2) + this.COLS/2;
+        int exitY = rand.nextInt(rows - rows/2) + rows/2;
+        int exitX = rand.nextInt(cols - cols/2) + cols/2;
 
         roomMap.get(exitX).get(exitY).setFloorEnd();
 
-        Interactable floor = new Floor(roomMap, this);
+        Floor floor = new Floor(roomMap, this);
 
         return floor;
     }

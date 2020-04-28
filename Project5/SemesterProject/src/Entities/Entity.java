@@ -1,12 +1,15 @@
 package Entities;
 
-import Graphics.GraphicsHandler;
 import Items.*;
 import Interactions.Interactable;
 import Items.Skills.*;
 
 import java.util.ArrayList;
 
+/**
+ * OBSERVER PATTERN
+ * Acts as one of the observable objects in observer pattern
+ */
 public abstract class Entity extends Interactable {
 
     private int health;
@@ -19,19 +22,49 @@ public abstract class Entity extends Interactable {
 
     public Entity(String description){
 
+        // Starts the player in bottom left corner
         this.pos = new int[]{-1,-1};
 
         this.description = description;
         this.health = 100;
         this.mana = 100;
 
-        // Everything spawns with at least undies
+        // Everybody needs some undies
         SkillAbility shiver = new RecoverManaAbility("Recovers 10 mana", 10, 0,0);
         Skill nothing = new Skill("Shiver");
         nothing.addAbility(shiver);
         Item undies = new Armor("Undies", nothing, 0, 2);
 
         this.equipItem(undies);
+    }
+
+    /**
+     * @return String: entity description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * @return int[2]: current entity position on the board
+     */
+    public int[] getPos() {
+        return pos;
+    }
+
+    /**
+     * sets the entity's position on the board.
+     * @param pos:int[2]: new player position
+     */
+    public void setPos(int[] pos) {
+        this.pos = pos;
+    }
+
+    /**
+     * sets the entity's position to (-1,-1) which is the starting point of all levels
+     */
+    public void resetPos(){
+        this.setPos(new int[]{-1,-1});
     }
 
     /**
@@ -44,14 +77,12 @@ public abstract class Entity extends Interactable {
         return items;
     }
 
-    public int[] getPos() {
-        return pos;
-    }
-
-    public void setPos(int[] pos) {
-        this.pos = pos;
-    }
-
+    /**
+     * Used to get the currently equipped item of the same type of the given item.
+     * If there is not returns null
+     * @param item: Item
+     * @return Item
+     */
     public Item getMatchingItem(Item item) {
 
         for (Item equippedItem: this.items) {
@@ -137,15 +168,8 @@ public abstract class Entity extends Interactable {
     }
 
     /**
-     * returns enemy
-     * Note: This will be important for the Graphics to get the battle state
-     *
-     * @return Entity - the current enemy of this entity
+     * @return int: Entity's current health
      */
-    public Entity getEnemy() {
-        return enemy;
-    }
-
     public int getHealth() {
         return health;
     }
@@ -160,8 +184,60 @@ public abstract class Entity extends Interactable {
         this.health -= amount/(this.getDefense() + 1);
     }
 
-    public String getDescription() {
-        return description;
+    /**
+     * @return int: Entity's current mana
+     */
+    public int getMana() {
+        return mana;
+    }
+
+    /**
+     * Subtracts a given amount of mana from an entity
+     *
+     * @param amount - how much mana to drain from entity
+     */
+    public void drainMana(int amount){
+        this.mana -= amount;
+    }
+
+    /**
+     * Has entity take their turn in a battle
+     *
+     * @param opponent - who the entity is fighting
+     */
+    abstract public void battle(Entity opponent);
+
+    /**
+     * returns enemy
+     * Note: This will be important for the Graphics to get the battle state
+     *
+     * @return Entity - the current enemy of this entity
+     */
+    public Entity getEnemy() {
+        return enemy;
+    }
+
+    /**
+     * Each child class of Entity will determine how to select moves for battle
+     *
+     * @return Skill - The skill they entity wants to use
+     */
+    abstract protected Skill makeMove();
+
+    /**
+     * useful for displaying skills and enemy deciding what skill to use
+     *
+     * @return ArrayList<Skill> - list of skills entity can use
+     */
+    public ArrayList<Skill> getSkills() {
+        // get skills from items
+        ArrayList<Skill> skills = new ArrayList<>();
+
+        for (Item item:this.items) {
+           skills.add(item.getSkill());
+        }
+
+        return skills;
     }
 
     /**
@@ -191,48 +267,5 @@ public abstract class Entity extends Interactable {
             }
         }
         return fullDescription.substring(0, fullDescription.length()-2);
-    }
-
-    public int getMana() {
-        return mana;
-    }
-
-    /**
-     * Subtracts a given amount of mana from an entity
-     *
-     * @param amount - how much mana to drain from entity
-     */
-    public void drainMana(int amount){
-        this.mana -= amount;
-    }
-
-    /**
-     * Has entity take their turn in a battle
-     *
-     * @param opponent - who the entity is fighting
-     */
-    abstract public void battle(Entity opponent);
-
-    /**
-     * Each child class of Entity will determine how to select moves for battle
-     *
-     * @return Skill - The skill they entity wants to use
-     */
-    abstract protected Skill makeMove();
-
-    /**
-     * useful for displaying skills and enemy deciding what skill to use
-     *
-     * @return ArrayList<Skill> - list of skills entity can use
-     */
-    public ArrayList<Skill> getSkills() {
-        // get skills from items
-        ArrayList<Skill> skills = new ArrayList<>();
-
-        for (Item item:this.items) {
-           skills.add(item.getSkill());
-        }
-
-        return skills;
     }
 }

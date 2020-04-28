@@ -31,42 +31,63 @@ public class Game extends Interactable {
         return currentLevel;
     }
 
-    private GraphicsHandler graphicsHandler;
+    /**
+     * Increases the current level
+     */
+    static public void levelUp() {
+        currentLevel++;
+    }
+
+    /**
+     * @return boolean: checks for game over
+     */
+    static public boolean getGameOver() {
+        return gameOver;
+    }
+
+    /**
+     * Set game over to true
+     */
+    static public void setGameOver(){
+        gameOver = true;
+    }
+
+    /**
+     * @return boolean: checks if player won
+     */
+    static public boolean getWinGame() {
+        return winGame;
+    }
+
+    /**
+     * set win game to indicate the player winning
+     */
+    static public void setWinGame() {
+        winGame = true;
+    }
 
     public static void main(String[] args) {
 
-        // create Game
+        // create Game and display
         GraphicsHandler graphicsHandler = new GraphicsHandler();
         Interactable game = new Game(graphicsHandler);
 
     }
 
-    static public void levelUp() {
-        // level up i assume is just:
-        currentLevel++;
-    }
-
-    static public boolean getGameOver() {
-        return gameOver;
-    }
-
-    static public void setGameOver(){
-        gameOver = true;
-    }
-
-    static public boolean getWinGame() {
-        return winGame;
-    }
-
-    static public void setWinGame() {
-        winGame = true;
-    }
+    private GraphicsHandler graphicsHandler;
 
     public Game(GraphicsHandler graphicsHandler){
         this.graphicsHandler = graphicsHandler;
         graphicsHandler.drawGameMenu(this);
     }
 
+    /**
+     * setups and starts the game:
+     *  - create floorFactory and create floor
+     *  - create player and equip basic items
+     *  - register all Interactable objects with the graphicsHandler
+     *  - changes to floor view
+     */
     public void startGame() {
         // Create floor factory and floor
         FloorFactory floorFactory = new FloorFactory();

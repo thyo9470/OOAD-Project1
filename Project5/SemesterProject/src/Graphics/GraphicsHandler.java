@@ -5,6 +5,14 @@ import Interactions.Observer;
 
 import javax.swing.*;
 
+/**
+ * CHAIN OF RESPONSIBILITY PATTERN
+ * This is the client class that makes requests to display interactables
+ *
+ * OBSERVER PATTERN
+ * THis class waits for changes in the stat of interactables and then send request
+ * to display this as a request to Graphics ( CHAIN OF RESPONSIBILITY )
+ */
 public class GraphicsHandler implements Observer {
 
     private Interactable interactable;

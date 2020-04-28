@@ -7,6 +7,10 @@ import Rooms.TreasureRoom;
 
 import java.util.Random;
 
+/**
+ * SIMPLE FACTORY PATTERN
+ * Acts as a simple factory for rooms
+ */
 public class RoomFactory {
 
     //References to specific room type factories
@@ -20,6 +24,13 @@ public class RoomFactory {
         this.puzzleFactory = new PuzzleFactory(itemFactory);
     }
 
+    /**
+     * Creates random room objects
+     *  - 10% treasure room
+     *  - 40$ trap room
+     *  - 50% enemy room
+     * @return Room
+     */
     public Room createRandomRoom(){
         Random rand = new Random();
         double random = rand.nextDouble();
@@ -40,6 +51,11 @@ public class RoomFactory {
         }
     }
 
+    /**
+     * Creates the room of a given type
+     * @param roomtype: String - indicate what room is desired
+     * @return Room
+     */
     public Room createRoom(String roomtype){
 
         if(roomtype.equals("Enemy")){

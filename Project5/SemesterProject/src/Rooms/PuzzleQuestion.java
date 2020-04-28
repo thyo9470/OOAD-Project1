@@ -4,7 +4,6 @@ import java.lang.String;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Arrays;
 
 
 public class PuzzleQuestion {
@@ -16,14 +15,11 @@ public class PuzzleQuestion {
     private String[] options;
     private String answer;
 
-
-    Random rand = new Random();
-
-
-    private List<String> questionBank = new ArrayList<>();
+    private List<String> questionBank;
 
     public PuzzleQuestion() {
-       this.setRandomQuestion();
+        this.questionBank = new ArrayList<>();
+        this.setRandomQuestion();
     }
 
     public String getAnswer() {
@@ -35,16 +31,16 @@ public class PuzzleQuestion {
     }
 
     /**
-     * Sets the question for this puzzle question object
+     * Sets the question for this puzzle question object to be a random question
      */
-
     public void setRandomQuestion(){
+        Random rand = new Random();
         questionBank.add("Who wrote Hitchhikers Guide to the Galaxy?");
         questionBank.add("When did the Hitchhikers Guide to the Galaxy Movie Premiere?");
         questionBank.add("What animal left Earth in Hitchhikers Guide to the Galaxy?");
         questionBank.add("Which one is NOT a Star Wars Character?");
         questionBank.add("Solve: (15 + 28 / 12) + 17 * 0 + 69 ?");
-        questionBank.add("Which of these movies is Chris Evans not int?");
+        questionBank.add("Which of these movie is Chris Evans not in?");
         questionBank.add("How many Star Wars movies are there?");
         questionBank.add("When was CU Boulder Founded?");
         questionBank.add("What is the state flower of Colorado?");
@@ -62,8 +58,8 @@ public class PuzzleQuestion {
     }
 
     /**
-     * Getters and setters for the questions
-     * @return getOptionforCurrQuestion
+     * Gets the options for the currently assigned question
+     * @return String[]: question options
      */
     public String[] getOptions(){
 
@@ -95,7 +91,6 @@ public class PuzzleQuestion {
         if (this.questionBank.get(0).equals(this.question)){
             //its question 1 so return options
             this.options = question1;
-            //Used for printing out to test
 
             return this.options;
         } else if (this.questionBank.get(1).equals(this.question)){
@@ -163,6 +158,10 @@ public class PuzzleQuestion {
     }
 
 
+    /**
+     * Will check if the currently assigned answer is the correct answer
+     * @return boolean: if the answer is right or not
+     */
     public boolean checkAnswer(){
         //if question == 1 && option == 2 then correct
         if( this.question.equals(this.questionBank.get(0)) && this.answer.equals("Douglas Adams") ){

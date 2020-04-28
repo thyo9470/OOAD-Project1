@@ -13,7 +13,6 @@ public class Puzzle extends Interactable {
 
     public Puzzle(PuzzleQuestion puzzleQuestion){
         this.puzzleQuestion = puzzleQuestion;
-        this.damage = 500;
     }
 
     public void setRewardItem(Item rewardItem) {
@@ -59,7 +58,6 @@ public class Puzzle extends Interactable {
                 entity.promptSwap(this.rewardItem);
             }
         } else {
-            System.out.println(this.damage);
             entity.damage(this.damage);
         }
         this.puzzleQuestion.setAnswer(null);

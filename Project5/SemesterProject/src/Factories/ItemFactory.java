@@ -9,6 +9,10 @@ import java.util.Random;
 
 import static Game.Game.getCurrentLevel;
 
+/**
+ * SIMPLE FACTORY PATTERN
+ * Acts as a simple factory for items
+ */
 public class ItemFactory {
 
     //create list of item names to be chosen from for random item selection
@@ -31,18 +35,31 @@ public class ItemFactory {
         skillTypes.add("RegainFocus");
     }
 
+    /**
+     * Returns a random item type string from itemTypes
+     * @return String - random item type
+     */
     private String chooseItemType(){
 
         Random rand = new Random();
         return itemTypes.get(rand.nextInt(itemTypes.size()));
     }
 
+    /**
+     * Returns a random skill type from skillTypes
+      * @return String - random skill type
+     */
     private String chooseSkillType(){
 
         Random rand = new Random();
         return skillTypes.get(rand.nextInt(skillTypes.size()));
     }
 
+    /**
+     * Generates a skill ability from a given skill type string
+     * @param skillType: String
+     * @return SkillAbility
+     */
     private SkillAbility makeSkill(String skillType){
         if(skillType == "DamageAbility"){
             return new DamageAbility("Base 10 damage",10,20,0);
@@ -73,6 +90,10 @@ public class ItemFactory {
         }
     }
 
+    /**
+     * creates a random item based on the current level
+     * @return Item
+     */
     public Item createItem(){
         int level = getCurrentLevel();
         String type = chooseItemType();
@@ -93,6 +114,10 @@ public class ItemFactory {
         }
     }
 
+    /**
+     * Create the default item for all enemies based on the current level
+     * @return Item
+     */
     public Item enemyDefaultItem(){
         int level = getCurrentLevel();
         Skill newSkill = new Skill(String.format("A knife stab"));

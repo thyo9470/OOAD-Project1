@@ -2,6 +2,11 @@ package Items.Skills;
 
 import Entities.Entity;
 
+/**
+ * STRATEGY PATTERN
+ * Acts as the strategy for strategy pattern
+ * Creates overall design for skill ability strategies
+ */
 abstract public class SkillAbility {
 
    private String description;

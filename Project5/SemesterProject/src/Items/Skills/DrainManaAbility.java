@@ -2,6 +2,10 @@ package Items.Skills;
 
 import Entities.Entity;
 
+/**
+ * STRATEGY PATTERN
+ * Acts as a concrete strategy for strategy pattern
+ */
 public class DrainManaAbility extends SkillAbility {
 
     private int manaAmount;

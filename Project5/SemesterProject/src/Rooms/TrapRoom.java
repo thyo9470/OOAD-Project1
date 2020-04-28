@@ -2,10 +2,8 @@ package Rooms;
 
 
 import Entities.Entity;
-import Interactions.Interactable;
 
 public class TrapRoom extends Room{
-
 
     private Puzzle puzzle;
 

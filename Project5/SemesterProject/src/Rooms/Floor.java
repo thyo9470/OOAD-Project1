@@ -12,8 +12,6 @@ public class Floor extends Interactable {
     private FloorFactory floorFactory;
     private ArrayList<ArrayList<Room>> roomMap;
     private Player player;
-    final private int ROWS = 10;
-    final private int COLS = 12;
 
     public Floor(ArrayList<ArrayList<Room>> roomMap, FloorFactory floorFactory) {
 
@@ -34,23 +32,26 @@ public class Floor extends Interactable {
         return roomMap;
     }
 
-    public void nextLevel() {
-        // do next level sthuff
-    }
-
+    /**
+     * Given a room the floor determines how to interact with it:
+     *  - win game
+     *  - go to next level
+     *  - run interact function with room and update display
+     * @param room
+     */
     public void makeMove(Room room) {
         if(room.isFloorEnd()){
             if(Game.getCurrentLevel() == Game.getLastLevel()){
                 Game.setWinGame();
                 this.setNextIntractable(this);
             }else {
-                Interactable newFloor = this.floorFactory.makeFloor();
-                ((Floor)newFloor).setPlayer((Player)this.player);
-                ((Player)this.player).setPos(new int[]{-1,-1});
                 Game.levelUp();
+                Floor newFloor = this.floorFactory.makeFloor();
+                newFloor.setPlayer(this.player);
+                (this.player).resetPos();
                 newFloor.registerObserver(this.graphicsHandler);
                 this.setNextIntractable(newFloor);
-                for(ArrayList<Room> roomRow : ((Floor)newFloor).getRoomMap()) {
+                for(ArrayList<Room> roomRow : newFloor.getRoomMap()) {
                     for(Room roomlet : roomRow){
                         if(roomlet instanceof TrapRoom){
                             Puzzle puzzle = ((TrapRoom)roomlet).getPuzzle();
@@ -67,6 +68,7 @@ public class Floor extends Interactable {
         this.player.setFloor(this);
         if(room instanceof TrapRoom){
             Puzzle puzzle = ((TrapRoom)room).getPuzzle();
+            puzzle.setEntity(this.player);
             this.setNextIntractable(puzzle);
             puzzle.setFloor(this);
         } else {

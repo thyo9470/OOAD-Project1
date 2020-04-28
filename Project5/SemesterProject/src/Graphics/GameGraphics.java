@@ -8,8 +8,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * CHAIN OF RESPONSIBILITY PATTERN
+ * One of the concrete handlers
+ * Used to handle displaying specific graphics components
+ */
 public class GameGraphics extends Graphics {
 
+    /**
+     * Sets interactable if given interactable is of type Game
+     * @param interactable: Interactable
+     */
     @Override
     protected void setInteractable(Interactable interactable) {
         if(interactable.getClass().equals(Game.class)) {
@@ -35,6 +44,7 @@ public class GameGraphics extends Graphics {
 
 
         JLabel titleLabel = new JLabel("Adventure Game The Game");
+        titleLabel.setFont (titleLabel.getFont ().deriveFont (64.0f));
         JButton startGameButton = new JButton("Start Game");
         JButton exitGameButton = new JButton("Exit Game");
 

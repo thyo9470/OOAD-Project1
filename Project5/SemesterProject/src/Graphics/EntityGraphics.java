@@ -13,6 +13,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * CHAIN OF RESPONSIBILITY PATTERN
+ * One of the concrete handlers
+ * Used to handle displaying specific graphics components
+ */
 public class EntityGraphics extends Graphics {
 
     final private int SKILL_BUTTON_HEIGHT = 100;
@@ -20,6 +25,10 @@ public class EntityGraphics extends Graphics {
     final private int ITEM_BUTTON_WIDTH = 200;
     final private int ITEM_BUTTON_SPACING = 50;
 
+    /**
+     * Sets interactable if given interactable is of type Entity
+     * @param interactable: Interactable
+     */
     @Override
     protected void setInteractable(Interactable interactable) {
         if (Entity.class.isAssignableFrom(interactable.getClass())) {

@@ -1,6 +1,5 @@
 package Graphics;
 
-import Entities.Player;
 import Interactions.Interactable;
 import Rooms.Puzzle;
 import Rooms.PuzzleQuestion;
@@ -12,8 +11,17 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * CHAIN OF RESPONSIBILITY PATTERN
+ * One of the concrete handlers
+ * Used to handle displaying specific graphics components
+ */
 public class PuzzleGraphics extends Graphics {
 
+    /**
+     * Sets interactable if given interactable is of type Puzzle
+     * @param interactable: Interactable
+     */
     @Override
     protected void setInteractable(Interactable interactable) {
         if(interactable.getClass().equals(Puzzle.class)) {

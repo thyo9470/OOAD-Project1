@@ -3,8 +3,6 @@ package Rooms;
 import Entities.Enemy;
 import Entities.Entity;
 
-import java.util.Set;
-
 public class EnemyRoom extends Room{
 
     private Enemy enemy;

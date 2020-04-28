@@ -1,7 +1,6 @@
 package Rooms;
 
 import Entities.Entity;
-import Interactions.Interactable;
 
 public abstract class Room {
 
@@ -23,6 +22,9 @@ public abstract class Room {
         return visited;
     }
 
+    /**
+     * Sets the visited state to true
+     */
     public void visit() {
         this.visited = true;
     }
@@ -36,6 +38,9 @@ public abstract class Room {
         return floorEnd;
     }
 
+    /**
+     * Sets this room to be the last room on the floor
+     */
     public void setFloorEnd(){
         this.floorEnd = true;
     }

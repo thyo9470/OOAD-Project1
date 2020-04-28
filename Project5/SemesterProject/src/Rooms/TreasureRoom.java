@@ -1,13 +1,13 @@
 package Rooms;
 
-import Interactions.Interactable;
+import Items.Item;
 
 public class TreasureRoom extends Room{
 
     /**
      * private variable item
      */
-    private Items.Item item;
+    private Item item;
 
 
     /**

@@ -3,6 +3,11 @@ package Items;
 import Items.Skills.Skill;
 import Items.Skills.SkillAbility;
 
+/**
+ * STRATEGY PATTERN
+ * This is the client for strategy design pattern
+ * Skill is used at the Host
+ */
 abstract public class Item{
 
     private Skill skill;

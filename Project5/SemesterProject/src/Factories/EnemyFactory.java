@@ -2,8 +2,10 @@ package Factories;
 
 import Entities.Enemy;
 
-import java.util.Random;
-
+/**
+ * SIMPLE FACTORY PATTERN
+ * Acts as a simple factory for enemies
+ */
 public class EnemyFactory {
 
     private ItemFactory itemFactory;
@@ -12,6 +14,10 @@ public class EnemyFactory {
        this.itemFactory = itemFactory;
     }
 
+    /**
+     * Creates an enemy based on the current game level
+     * @return
+     */
     public Enemy createEnemy(){
 
         int level = Game.Game.getCurrentLevel();

@@ -12,11 +12,23 @@ public class Enemy extends Entity{
         super(description);
     }
 
+    /**
+     * Used to swap items in an enemy class
+     * Currently just equips it with no though
+     * Future: smart selection
+     *
+     * @param newItem: Item
+     */
     @Override
     public void promptSwap(Item newItem) {
         this.equipItem(newItem);
     }
 
+    /**
+     * selects a random equipped to be the reward item when the entity dies
+     *
+     * @return Item
+     */
     public Item getRewardItem() {
         Random rand = new Random();
         return this.getItems().get(rand.nextInt(this.getItems().size()));
@@ -24,9 +36,10 @@ public class Enemy extends Entity{
 
     /**
      * Currently randomly selects a skill from it's items and uses it
-     * TODO: make this not suck ( implement some kind of AI )
+     *  Future; implement smart selection of enemy moves
+     *      - min-max tree. This would be good to vary difficulty too by varying tree depth
      *
-     * @return The skill the enemy wants to use
+     * @return Skill: The skill the enemy wants to use
      */
     @Override
     protected Skill makeMove() {
@@ -37,9 +50,16 @@ public class Enemy extends Entity{
         return selectedSkill;
     }
 
+    /**
+     * Prompts the enemy to make a move that will not cause them to kill themselves or go below 0 mana
+     * After using their move they call their opponent to take their turn
+     *
+     * @param opponent - who the entity is fighting
+     */
     public void battle(Entity opponent) {
         this.enemy = opponent;
 
+        // select move to use
         Skill selectedSkill = this.makeMove();
         int tries = 0;
         int maxTries = 10;
@@ -54,6 +74,7 @@ public class Enemy extends Entity{
             selectedSkill.activate(this, opponent);
         }
 
+        // pass turn
         if(opponent.getHealth() <= 0) {
             opponent.returnToFloor();
         } else {

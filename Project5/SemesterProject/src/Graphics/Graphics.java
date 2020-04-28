@@ -4,6 +4,13 @@ import Interactions.Interactable;
 
 import javax.swing.*;
 
+/**
+ * CHAIN OF RESPONSIBILITY PATTERN
+ * This is the handler class for the display
+ *
+ * MVC PATTERN
+ * this and the child components act as the view and controller for MVC pattern
+ */
 abstract public class Graphics {
 
     protected Interactable interactable;
@@ -16,7 +23,10 @@ abstract public class Graphics {
     }
 
     /**
-     * Given an interactable and a frame this function will go down the differnt graphics components and try to display
+     * CHAIN OF RESPONSIBILITY PATTERN
+     * handles requests for chain of responsibility pattern
+     *
+     * Given an interactable and a frame this function will go down the different graphics components and try to display
      * the intractable on the frame
      *
      * This is done by trying to set the interactable for itself, if this produces an

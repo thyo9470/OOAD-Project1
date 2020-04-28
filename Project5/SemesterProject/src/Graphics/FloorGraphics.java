@@ -14,8 +14,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * CHAIN OF RESPONSIBILITY PATTERN
+ * One of the concrete handlers
+ * Used to handle displaying specific graphics components
+ */
 public class FloorGraphics extends Graphics {
 
+    /**
+     * Sets interactable if given interactable is of type Floor
+     * @param interactable: Interactable
+     */
     @Override
     protected void setInteractable(Interactable interactable) {
         if (interactable.getClass().equals(Floor.class)) {
@@ -27,7 +36,7 @@ public class FloorGraphics extends Graphics {
 
     /**
      * given an empty JFrame, this displays everything for the exploration part of the game
-     *  - this will also handle displaying the game over display
+     *  - this will also handle displaying the game over and win display
      *
      * @param frame: JFrame
      */
@@ -138,7 +147,7 @@ public class FloorGraphics extends Graphics {
 
         entityInfoPanel.add(Box.createRigidArea(new Dimension(100, 20)));
 
-        JLabel currentLevel = new JLabel("Level: " + Integer.toString(Game.getCurrentLevel()));
+        JLabel currentLevel = new JLabel("Level: " + Integer.toString(Game.getCurrentLevel()) + "/" + Integer.toString(Game.getLastLevel()));
         currentLevel.setAlignmentX(Component.CENTER_ALIGNMENT);
         entityInfoPanel.add(currentLevel);
 

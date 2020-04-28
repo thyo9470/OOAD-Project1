@@ -35,12 +35,6 @@ public class Player extends Entity{
         return selectedSkill;
     }
 
-    /**
-     * sets the player to (-1,-1) which is the starting point of all levels
-     */
-    public void resetPos(){
-        this.setPos(new int[]{-1,-1});
-    }
 
     /**
      * Has entity take their turn in a battle
@@ -99,12 +93,17 @@ public class Player extends Entity{
     /**
      * This function is used by the display to tell the user what skill to use
      *
-     * @param skillToUse
+     * @param skillToUse: Skill
      */
     public void setSkillToUse(Skill skillToUse) {
         this.skillToUse = skillToUse;
     }
 
+    /**
+     * Used to get input from GUI for swapping items
+     *
+     * @param itemToUse: Item
+     */
     public void setItemToUse(Item itemToUse) {
         this.itemToUse = itemToUse;
     }

@@ -4,6 +4,11 @@ import Entities.Entity;
 
 import java.util.ArrayList;
 
+/**
+ * STRATEGY PATTERN
+ * Skill acts as the Host for the strategies
+ * Strategies are in the form of SkillAbilities
+ */
 public class Skill {
 
     private String description;
@@ -22,6 +27,10 @@ public class Skill {
         return skillAbilities;
     }
 
+    /**
+     * Possible future abilities could use this damage equipped items
+     * @param ability
+     */
     public void removeAbility(SkillAbility ability){
         this.skillAbilities.remove(ability);
     }
