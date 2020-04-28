@@ -28,7 +28,6 @@ public class FloorFactory {
     public Floor makeFloor(){
         int rows = Game.getCurrentLevel() * 2;
         int cols = Game.getCurrentLevel() * 3;
-        System.out.println(Game.getCurrentLevel());
 
         // Create room map for floor
         ArrayList<ArrayList<Room>> roomMap = new ArrayList<>();

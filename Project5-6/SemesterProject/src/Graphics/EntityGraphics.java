@@ -81,7 +81,12 @@ public class EntityGraphics extends Graphics {
     private JPanel createSwapItemPanel(Entity entity) {
 
         Item newItem = entity.getSwappingItem();
-        Item oldItem = entity.getMatchingItem(newItem);
+        Item oldItem;
+        if(entity.getMatchingItem(newItem) == null){
+            oldItem = newItem;
+        } else {
+            oldItem = entity.getMatchingItem(newItem);
+        }
 
         JPanel itemPanel = new JPanel();
         itemPanel.setLayout(new BoxLayout(itemPanel, BoxLayout.Y_AXIS));
@@ -90,7 +95,7 @@ public class EntityGraphics extends Graphics {
         JLabel swapText = new JLabel("Select which item you want to keep");
         swapText.setFont (swapText.getFont ().deriveFont (32.0f));
 
-        JButton oldItemButton = new JButton("OLD ITEM IMAGE HERE");
+        JButton oldItemButton = new JButton("OLD ITEM");
         oldItemButton.setPreferredSize(new Dimension(ITEM_BUTTON_WIDTH, ITEM_BUTTON_HEIGHT));
 
         UIManager.put("ToolTip.background", Color.WHITE);
@@ -107,7 +112,7 @@ public class EntityGraphics extends Graphics {
             }
         });
 
-        JButton newItemButton = new JButton("NEW ITEM IMAGE HERE");
+        JButton newItemButton = new JButton("NEW ITEM");
         newItemButton.setPreferredSize(new Dimension(ITEM_BUTTON_WIDTH, ITEM_BUTTON_HEIGHT));
 
         newItemButton.setToolTipText(newItem.toString());
@@ -217,7 +222,6 @@ public class EntityGraphics extends Graphics {
      * @return
      */
     private JPanel createEntityInfo(Entity entity) {
-        System.out.println(entity);
         JPanel entityInfo = new JPanel();
         entityInfo.setLayout(new BoxLayout(entityInfo, BoxLayout.Y_AXIS));
         entityInfo.setBackground(Color.lightGray);

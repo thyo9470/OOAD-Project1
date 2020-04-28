@@ -59,7 +59,7 @@ public class Game extends Interactable {
         return winGame;
     }
 
-    /**
+    /*You will find yourself on the main menu when first starting the game. After clicking play a floor will be generated for you.*
      * set win game to indicate the player winning
      */
     static public void setWinGame() {

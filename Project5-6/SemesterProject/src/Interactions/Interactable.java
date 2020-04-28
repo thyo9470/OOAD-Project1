@@ -69,6 +69,7 @@ abstract public class Interactable implements Observable {
         if(entity.getHealth() <= 0){
             Game.setGameOver();
         }
+        this.changeState = true;
         this.setNextIntractable(this.floor);
         this.notifyObserver();
     }

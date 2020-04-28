@@ -122,6 +122,10 @@ public abstract class Entity extends Interactable {
      */
     abstract public void promptSwap(Item newItem);
 
+    public void setSwappingItem(Item swappingItem) {
+        this.swappingItem = swappingItem;
+    }
+
     public Item getSwappingItem() {
         return swappingItem;
     }
@@ -180,7 +184,6 @@ public abstract class Entity extends Interactable {
      * @param amount - how much pre-defense damage being dealt
      */
     public void damage(int amount){
-        System.out.println(this.getDefense());
         this.health -= amount/(this.getDefense() + 1);
     }
 

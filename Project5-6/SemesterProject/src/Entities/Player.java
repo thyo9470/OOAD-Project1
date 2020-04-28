@@ -72,8 +72,8 @@ public class Player extends Entity{
      */
     public void promptSwap(Item newItem){
         this.swappingItem = newItem;
+        this.notifyObserver();
         if(this.getMatchingItem(newItem) != null) {
-            this.notifyObserver();
             while(this.itemToUse == null) {
                 try {
                     Thread.sleep(100);

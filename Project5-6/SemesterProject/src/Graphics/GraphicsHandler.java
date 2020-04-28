@@ -80,7 +80,6 @@ public class GraphicsHandler implements Observer {
         if (this.interactable.getChangeState()){
             this.interactable = this.interactable.getNextIntractable();
         }
-
         this.changeDisplay();
     }
 }

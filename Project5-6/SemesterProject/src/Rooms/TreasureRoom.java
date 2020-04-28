@@ -1,5 +1,6 @@
 package Rooms;
 
+import Entities.Entity;
 import Items.Item;
 
 public class TreasureRoom extends Room{

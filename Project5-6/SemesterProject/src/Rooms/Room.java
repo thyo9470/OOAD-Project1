@@ -48,9 +48,9 @@ public abstract class Room {
 
     /**
      * Used to interact with a specific room and it's objects
+     * Creates a new thread to handle getting input and displaying game state
      * @param entity
      */
-
     public void enterRoom(Entity entity) {
 
         Room selfRef = this;
