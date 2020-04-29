@@ -122,10 +122,6 @@ public abstract class Entity extends Interactable {
      */
     abstract public void promptSwap(Item newItem);
 
-    public void setSwappingItem(Item swappingItem) {
-        this.swappingItem = swappingItem;
-    }
-
     public Item getSwappingItem() {
         return swappingItem;
     }
