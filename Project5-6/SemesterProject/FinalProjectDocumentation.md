@@ -33,3 +33,17 @@ For our Object Oriented Design and Analysis class we have decided to create a si
 
 #### Treasure Room - Item Swap
 ![Labeled Item Swap](https://i.imgur.com/n12c9VJ.png)
+
+## Game Design
+
+**Game Flow**
+
+![Game Flow](https://i.imgur.com/LxpXzEY.png)
+
+**Graphics Handler**
+
+The graphics handler works by using a combination of an Observer design pattern and Chain-of-Responsibility pattern. The Observer is composed of Interactables (Observables) and GraphicsHandler (Observer). The Graphics handler waits for updates in interactable state. Once there is a change in the interactable state, teh graphics handler is notified.
+
+The graphics are then handled by sending the change state request down a chain of responsability. Each part of the chain can handle a specifc interactable. This allows for better organization and expantion of more graphics components in the future.
+
+![Graphics Handling](https://i.imgur.com/33VjWuP.png)
