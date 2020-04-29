@@ -1,6 +1,10 @@
 # ADVENTURE GAME THE GAME
 *CSCI 4448 - Object Oriented Design and Analysis semester project*
 
+[Project 5 Progress Report](https://github.com/thyo9470/OOAD-Projects/blob/master/Project5-6/Project%205-Status%20Summary.pdf)
+
+[Project 6 Final Report](https://github.com/thyo9470/OOAD-Projects/blob/master/Project5-6/Project%206-Final%20Report.pdf)
+
 **Team Members**
  - Cassidy Carpenter
  - John Stibbards
